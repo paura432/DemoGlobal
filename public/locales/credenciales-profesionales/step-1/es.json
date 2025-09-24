@@ -1,0 +1,17 @@
+{
+    "conoceLabel": "Conoce a",
+    "perfiles": {
+      "medico": {
+        "nombre": "Laura",
+        "label": "Médico",
+        "descripcion": "Laura es médico y necesita tener una identidad digital basada en credenciales verificables para acceder a servicios.",
+        "icono": "/credenciales-profesionales/perfiles/medico.jpg",
+        "video": "/credenciales-profesionales/videos/medico.mp4"
+      }
+    },
+    "buttons": {
+      "back": "Atrás",
+      "next": "Siguiente"
+    }
+  }
+  

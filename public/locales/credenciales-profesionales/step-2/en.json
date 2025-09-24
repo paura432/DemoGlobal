@@ -1,0 +1,48 @@
+{
+    "tituloFijo": "First you will need a Wallet",
+    "bloques": [
+      {
+        "subtitulo": "What are Verifiable Credential Wallets?",
+        "texto": "Imagine a digital wallet on your phone that, instead of storing money or credit cards, stores verifiable credentials. Think of them as important documents, but in a secure digital format (ID, passport, diplomas, etc.).",
+        "imagen": "/credenciales-profesionales/step-2/wallet-intro.jpg"
+      },
+      {
+        "subtitulo": "How do they work?",
+        "texto": "Verifiable credential wallets give users full control over their data. You decide what information to share and with whom. For example, if you only need to prove your age to access a service, you just share your date of birth without revealing your entire identity.",
+        "imagen": "/credenciales-profesionales/step-2/wallet-funcion.jpg"
+      },
+      {
+        "subtitulo": "Install your Wallet application",
+        "texto": "First, install one of the compatible applications on your smartphone. You can view the QR code by tapping on the icons.",
+        "apps": [
+          { "id": "procivis", "nombre": "Procivis", "logo": "/credenciales-profesionales/step-2/procivis.png" }
+        ],
+        "imagen": "/credenciales-profesionales/step-2/instala.jpg"
+      },
+      {
+        "subtitulo": "Procivis",
+        "texto": "Scan this QR code with your phone or use the store buttons. You can also search for <b>Procivis</b> in your app store.<br/>Complete the process in the app.",
+        "modalItems": [
+          { "title": "Download Procivis on your phone" },
+          { "title": "Complete the process in the app" }
+        ]
+      }
+    ],
+    "qrByAppStore": {
+      "procivis": {
+        "appstore": "https://apps.apple.com/app/idXXXXXXXXX",
+        "play": "https://play.google.com/store/apps/details?id=org.procivis"
+      }
+    },
+    "ui": {
+      "modalSubtitle": "Download the app and complete the process",
+      "close": "Close",
+      "done": "Done"
+    },
+    "buttons": {
+      "back": "Back",
+      "next": "Next",
+      "go": "Import credential"
+    }
+  }
+  

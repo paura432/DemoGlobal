@@ -1,0 +1,30 @@
+/* Carga todo Tailwind v4 de una vez */
+@import "tailwindcss";
+/* @import url('./responsive.css'); */
+
+/* (Opcional) plugins oficiales en v4 */
+/* @plugin "@tailwindcss/forms"; */
+/* @plugin "@tailwindcss/typography"; */
+
+/* Tus estilos globales */
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Estilos globales */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}

@@ -1,0 +1,396 @@
+/* ===== SISTEMA CSS RESPONSIVE GLOBAL ===== */
+
+/* Variables CSS para consistencia */
+:root {
+    /* Breakpoints */
+    --mobile: 480px;
+    --tablet: 768px;  
+    --desktop: 1024px;
+    --large: 1200px;
+    --xlarge: 1440px;
+    --presentation: 1800px;
+    
+    /* Contenedores responsive */
+    --container-mobile: 100%;
+    --container-tablet: 100%;
+    --container-desktop: 1000px;
+    --container-large: 1100px;
+    --container-xlarge: 1200px;
+    --container-presentation: min(90vw, 1600px);
+    
+    /* TipografÃ­a escalable */
+    --text-xs: clamp(10px, 1.5vw, 12px);
+    --text-sm: clamp(12px, 2vw, 14px);
+    --text-base: clamp(14px, 2.5vw, 16px);
+    --text-lg: clamp(16px, 3vw, 18px);
+    --text-xl: clamp(18px, 3.5vw, 22px);
+    --text-2xl: clamp(20px, 4vw, 28px);
+    --text-3xl: clamp(24px, 5vw, 36px);
+    
+    /* Espaciado escalable */
+    --spacing-xs: clamp(4px, 1vw, 8px);
+    --spacing-sm: clamp(8px, 1.5vw, 12px);
+    --spacing-md: clamp(12px, 2vw, 16px);
+    --spacing-lg: clamp(16px, 2.5vw, 24px);
+    --spacing-xl: clamp(20px, 3vw, 32px);
+    --spacing-2xl: clamp(24px, 4vw, 48px);
+    --spacing-3xl: clamp(32px, 5vw, 64px);
+    
+    /* Componentes especÃ­ficos */
+    --header-height: clamp(48px, 8vh, 80px);
+    --button-padding-x: clamp(16px, 3vw, 32px);
+    --button-padding-y: clamp(8px, 1.5vw, 12px);
+    --card-width: clamp(280px, 30vw, 400px);
+    --video-width: clamp(280px, 35vw, 500px);
+    --qr-size: clamp(160px, 25vw, 260px);
+  }
+  
+  /* ===== MEDIA QUERIES PRINCIPALES ===== */
+  
+  /* MÃ³viles pequeÃ±os */
+  @media screen and (max-width: 479px) {
+    :root {
+      --text-xs: 10px;
+      --text-sm: 11px;
+      --text-base: 13px;
+      --text-lg: 15px;
+      --text-xl: 18px;
+      --text-2xl: 20px;
+    }
+  }
+  
+  /* Tablets */
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    :root {
+      --container-width: var(--container-tablet);
+      --spacing-scale: 1.2;
+    }
+  }
+  
+  /* Desktop */
+  @media screen and (min-width: 1024px) and (max-width: 1199px) {
+    :root {
+      --container-width: var(--container-desktop);
+      --spacing-scale: 1.4;
+    }
+  }
+  
+  /* Pantallas grandes */
+  @media screen and (min-width: 1200px) and (max-width: 1439px) {
+    :root {
+      --container-width: var(--container-large);
+      --spacing-scale: 1.6;
+    }
+  }
+  
+  /* Pantallas extra grandes */
+  @media screen and (min-width: 1440px) and (max-width: 1799px) {
+    :root {
+      --container-width: var(--container-xlarge);
+      --spacing-scale: 1.8;
+    }
+  }
+  
+  /* Presentaciones (pantallas muy grandes) */
+  @media screen and (min-width: 1800px) {
+    :root {
+      --container-width: var(--container-presentation);
+      --spacing-scale: 2.2;
+      --text-scale: 1.4;
+      
+      /* Aumentar todos los textos para presentaciones */
+      --text-xs: 14px;
+      --text-sm: 16px;
+      --text-base: 18px;
+      --text-lg: 22px;
+      --text-xl: 28px;
+      --text-2xl: 36px;
+      --text-3xl: 48px;
+    }
+  }
+  
+  /* ===== CLASES RESPONSIVE PARA TUS COMPONENTES ===== */
+  
+  /* Contenedores principales */
+  .responsive-container {
+    width: 100%;
+    max-width: var(--container-width, 1000px);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+  
+  @media screen and (min-width: 1800px) {
+    .responsive-container {
+      max-width: var(--container-presentation);
+      padding: 0 var(--spacing-xl);
+    }
+  }
+  
+  /* Textos escalables */
+  .text-responsive-xs { font-size: var(--text-xs); }
+  .text-responsive-sm { font-size: var(--text-sm); }
+  .text-responsive-base { font-size: var(--text-base); }
+  .text-responsive-lg { font-size: var(--text-lg); }
+  .text-responsive-xl { font-size: var(--text-xl); }
+  .text-responsive-2xl { font-size: var(--text-2xl); }
+  .text-responsive-3xl { font-size: var(--text-3xl); }
+  
+  /* Espaciado responsive */
+  .spacing-responsive-xs { margin: var(--spacing-xs); }
+  .spacing-responsive-sm { margin: var(--spacing-sm); }
+  .spacing-responsive-md { margin: var(--spacing-md); }
+  .spacing-responsive-lg { margin: var(--spacing-lg); }
+  .spacing-responsive-xl { margin: var(--spacing-xl); }
+  
+  .padding-responsive-xs { padding: var(--spacing-xs); }
+  .padding-responsive-sm { padding: var(--spacing-sm); }
+  .padding-responsive-md { padding: var(--spacing-md); }
+  .padding-responsive-lg { padding: var(--spacing-lg); }
+  .padding-responsive-xl { padding: var(--spacing-xl); }
+  
+  /* Botones responsive */
+  .btn-responsive {
+    padding: var(--button-padding-y) var(--button-padding-x);
+    font-size: var(--text-sm);
+    border-radius: clamp(8px, 2vw, 24px);
+    transition: all 0.2s ease;
+  }
+  
+  @media screen and (min-width: 1800px) {
+    .btn-responsive {
+      font-size: var(--text-base);
+      padding: calc(var(--button-padding-y) * 1.3) calc(var(--button-padding-x) * 1.3);
+    }
+  }
+  
+  /* Grids responsive */
+  .grid-responsive {
+    display: grid;
+    gap: var(--spacing-lg);
+    grid-template-columns: 1fr;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .grid-responsive {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .grid-responsive {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-xl);
+    }
+  }
+  
+  @media screen and (min-width: 1800px) {
+    .grid-responsive {
+      gap: var(--spacing-3xl);
+    }
+  }
+  
+  /* Cards responsive */
+  .card-responsive {
+    width: var(--card-width);
+    padding: var(--spacing-lg);
+    border-radius: clamp(12px, 2vw, 24px);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+  
+  @media screen and (min-width: 1800px) {
+    .card-responsive {
+      padding: var(--spacing-2xl);
+      box-shadow: 0 8px 25px -5px rgb(0 0 0 / 0.15);
+    }
+  }
+  
+  /* Videos responsive */
+  .video-responsive {
+    width: var(--video-width);
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: clamp(12px, 2vw, 18px);
+    overflow: hidden;
+  }
+  
+  /* QR codes responsive */
+  .qr-responsive {
+    width: var(--qr-size);
+    height: var(--qr-size);
+  }
+  
+  /* Progreso (steps) responsive */
+  .progress-responsive {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+  
+  .progress-step {
+    width: clamp(20px, 3vw, 32px);
+    height: clamp(20px, 3vw, 32px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-xs);
+    font-weight: bold;
+  }
+  
+  .progress-line {
+    width: clamp(24px, 4vw, 40px);
+    height: 2px;
+    background-color: #d1d5db;
+  }
+  
+  /* ===== UTILIDADES ESPECÃFICAS PARA TUS PÃGINAS ===== */
+  
+  /* Header responsive */
+  .header-responsive {
+    height: var(--header-height);
+    padding: 0 var(--spacing-md);
+  }
+  
+  .header-responsive .logo {
+    font-size: var(--text-xl);
+  }
+  
+  @media screen and (min-width: 1800px) {
+    .header-responsive {
+      padding: 0 var(--spacing-2xl);
+    }
+    
+    .header-responsive .logo {
+      font-size: calc(var(--text-xl) * 1.4);
+    }
+  }
+  
+  /* Modales responsive */
+  .modal-responsive {
+    width: clamp(320px, 90vw, 880px);
+    padding: var(--spacing-xl);
+    border-radius: clamp(16px, 3vw, 32px);
+  }
+  
+  @media screen and (min-width: 1800px) {
+    .modal-responsive {
+      width: clamp(800px, 80vw, 1200px);
+      padding: var(--spacing-3xl);
+    }
+  }
+  
+  /* Tablas responsive */
+  .table-responsive {
+    font-size: var(--text-sm);
+    border-radius: clamp(8px, 1.5vw, 16px);
+  }
+  
+  .table-responsive th,
+  .table-responsive td {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  @media screen and (min-width: 1800px) {
+    .table-responsive {
+      font-size: var(--text-base);
+    }
+    
+    .table-responsive th,
+    .table-responsive td {
+      padding: var(--spacing-md) var(--spacing-lg);
+    }
+  }
+  
+  /* ===== ANIMACIONES RESPONSIVE ===== */
+  @media (prefers-reduced-motion: no-preference) {
+    .responsive-animate {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .responsive-animate:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+    
+    @media screen and (min-width: 1800px) {
+      .responsive-animate:hover {
+        transform: translateY(-4px) scale(1.04);
+      }
+    }
+  }
+  
+  /* ===== LAYOUT ESPECÃFICOS ===== */
+  
+  /* Full height screens */
+  .screen-responsive {
+    min-height: 100vh;
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  @media screen and (min-width: 1800px) {
+    .screen-responsive {
+      padding: var(--spacing-2xl) var(--spacing-xl);
+    }
+  }
+  
+  /* Flex layouts responsive */
+  .flex-responsive {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+  }
+  
+  .flex-responsive-column {
+    flex-direction: column;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .flex-responsive {
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+  }
+  
+  @media screen and (min-width: 1800px) {
+    .flex-responsive {
+      gap: var(--spacing-2xl);
+    }
+  }
+  
+  /* ===== PRINT STYLES ===== */
+  @media print {
+    .responsive-container {
+      max-width: none;
+      padding: 0;
+    }
+    
+    .text-responsive-xs { font-size: 10px; }
+    .text-responsive-sm { font-size: 12px; }
+    .text-responsive-base { font-size: 14px; }
+    .text-responsive-lg { font-size: 16px; }
+    .text-responsive-xl { font-size: 18px; }
+    .text-responsive-2xl { font-size: 22px; }
+  }
+  
+  /* ===== DARK MODE SUPPORT ===== */
+  @media (prefers-color-scheme: dark) {
+    .card-responsive {
+      background-color: #1f2937;
+      color: #f9fafb;
+    }
+  }
+  
+  /* ===== ACCESSIBILITY ===== */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Focus visible para navegaciÃ³n por teclado */
+  .btn-responsive:focus-visible,
+  .card-responsive:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }

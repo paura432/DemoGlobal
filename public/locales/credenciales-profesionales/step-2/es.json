@@ -1,0 +1,38 @@
+{
+    "tituloFijo": "Primero necesitará una Wallet",
+    "bloques": [
+      {
+        "subtitulo": "Procivis",
+        "texto": "Escanea este código QR con tu móvil o usa los botones de tienda. También puedes buscar <b>Procivis</b> en tu tienda de apps.",
+        "apps": [
+          { "id": "procivis", "nombre": "Procivis", "logo": "/demoglobal/procivis.png" }
+        ],
+        "modalItems": [
+          {
+            "title": "Descarga Procivis en tu móvil",
+            "sub": "Escanea este código QR o usa los botones de tienda. También puedes buscar 'Procivis' en tu tienda de apps."
+          },
+          {
+            "title": "Completa el proceso en la app"
+          }
+        ]
+      }
+    ],
+    "qrByAppStore": {
+      "procivis": {
+        "appstore": "https://apps.apple.com/us/app/procivis/id1234567890",
+        "play": "https://play.google.com/store/apps/details?id=com.procivis.app"
+      }
+    },
+    "ui": {
+      "modalSubtitle": "Descarga la app y completa el proceso",
+      "close": "Cerrar",
+      "done": "Hecho"
+    },
+    "buttons": {
+      "back": "Atrás",
+      "next": "Siguiente",
+      "go": "Importar credencial"
+    }
+  }
+  
