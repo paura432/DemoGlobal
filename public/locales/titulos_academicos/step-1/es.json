@@ -1,0 +1,17 @@
+{
+    "conoceLabel": "Conoce a",
+    "perfiles": {
+      "medico": {
+        "nombre": "Miguel",
+        "label": "Estdiante",
+        "descripcion": "Miguel es Estudiante y necesita tener una identidad digital basada en credenciales verificables para acceder a servicios.",
+        "icono": "/demoglobal/estudiante.png",
+        "video": "/videos/estudiante.mp4"
+      }
+    },
+    "buttons": {
+      "back": "Atrás",
+      "next": "Siguiente"
+    }
+  }
+  

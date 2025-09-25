@@ -1,27 +1,44 @@
-'use client';
+"use client";
 
-export default function TwoLineTitle({ text }: { text: string }) {
-  const words = text.trim().split(/\s+/);
-  let l1 = '';
-  let l2 = '';
+type TwoLineTitleProps = {
+  text: string;
+  className?: string;
+};
+
+export default function TwoLineTitle({ text, className = "" }: TwoLineTitleProps) {
+  // Dividir el texto en palabras
+  const words = text.split(' ');
+  
   if (words.length === 1) {
-    const w = words[0];
-    const mid = Math.ceil(w.length / 2);
-    l1 = w.slice(0, mid);
-    l2 = w.slice(mid) || '\u00A0';
-  } else if (words.length === 2) {
-    l1 = words[0];
-    l2 = words[1] || '\u00A0';
-  } else {
-    const half = Math.ceil(words.length / 2);
-    l1 = words.slice(0, half).join(' ');
-    l2 = words.slice(half).join(' ') || '\u00A0';
+    // Si es una sola palabra, mostrarla completa
+    return (
+      <span className={`text-xs leading-tight text-center font-medium group-hover:text-blue-700 transition-colors ${className}`}>
+        {text}
+      </span>
+    );
   }
 
+  // Si son 2 palabras, una en cada línea
+  if (words.length === 2) {
+    return (
+      <span className={`text-xs leading-tight text-center font-medium group-hover:text-blue-700 transition-colors ${className}`}>
+        {words[0]}
+        <br />
+        {words[1]}
+      </span>
+    );
+  }
+
+  // Si son más de 2 palabras, dividir aproximadamente por la mitad
+  const midPoint = Math.ceil(words.length / 2);
+  const firstLine = words.slice(0, midPoint).join(' ');
+  const secondLine = words.slice(midPoint).join(' ');
+
   return (
-    <div className="text-[11px] sm:text-[12px] leading-tight font-medium text-gray-800 h-[30px] sm:h-[32px]">
-      <span className="block">{l1}</span>
-      <span className="block">{l2}</span>
-    </div>
+    <span className={`text-xs leading-tight text-center font-medium group-hover:text-blue-700 transition-colors ${className}`}>
+      {firstLine}
+      <br />
+      {secondLine}
+    </span>
   );
 }

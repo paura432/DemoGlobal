@@ -2,32 +2,48 @@
     "tituloFijo": "Primero necesitará una Wallet",
     "bloques": [
       {
-        "subtitulo": "Procivis",
-        "texto": "Escanea este código QR con tu móvil o usa los botones de tienda. También puedes buscar <b>Procivis</b> en tu tienda de apps.",
+        "subtitulo": "¿Qué son las Wallets de Credenciales Verificables?",
+        "texto": "Imagina una billetera digital en el móvil que, en vez de guardar dinero o tarjetas de crédito, almacena credenciales verificables. Piensa en ellas como documentos importantes, pero en formato digital y seguro (DNI, pasaporte, títulos, etc.).",
+        "video": "/videos/step-2-1.mp4"
+      },
+      {
+        "subtitulo": "¿Cómo funcionan?",
+        "texto": "Las wallets de credenciales verificables otorgan a sus usuarios el control total sobre sus datos. Se decide qué información compartir y con quién. Por ejemplo, si solo se necesita demostrar la edad para acceder a un servicio, únicamente se comparte la fecha de nacimiento, sin revelar toda la identificación.",
+        "video": "/videos/step-2-2.mp4"
+      },
+      {
+        "subtitulo": "Instala tu aplicación Wallet",
+        "texto": "Primero, instala alguna de las aplicaciones compatibles en tu smartphone. Puedes ver el QR tocando en los iconos.",
+        "video": "/videos/step-2-3.mp4",
         "apps": [
-          { "id": "procivis", "nombre": "Procivis", "logo": "/demoglobal/procivis.png" }
+          { 
+            "id": "procivis", 
+            "nombre": "Procivis", 
+            "logo": "/demoglobal/procivis.png"
+          }
         ],
         "modalItems": [
-          {
-            "title": "Descarga Procivis en tu móvil",
-            "sub": "Escanea este código QR o usa los botones de tienda. También puedes buscar 'Procivis' en tu tienda de apps."
+          { 
+            "title": "Descarga <strong>Privado ID</strong> en tu móvil",
+            "sub": "Escanea este código QR con tu móvil o usa los botones de tienda. También puedes buscar \"Privado ID\" en tu tienda de apps."
           },
-          {
-            "title": "Completa el proceso en la app"
+          { 
+            "title": "Completa el proceso en la app."
           }
         ]
       }
     ],
     "qrByAppStore": {
       "procivis": {
-        "appstore": "https://apps.apple.com/us/app/procivis/id1234567890",
-        "play": "https://play.google.com/store/apps/details?id=com.procivis.app"
+        "appstore": "https://apps.apple.com/app/procivis-wallet/id6477862867",
+        "play": "https://play.google.com/store/apps/details?id=one.procivis.wallet"
       }
     },
     "ui": {
       "modalSubtitle": "Descarga la app y completa el proceso",
       "close": "Cerrar",
-      "done": "Hecho"
+      "done": "Hecho",
+      "extraStep": "Haz click en la app para conseguir el QR de descarga"
     },
     "buttons": {
       "back": "Atrás",

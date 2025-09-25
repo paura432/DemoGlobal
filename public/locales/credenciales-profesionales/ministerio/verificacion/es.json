@@ -1,0 +1,25 @@
+{
+    "titulo": "Verificando",
+    "pasos": [
+      { "id": "credencial", "texto": "Verificando credencial" },
+      { "id": "expiracion", "texto": "Validando expiración" },
+      { "id": "validez", "texto": "Confirmando validez profesional" },
+      { "id": "identidad", "texto": "Autenticando identidad" }
+    ],
+    "progreso": {
+      "mostrarBarra": true,
+      "velocidadMsPorPaso": 1200,
+      "color": "#22c55e"
+    },
+    "resultado": {
+      "estado": "ok",
+      "redirigirA": "/credenciales-profesionales/ministerio/bienvenida",
+      "delayFinalMs": 1000,
+      "cta": "Acceder"
+    },
+    "layout": {
+      "centrado": true,
+      "compacto": false
+    }
+  }
+  

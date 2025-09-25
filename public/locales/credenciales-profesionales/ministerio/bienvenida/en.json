@@ -1,0 +1,46 @@
+{
+    "titulo": "Welcome",
+    "subtitulo": "Professional Credentials Verification System",
+    "resumen": {
+      "nombre": "Laura García López",
+      "especialidad": "Cardiology",
+      "centro": "University Center of Madrid"
+    },
+    "tablaTitulo": "Courses and Training",
+    "columnas": ["Title", "Agency", "Year of publication", "Authors", "Attachment", "Reference"],
+    "filas": [
+      {
+        "titulo": "Update in Interventional Cardiology",
+        "agencia": "Madrid Medical Association",
+        "anio": "2023",
+        "autores": "Dr. García, M.; Dr. Rodríguez, A.",
+        "adjuntos": ["PDF"],
+        "referencias": ["RIS"]
+      },
+      {
+        "titulo": "Advanced Techniques in Imaging Diagnostics",
+        "agencia": "Spanish Society of Cardiology",
+        "anio": "2023",
+        "autores": "Dr. Martínez, J.; Dr. López, C.",
+        "adjuntos": ["PDF", "DOC"],
+        "referencias": ["BIB", "RIS"]
+      },
+      {
+        "titulo": "Management of Cardiovascular Emergencies",
+        "agencia": "La Paz University Hospital",
+        "anio": "2022",
+        "autores": "Dr. Sánchez, L.; Dr. Fernández, P.",
+        "adjuntos": ["PDF"],
+        "referencias": ["URL"]
+      },
+      {
+        "titulo": "Innovations in Cardiac Surgery",
+        "agencia": "National Institute of Cardiology",
+        "anio": "2022",
+        "autores": "Dr. Gómez, R.; Dr. Torres, S.",
+        "adjuntos": ["XLS", "PDF"],
+        "referencias": ["RIS", "BIB"]
+      }
+    ]
+  }
+  

@@ -1,13 +1,10 @@
-"use client";
+// src/app/[locale]/credenciales-profesionales/layout.tsx
+import type { ReactNode } from "react";
 
-import '@/components/ui/global.css';
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function CredencialesLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="es">
-      <body>
-        {children}
-      </body>
-    </html>
+    <div className="h-screen flex flex-col bg-white">
+      {children}
+    </div>
   );
 }

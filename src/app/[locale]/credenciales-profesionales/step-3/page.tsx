@@ -47,10 +47,10 @@ const UI = {
     close: 'Cerrar',
     done: 'Hecho',
     modalSubtitle: 'Descarga la app y completa el proceso',
-    back: 'AtrÃ¡s',
+    back: 'Atrás',
     next: 'Siguiente',
     gotoMinistry: 'Ir a Ministerio',
-    generating: 'Generando QRâ€¦',
+    generating: 'Generando QR…',
     preparing: 'Preparando QR',
     gotoStep2Part2: 'Ir a Step-2 (parte 2)',
     issueErrorPrefix: 'Error emitiendo credencial: '
@@ -62,7 +62,7 @@ const UI = {
     back: 'Back',
     next: 'Next',
     gotoMinistry: 'Go to Ministry',
-    generating: 'Generating QRâ€¦',
+    generating: 'Generating QR…',
     preparing: 'Preparing QR',
     gotoStep2Part2: 'Go to Step-2 (part 2)',
     issueErrorPrefix: 'Error issuing credential: '
@@ -156,7 +156,9 @@ export default function Step3() {
     try {
       const dataUrl = await QRCode.toDataURL(url, { width: 220, margin: 1, errorCorrectionLevel: 'M' });
       setQrDataUrl(dataUrl);
-    } catch { setQrDataUrl(''); }
+    } catch { 
+      setQrDataUrl(''); 
+    }
   };
 
   const openAppModal = async (app: AppItem) => {
@@ -182,9 +184,9 @@ export default function Step3() {
         schema: 'medico',
         credential: {
           Nombre: 'Laura',
-          Apellidos: 'GarcÃ­a LÃ³pez',
+          Apellidos: 'García López',
           Centro: 'Centro Universitario de Madrid',
-          Especialidad: 'CardiologÃ­a'
+          Especialidad: 'Cardiología'
         }
       };
       const res = await fetch(`${apiurl}/api/v1/createCredential/procivis`, {
@@ -204,7 +206,10 @@ export default function Step3() {
 
   useEffect(() => {
     if (!block) return;
-    if (block.id !== 'qr') { hasIssuedRef.current = false; return; }
+    if (block.id !== 'qr') { 
+      hasIssuedRef.current = false; 
+      return; 
+    }
     if (hasIssuedRef.current) return;
     hasIssuedRef.current = true;
     issueCredential();
@@ -242,7 +247,7 @@ export default function Step3() {
         <div className="w-full max-w-[1100px] px-4 sm:px-10 mt-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start min-h-[300px]">
             <div className="min-h-[280px] mt-2">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">{block.titulo}</h2>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4" dangerouslySetInnerHTML={{ __html: block.titulo }} />
               <ul className="mb-5 space-y-3">
                 {instrucciones.map((line, i) => (
                   <li key={i} className="flex gap-2 items-start text-sm text-gray-600 leading-relaxed">
@@ -283,7 +288,7 @@ export default function Step3() {
                 <div className="rounded-2xl shadow-lg bg-white border border-gray-200 p-5">
                   <div className="w-[180px] md:w-[220px] lg:w-[260px] mx-auto grid place-items-center">
                     {block.qrHeaderImage && (
-                      <Image src={block.qrHeaderImage} alt="Ilustre Colegio Oficial de MÃ©dicos de Madrid" width={160} height={160} className="w-[180px] h-auto md:w-[180px] lg:w-[180px] object-contain mb-3" />
+                      <Image src={block.qrHeaderImage} alt="Ilustre Colegio Oficial de Médicos de Madrid" width={160} height={160} className="w-[180px] h-auto md:w-[180px] lg:w-[180px] object-contain mb-3" />
                     )}
                     {issuedWrapQr ? (
                       <div className="flex flex-col items-center">

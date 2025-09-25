@@ -1,79 +1,68 @@
-'use client';
+import { useState, useRef, useEffect } from 'react';
 
-import { useEffect, useRef, useState } from 'react';
-
-export default function LanguageDropdown({
-  locale,
-  onSelect,
-}: {
+type Props = {
   locale: 'es' | 'en';
-  onSelect: (next: 'es' | 'en') => void;
-}) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  onSelect: (locale: 'es' | 'en') => void;
+};
 
-  const options: Array<{ code: 'es' | 'en'; label: string; native: string }> = [
-    { code: 'es', label: 'ES', native: 'EspaÃ±ol' },
-    { code: 'en', label: 'EN', native: 'English' },
-  ];
+export default function LanguageDropdown({ locale, onSelect }: Props) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onDocClick = (e: MouseEvent) => {
-      if (!ref.current) return;
-      if (!ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
-    };
-    document.addEventListener('mousedown', onDocClick);
-    document.addEventListener('keydown', onKey);
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', onDocClick);
-      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
-  const current = options.find((o) => o.code === locale) ?? options[0];
+  const languages = {
+    es: { code: 'ES', name: 'Español' },
+    en: { code: 'EN', name: 'English' }
+  };
 
   return (
-    <div ref={ref} className="relative">
+    <div className="relative" ref={dropdownRef}>
       <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-haspopup="listbox"
-        aria-expanded={open}
-        className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-3 py-1 text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
-        title={locale === 'es' ? 'Cambiar idioma' : 'Change language'}
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-2 px-3 py-1 text-sm text-gray-600 hover:text-gray-800 transition-colors"
+        aria-label="Seleccionar idioma"
       >
-        <span role="img" aria-hidden="true">ðŸŒ</span>
-        <span className="tabular-nums">{current.label}</span>
-        <span aria-hidden="true" className="text-gray-500">â–¾</span>
+        <span className="font-medium">{languages[locale].code}</span>
+        <svg 
+          className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
       </button>
 
-      {open && (
-        <ul role="listbox" className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-20">
-          {options.map((opt) => {
-            const active = opt.code === locale;
-            return (
-              <li key={opt.code}>
-                <button
-                  role="option"
-                  aria-selected={active}
-                  onClick={() => {
-                    onSelect(opt.code);
-                    setOpen(false);
-                  }}
-                  className={`w-full text-left px-3 py-2 text-sm flex items-center justify-between hover:bg-gray-50 ${
-                    active ? 'font-semibold text-gray-900' : 'text-gray-700'
-                  }`}
-                >
-                  <span>{opt.native}</span>
-                  <span className="text-xs text-gray-500">{opt.label}</span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+      {isOpen && (
+        <div className="absolute right-0 top-full mt-1 w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+          {Object.entries(languages).map(([code, lang]) => (
+            <button
+              key={code}
+              onClick={() => {
+                onSelect(code as 'es' | 'en');
+                setIsOpen(false);
+              }}
+              className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors ${
+                locale === code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+              }`}
+            >
+              <span className="font-medium">{lang.code}</span>
+              <span className="ml-2 text-xs opacity-75">{lang.name}</span>
+            </button>
+          ))}
+        </div>
       )}
     </div>
   );

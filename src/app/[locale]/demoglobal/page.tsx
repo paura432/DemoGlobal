@@ -67,16 +67,16 @@ export default function DemoGlobalPage() {
       key: 'estudios',
       href: `/${locale}/titulos_academicos/step-1`,
       icon: <FaGraduationCap />,
-      image: '/demoglobal/estudios.jpg',
-      video: '/demoglobal/videos/estudiante.mp4',
+      image: '/demoglobal/titulos-academicos.jpg',
+      video: '/videos/estudiante.mp4',
       objectPosition: '50% 45%',
     },
     {
       key: 'salud',
       href: `/${locale}/credenciales-profesionales/step-1`,
       icon: <FaHeart />,
-      image: '/credenciales-profesionales/salud.jpg',
-      video: '/demoglobal/videos/medico.mp4',
+      image: '/demoglobal/credenciales-profesionales.jpg',
+      video: '/videos/medico.mp4',
       objectPosition: 'center',
     },
     {
@@ -95,9 +95,9 @@ export default function DemoGlobalPage() {
     },
     {
       key: 'tramites',
-      href: `/${locale}/telefonica`,
+      href: `/${locale}/tramites`,
       icon: <FaBuilding />,
-      image: '/demoglobal/telefonica.jpg',
+      image: '/demoglobal/tramites.jpg',
       objectPosition: 'center',
     },
   ];

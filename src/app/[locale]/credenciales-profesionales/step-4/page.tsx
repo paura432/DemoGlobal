@@ -123,14 +123,10 @@ export default function Step4() {
         <div className="w-full max-w-[1100px] px-4 sm:px-10 mt-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start min-h-[300px]">
             <div className="min-h-[280px]">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-1">
-                {mergedTitle.split('Wallet').map((txt, i, arr) => (
-                  <span key={i}>
-                    {txt}
-                    {i < arr.length - 1 && <span className="text-blue-600 font-bold">Wallet</span>}
-                  </span>
-                ))}
-              </h2>
+            <h2
+                className="text-2xl font-semibold text-gray-800 mb-1"
+                dangerouslySetInnerHTML={{ __html: mergedTitle }}
+                />
 
               {mergedSubtext && (
                 <p className="text-sm text-gray-500 mb-4" dangerouslySetInnerHTML={{ __html: mergedSubtext }} />

@@ -5,8 +5,8 @@
         "nombre": "Laura",
         "label": "Doctor",
         "descripcion": "Laura is a doctor and needs to have a digital identity based on verifiable credentials to access services.",
-        "icono": "/credenciales-profesionales/profiles/doctor.jpg",
-        "video": "/credenciales-profesionales/videos/doctor.mp4"
+        "icono": "/demoglobal/estudiante.png",
+        "video": "/videos/estudiante.mp4"
       }
     },
     "buttons": {

@@ -1,0 +1,41 @@
+{
+    "breadcrumb": {
+      "prefix": "Está usted en:",
+      "area": "Áreas",
+      "section": "Salud Digital",
+      "separator": "›"
+    },
+    "settings": {
+      "cardWidth": 280,
+      "aspectRatio": "16 / 10",
+      "gapPx": 20
+    },
+    "cards": [
+      {
+        "id": "credenciales",
+        "title": "Credenciales verificables",
+        "desc": "Credencial autorizada por colegios oficiales, instituciones públicas o empresas.",
+        "img": "/credenciales-profesionales/cred-verif.png",
+        "cta": "Acceso Credenciales verificables",
+        "href": "/credenciales-profesionales/ministerio/qr",
+        "priority": true
+      },
+      {
+        "id": "clave",
+        "title": "Cl@ve Móvil",
+        "desc": "Incluye Cl@ve PIN. Puede descargar la aplicación en Apple Store o en Google Play.",
+        "img": "/credenciales-profesionales/clave.jpg",
+        "cta": "Acceso Cl@ve Móvil",
+        "href": "#",
+        "badge": "Novedad"
+      },
+      {
+        "id": "dnie",
+        "title": "DNIe / Certificado electrónico",
+        "desc": "Cualquier certificado electrónico cualificado.",
+        "img": "/credenciales-profesionales/dnie.png",
+        "cta": "Acceso DNIe / Certificado electrónico",
+        "href": "#"
+      }
+    ]
+  }

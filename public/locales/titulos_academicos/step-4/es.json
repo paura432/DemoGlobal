@@ -1,0 +1,22 @@
+{
+    "step4": {
+      "title": "Vamos a mostrarte una <span class='text-blue-600 font-bold'>demo</span>",
+      "subtitle": "Aquí verás cómo se importa una credencial oficial a la wallet digital.",
+      "intro": "Imagina que eres Laura: necesita importar su credencial del Colegio de Médicos de Madrid para usar su identidad digital.",
+      "bullets": [
+        "Es como añadir una tarjeta digital segura a su billetera, con información verificable como su profesión.",
+        "A continuación te detallamos <b>el proceso</b>, es muy sencillo."
+      ],
+      "mock": {
+        "image": "/titulos_academicos/shoplyline-carrito.png",
+        "alt": "Ilustre Colegio Oficial de Médicos de Madrid",
+        "caption": "Ejemplo de credencial emitida"
+      },
+      "cta": "Vale, ya tengo mi credencial",
+      "buttons": {
+        "back": "Atrás",
+        "next": "Siguiente"
+      }
+    }
+  }
+  

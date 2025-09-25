@@ -44,7 +44,7 @@ export default function MinisterioPage() {
       try {
         setErr(null);
         const load = async (loc: 'es' | 'en') => {
-          const r = await fetch(`/locales/credenciales-profesionales/ministerio/${loc}.json`, { cache: 'no-store' });
+          const r = await fetch(`/locales/credenciales-profesionales/ministerio/${locale}.json`, { cache: 'no-store' });
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
           return (await r.json()) as CardsDoc;
         };
@@ -57,7 +57,7 @@ export default function MinisterioPage() {
         if (alive) setDoc(data);
       } catch (e: any) {
         if (alive) {
-          setErr(e?.message ?? 'No se pudo cargar la configuraciÃ³n');
+          setErr(e?.message ?? 'No se pudo cargar la configuración');
           setDoc({ cards: [] });
         }
       }
@@ -69,25 +69,35 @@ export default function MinisterioPage() {
 
   const { settings } = doc;
   const cardW = settings?.cardWidth ?? 280;
-  const gapPx = settings?.gapPx ?? 1;
+  const gapPx = settings?.gapPx ?? 20;
   const aspect = settings?.aspectRatio ?? '16 / 10';
 
   const cards: Card[] = Array.isArray(doc.cards) ? doc.cards : [];
 
-  const normHref = (href: string) =>
-    (href || '').replace(/^\/(es|en)(?=\/)/, `/${locale}`);
-
   const goto = (href: string) => {
-    const finalHref = normHref(href);
-    if (finalHref && finalHref !== '#') router.push(finalHref);
+    if (!href || href === '#') return;
+    
+    let finalHref = href;
+    
+    // Si la href no empieza con el locale, agregarlo
+    if (!href.startsWith(`/${locale}/`)) {
+      if (href.startsWith('/')) {
+        finalHref = `/${locale}${href}`;
+      } else {
+        finalHref = `/${locale}/${href}`;
+      }
+    }
+    
+    console.log('Navigating to:', finalHref); // Para debug
+    router.push(finalHref);
   };
 
   return (
     <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="text-[13px] text-gray-600 mb-5">
-        <span className="text-gray-500">{doc.breadcrumb?.prefix ?? 'EstÃ¡ usted en:'}</span>{' '}
-        <span className="hover:underline cursor-default">{doc.breadcrumb?.area ?? 'Ãreas'}</span>{' '}
-        <span className="text-gray-400">{doc.breadcrumb?.separator ?? 'â€º'}</span>{' '}
+        <span className="text-gray-500">{doc.breadcrumb?.prefix ?? 'Está usted en:'}</span>{' '}
+        <span className="hover:underline cursor-default">{doc.breadcrumb?.area ?? 'Áreas'}</span>{' '}
+        <span className="text-gray-400">{doc.breadcrumb?.separator ?? '›'}</span>{' '}
         <span className="font-medium">{doc.breadcrumb?.section ?? 'Salud Digital'}</span>
       </div>
 

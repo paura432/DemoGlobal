@@ -115,7 +115,7 @@ export default function MinisterioQR() {
 
   useEffect(() => {
     if (!isVerified) return;
-    router.replace(`/${locale}/credenciales-profesionales/ministerio/verificando`);
+    router.replace(`/${locale}/credenciales-profesionales/ministerio/verificacion`);
   }, [isVerified, router, locale]);
 
   const qrReady = !!qrLink && !isLoading && !errorMsg;

@@ -62,7 +62,7 @@ export default function MinisterioVerificando() {
       try {
         setErr(null);
         const load = async (loc: 'es' | 'en') => {
-          const r = await fetch(`/locales/credenciales-profesionales/ministerio/verificando/${loc}.json`, { cache: 'no-store' });
+          const r = await fetch(`/locales/credenciales-profesionales/ministerio/verificacion/${locale}.json`, { cache: 'no-store' });
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
           return (await r.json()) as TCfg;
         };
@@ -105,17 +105,22 @@ export default function MinisterioVerificando() {
   const centered = cfg.layout?.centrado !== false;
 
   return (
-    <div className={`w-full ${centered ? 'flex justify-center' : ''} mt-12 md:mt-16`}>
-      <div className="px-4" style={{ width: containerW }}>
-        <div className="flex items-center gap-2 mb-2">
+    <div
+      className={`w-full flex items-center justify-center`}
+      style={{ minHeight: 'calc(100vh - 180px)' }} // ajusta según la altura del header
+    >
+      <div className="px-4 flex flex-col items-center" style={{ width: containerW }}>
+        {/* Título estático */}
+        <div className="flex items-center gap-2 mb-4">
           <PersonIcon />
           <h2 className="text-[20px] leading-[24px] font-semibold text-gray-900">
             {cfg.titulo}
           </h2>
         </div>
-
+  
+        {/* Barra de progreso */}
         {showBar && (
-          <div className="w-[360px] h-[6px] bg-gray-200 rounded-full overflow-hidden mb-3">
+          <div className="w-full max-w-[360px] h-[6px] bg-gray-200 rounded-full overflow-hidden mb-6">
             <div
               className="h-full rounded-full transition-all duration-500 ease-out"
               style={{ width: `${pct}%`, backgroundColor: color }}
@@ -123,22 +128,36 @@ export default function MinisterioVerificando() {
             />
           </div>
         )}
-
-        <ul className="mt-2 space-y-3 w-[360px]" aria-live="polite">
-          {(finished ? steps : steps.slice(0, active)).map((label, idx) => {
-            const isCurrent = !finished && idx === active - 1;
-            const done = finished || (!isCurrent && idx < active - 1);
+  
+        {/* Lista de pasos */}
+        <ul className="mt-2 space-y-3 w-full max-w-[360px]" aria-live="polite">
+          {steps.map((label, idx) => {
+            const isActive = idx + 1 === active && !finished;
+            const done = finished || idx + 1 < active;
             return (
-              <li key={idx} className="flex items-center gap-3" style={{ animation: 'fadeIn 240ms ease-out both' }}>
+              <li
+                key={idx}
+                className="flex items-center gap-3"
+                style={{
+                  animation: isActive ? 'fadeIn 240ms ease-out both' : undefined
+                }}
+              >
                 {done ? <CheckCircle /> : <PendingCircle />}
-                <span className={`text-[14px] leading-[20px] ${done ? 'text-gray-800' : 'text-gray-500'}`}>{label}</span>
+                <span
+                  className={`text-[14px] leading-[20px] ${
+                    done ? 'text-gray-800' : 'text-gray-500'
+                  }`}
+                >
+                  {label}
+                </span>
               </li>
             );
           })}
         </ul>
-
+  
+        {/* CTA final */}
         {finished && (
-          <div className="mt-6 w-[360px] flex justify-center">
+          <div className="mt-8 w-full flex justify-center">
             <button
               onClick={() => router.push(computeTarget())}
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full text-sm font-medium shadow-sm transition"
@@ -147,14 +166,20 @@ export default function MinisterioVerificando() {
             </button>
           </div>
         )}
-
+  
         <style jsx>{`
           @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(2px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+              opacity: 0;
+              transform: translateY(2px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
           }
         `}</style>
       </div>
     </div>
   );
-}
+  

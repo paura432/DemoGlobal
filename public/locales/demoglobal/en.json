@@ -2,10 +2,10 @@
     "demoglobal": {
       "title": "Verifiable Credentials",
       "subtitle": "The future of digital identity",
-      "intro": "Discover the power of <strong>Self-Sovereign Identity (SSI)</strong> through interactive demos, showing how digital credentials integrate with eIDAS guidelines. Get ready for a new era of trust and control in the digital world.",
+      "intro": "Discover the power of <strong>Self-Sovereign Identity (SSI)</strong> through interactive demos, illustrating how digital credentials integrate with eIDAS guidelines. Get ready for a new era of trust and control in the digital world.",
       "cards": {
-        "estudios": "Studies",
-        "salud": "Health",
+        "estudios": "Academic Degrees",
+        "salud": "Professional Credentials",
         "coches": "Cars",
         "telefonica": "Telefónica",
         "tramites": "Procedures"
