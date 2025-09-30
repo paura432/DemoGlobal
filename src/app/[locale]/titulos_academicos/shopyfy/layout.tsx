@@ -41,14 +41,14 @@ function Header({ cartCount }: { cartCount: number }) {
 
         {/* Logo */}
         <div className="flex-1 text-center">
-          <Link href="/" className="inline-block text-3xl font-serif tracking-wide text-indigo-900">Shopyline</Link>
+          <Link href="#" className="inline-block text-3xl font-serif tracking-wide text-indigo-900">Shopyline</Link>
         </div>
 
         {/* Iconos */}
         <div className="flex items-center gap-4">
           <Link href="#" aria-label="Cuenta"><IconUser /></Link>
           <Link href="#" aria-label="Favoritos"><IconHeart /></Link>
-          <Link href="/carrito" aria-label="Cesta" className="relative">
+          <Link href="#" aria-label="Cesta" className="relative">
             <IconBag />
             {cartCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] rounded-full w-5 h-5 grid place-items-center">

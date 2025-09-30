@@ -30,6 +30,18 @@ export default function MinisterioLayout({ children }: { children: React.ReactNo
   const [cfg, setCfg] = useState<LayoutJson | null>(null);
   const [err, setErr] = useState<string | null>(null);
 
+  const isBienvenida = pathname.includes(`/${locale}/credenciales-profesionales/ministerio/bienvenida`);
+
+  // 👇 Aquí controlamos el scroll dinámicamente
+  useEffect(() => {
+    if (isBienvenida) {
+      document.body.style.overflowY = 'auto';   // permite scroll
+    }
+    return () => {
+      document.body.style.overflowY = 'auto'; // limpieza al desmontar
+    };
+  }, [isBienvenida]);
+
   useEffect(() => {
     let alive = true;
     (async () => {
@@ -64,7 +76,7 @@ export default function MinisterioLayout({ children }: { children: React.ReactNo
   const logoSize = S.logoSize ?? 40;
   const activeIdx = Math.max(0, Math.min(cfg.activeMenu ?? 1, cfg.menu.length - 1));
 
-  const isBienvenida = pathname.includes('/ministerio/bienvenida');
+  // Removed redundant declaration of isBienvenida
 
   return (
     <div className="min-h-screen" style={{ color: colorText, background: '#ffffff' }}>

@@ -292,9 +292,9 @@ function DiscountDropdown({
 
           const timers: ReturnType<typeof setTimeout>[] = [];
           VERIFY_STEPS.forEach((_, i) => {
-            timers.push(setTimeout(() => setActiveStep(i + 1), 300 * (i + 1)));
+            timers.push(setTimeout(() => setActiveStep(i + 1), 900 * (i + 1)));
           });
-          timers.push(setTimeout(() => setPhase('ready'), 300 * (VERIFY_STEPS.length + 1)));
+          timers.push(setTimeout(() => setPhase('ready'), 900 * (VERIFY_STEPS.length + 1)));
           clearInterval(id);
         }
 
