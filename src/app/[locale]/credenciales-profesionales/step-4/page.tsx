@@ -34,7 +34,7 @@ function DesktopMock({ src, alt, caption }: { src: string; alt: string; caption?
     <figure className="w-full flex flex-col items-center">
       <div
         className="relative rounded-[18px] bg-[#0f1115] border-[10px] border-[#0f172a] shadow-[0_16px_40px_rgba(0,0,0,0.18)] overflow-hidden"
-        style={{ width: 'clamp(210px, 34vw, 500px)', maxWidth: '92vw' }}
+        style={{ width: 'clamp(210px, 34vw, 400px)', maxWidth: '92vw' }}
       >
         <div className="absolute left-1/2 -translate-x-1/2 top-1.5 h-1.5 w-14 rounded-full bg-gray-700/60" />
 

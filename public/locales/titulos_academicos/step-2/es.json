@@ -24,8 +24,8 @@
         ],
         "modalItems": [
           { 
-            "title": "Descarga <strong>Privado ID</strong> en tu móvil",
-            "sub": "Escanea este código QR con tu móvil o usa los botones de tienda. También puedes buscar \"Privado ID\" en tu tienda de apps."
+            "title": "Descarga <strong>Pocivis</strong> en tu móvil",
+            "sub": "Escanea este código QR con tu móvil o usa los botones de tienda. También puedes buscar \"Pocivis\" en tu tienda de apps."
           },
           { 
             "title": "Completa el proceso en la app."
@@ -48,7 +48,7 @@
     "buttons": {
       "back": "Atrás",
       "next": "Siguiente",
-      "go": "Importar credencial"
+      "go": "Ya tengo una wallet"
     }
   }
   

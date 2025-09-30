@@ -107,7 +107,7 @@ export default function MinisterioVerificando() {
   return (
     <div
       className={`w-full flex items-center justify-center`}
-      style={{ minHeight: 'calc(100vh - 180px)' }} // ajusta según la altura del header
+      style={{ minHeight: 'calc(50vh - 100px)' }} // ajusta según la altura del header
     >
       <div className="px-4 flex flex-col items-center" style={{ width: containerW }}>
         {/* Título estático */}

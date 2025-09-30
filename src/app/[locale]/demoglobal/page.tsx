@@ -64,14 +64,6 @@ export default function DemoGlobalPage() {
 
   const cards: CardItem[] = [
     {
-      key: 'estudios',
-      href: `/${locale}/titulos_academicos/step-1`,
-      icon: <FaGraduationCap />,
-      image: '/demoglobal/titulos-academicos.jpg',
-      video: '/videos/estudiante.mp4',
-      objectPosition: '50% 45%',
-    },
-    {
       key: 'salud',
       href: `/${locale}/credenciales-profesionales/step-1`,
       icon: <FaHeart />,
@@ -80,33 +72,41 @@ export default function DemoGlobalPage() {
       objectPosition: 'center',
     },
     {
-      key: 'coches',
-      href: `/${locale}/atributos_verificados/step-1`,
-      icon: <FaCar />,
-      image: '/demoglobal/coches.jpg',
-      objectPosition: 'center',
+      key: 'estudios',
+      href: `/${locale}/titulos_academicos/step-1`,
+      icon: <FaGraduationCap />,
+      image: '/demoglobal/titulos-academicos.jpg',
+      video: '/videos/estudiante.mp4',
+      objectPosition: '50% 45%',
     },
-    {
-      key: 'telefonica',
-      href: `/${locale}/telefonica`,
-      icon: <FaBuilding />,
-      image: '/demoglobal/telefonica.jpg',
-      objectPosition: 'center',
-    },
-    {
-      key: 'tramites',
-      href: `/${locale}/tramites`,
-      icon: <FaBuilding />,
-      image: '/demoglobal/tramites.jpg',
-      objectPosition: 'center',
-    },
+    // {
+    //   key: 'coches',
+    //   href: `/${locale}/atributos_verificados/step-1`,
+    //   icon: <FaCar />,
+    //   image: '/demoglobal/coches.jpg',
+    //   objectPosition: 'center',
+    // },
+    // {
+    //   key: 'telefonica',
+    //   href: `/${locale}/telefonica`,
+    //   icon: <FaBuilding />,
+    //   image: '/demoglobal/telefonica.jpg',
+    //   objectPosition: 'center',
+    // },
+    // {
+    //   key: 'tramites',
+    //   href: `/${locale}/tramites`,
+    //   icon: <FaBuilding />,
+    //   image: '/demoglobal/tramites.jpg',
+    //   objectPosition: 'center',
+    // },
   ];
 
   return (
     <>
       <header className="w-full">
-        <div className="bg-white shadow-sm">
-          <div className="max-w-[1000px] mx-auto px-3 py-2 grid grid-cols-3 items-center">
+        <div className="border-b border-gray-200">
+          <div className="max-w-[1000px] mx-auto px-3 grid grid-cols-3 items-center">
             <div className="justify-self-start text-base font-semibold text-gray-600 select-none">
               Trust<span className="text-blue-600">OS</span>
             </div>

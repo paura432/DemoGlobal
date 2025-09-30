@@ -4,11 +4,11 @@
       "subtitle": "El futuro de la identidad digital",
       "intro": "Descubre el poder de la <strong>Identidad Auto-Soberana (SSI)</strong> a través de demos interactivas, ilustrando cómo las credenciales digitales se integran con las directrices de eIDAS. Prepárate para una nueva era de confianza y control en el mundo digital.",
       "cards": {
-        "estudios": "Títuluos académicos",
         "salud": "Credenciales profesionales",
-        "coches": "Coches",
-        "telefonica": "Telefónica",
-        "tramites": "Trámites"
+        "estudios": "Títulos académicos",
+        "coches": "Licencias y tributos",
+        "telefonica": "Atributos verificables",
+        "tramites": "Firma de documentos"
       }
     }
   }

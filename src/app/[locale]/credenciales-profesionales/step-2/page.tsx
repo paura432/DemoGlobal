@@ -447,25 +447,25 @@ export default function Step2() {
               </button>
             </div>
 
-            <div className="absolute left-1/2 -translate-x-1/2">
+            <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
               <button
                 onClick={handleNext}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full text-sm font-medium transition"
               >
                 {buttons.next}
               </button>
-            </div>
-
-            <div className="ml-auto w-[220px] flex justify-end">
+              
               {idx === 0 && (
                 <button
                   onClick={() => router.push(`/${locale}/credenciales-profesionales/step-3`)}
-                  className="border border-blue-600 text-blue-600 px-6 py-2 rounded-full text-sm font-medium transition hover:bg-blue-50"
+                  className="text-blue-600 text-sm underline hover:text-blue-700 transition cursor-pointer"
                 >
                   {buttons.go}
                 </button>
               )}
             </div>
+
+            <div className="ml-auto w-[110px]"></div>
           </div>
         </div>
       </div>

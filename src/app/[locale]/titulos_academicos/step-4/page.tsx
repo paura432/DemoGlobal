@@ -34,7 +34,7 @@ function DesktopMock({ src, alt, caption }: { src: string; alt: string; caption?
     <figure className="w-full flex flex-col items-center">
       <div
         className="relative rounded-[18px] bg-[#0f1115] border-[10px] border-[#0f172a] shadow-[0_16px_40px_rgba(0,0,0,0.18)] overflow-hidden"
-        style={{ width: 'clamp(210px, 34vw, 500px)', maxWidth: '92vw' }}
+        style={{ width: 'clamp(210px, 34vw, 400px)', maxWidth: '92vw' }}
       >
         <div className="absolute left-1/2 -translate-x-1/2 top-1.5 h-1.5 w-14 rounded-full bg-gray-700/60" />
 
@@ -98,8 +98,8 @@ export default function Step4() {
   const goNext = () => router.push(`/${locale}/titulos_academicos/shopyfy`);
 
   return (
-    <div className="h-screen flex flex-col bg-white">
-      <div className="flex-1 overflow-y-auto flex flex-col items-center">
+    <div className="min-h-screen flex flex-col bg-white">
+      <div className="flex-1 flex flex-col items-center">
         {/* Progreso */}
         <div className="w-full flex justify-center pt-1 pb-6">
           <div className="flex gap-2 items-center">
@@ -155,7 +155,7 @@ export default function Step4() {
               onClick={goBack}
               className="border border-blue-600 text-blue-600 px-8 py-2 rounded-full text-sm font-medium transition hover:bg-blue-50"
             >
-              {locale === 'en' ? 'Back' : 'AtrÃ¡s'}
+              {locale === 'en' ? 'Back' : 'Atrás'}
             </button>
             <div className="flex-1 flex justify-center">
               <button

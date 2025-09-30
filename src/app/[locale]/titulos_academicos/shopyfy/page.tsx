@@ -514,9 +514,13 @@ export default function CartPage() {
             <span className="text-[18px]">{total.toFixed(2)} €</span>
           </div>
 
-          <button onClick={goDemo} className={ctaClasses} disabled>
-            {student.verified && <IconCheck className="w-4 h-4" />} {ctaLabel}
-          </button>
+          <button
+          onClick={goDemo}
+          className={`${ctaClasses} ${!student.verified ? 'opacity-50 cursor-not-allowed' : ''}`}
+          disabled={!student.verified}
+        >
+          {student.verified && <IconCheck className="w-4 h-4" />} {ctaLabel}
+        </button>
 
           <DiscountDropdown current={student} onVerified={setSt} />
         </aside>

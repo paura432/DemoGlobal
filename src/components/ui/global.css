@@ -1,10 +1,15 @@
 /* Carga todo Tailwind v4 de una vez */
 @import "tailwindcss";
-/* @import url('./responsive.css'); */
 
-/* (Opcional) plugins oficiales en v4 */
-/* @plugin "@tailwindcss/forms"; */
-/* @plugin "@tailwindcss/typography"; */
+/* Reset y control de overflow */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* quita scroll horizontal */
+  overflow-y: hidden;   /* scroll vertical solo si hace falta */
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
 
 /* Tus estilos globales */
 input[type='number'] {
@@ -12,19 +17,31 @@ input[type='number'] {
   appearance: textfield;
 }
 
-input[type='number']::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
+input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* Estilos globales */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
+/* ===== ESCALADO RESPONSIVE PARA PANTALLAS GRANDES ===== */
+
+/* Pantallas extra grandes (1800px+) - Zoom 1.4x */
+@media screen and (min-width: 1800px) {
+  body {
+    zoom: 1.4;
+  }
+}
+
+/* Pantallas grandes (1400px - 1799px) - Zoom 1.2x */
+@media screen and (min-width: 1400px) and (max-width: 1799px) {
+  body {
+    zoom: 1.2;
+  }
+}
+
+/* Pantallas normales (hasta 1399px) - Sin zoom */
+@media screen and (max-width: 1399px) {
+  body {
+    zoom: 1;
+  }
 }

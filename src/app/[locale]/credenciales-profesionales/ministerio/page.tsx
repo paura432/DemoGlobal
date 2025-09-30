@@ -147,7 +147,7 @@ export default function MinisterioPage() {
         ))}
 
         {cards.length === 0 && (
-          <div className="col-span-full text-sm text-gray-500 py-10">
+          <div className="col-span-full text-small-auto-responsive text-gray-500 py-10">
             {err ? `No hay tarjetas. (${err})` : 'No hay tarjetas para mostrar.'}
           </div>
         )}
