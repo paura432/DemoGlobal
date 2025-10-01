@@ -1,0 +1,8 @@
+{
+    "heading": "Verifiable Credentials",
+    "helper": "Scan the QR with your authorized application",
+    "loading": "Preparing QR…",
+    "error": "Error generating the QR",
+    "verified": "Verified ✓ Redirecting…"
+  }
+  

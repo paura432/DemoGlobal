@@ -1,0 +1,17 @@
+{
+    "conoceLabel": "Meet",
+    "perfiles": {
+      "medico": {
+        "nombre": "Laura",
+        "label": "Doctor",
+        "descripcion": "Laura is a doctor and needs to have a digital identity based on verifiable credentials to access services.",
+        "icono": "/demoglobal/estudiante.png",
+        "video": "/videos/estudiante.mp4"
+      }
+    },
+    "buttons": {
+      "back": "Back",
+      "next": "Next"
+    }
+  }
+  

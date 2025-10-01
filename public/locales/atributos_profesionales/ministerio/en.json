@@ -1,0 +1,42 @@
+{
+    "breadcrumb": {
+      "prefix": "You are here:",
+      "area": "Areas",
+      "section": "Digital Health",
+      "separator": "›"
+    },
+    "settings": {
+      "cardWidth": 280,
+      "aspectRatio": "16 / 10",
+      "gapPx": 20
+    },
+    "cards": [
+      {
+        "id": "credenciales",
+        "title": "Verifiable Credentials",
+        "desc": "Credential authorized by official associations, public institutions or companies.",
+        "img": "/credenciales-profesionales/cred-verif.png",
+        "cta": "Access Verifiable Credentials",
+        "href": "/credenciales-profesionales/ministerio/qr",
+        "priority": true
+      },
+      {
+        "id": "clave",
+        "title": "Cl@ve Móvil",
+        "desc": "Includes Cl@ve PIN. You can download the app from the Apple Store or Google Play.",
+        "img": "/credenciales-profesionales/clave.jpg",
+        "cta": "Access Cl@ve Móvil",
+        "href": "#",
+        "badge": "New"
+      },
+      {
+        "id": "dnie",
+        "title": "DNIe / Electronic Certificate",
+        "desc": "Any qualified electronic certificate.",
+        "img": "/credenciales-profesionales/dnie.png",
+        "cta": "Access DNIe / Electronic Certificate",
+        "href": "#"
+      }
+    ]
+  }
+  

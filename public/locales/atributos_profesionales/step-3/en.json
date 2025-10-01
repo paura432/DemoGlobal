@@ -1,0 +1,31 @@
+{
+    "bloques": [
+      {
+        "id": "import",
+        "titulo": "Import Your Credential",
+        "instrucciones": [
+          "For Laura to use her digital identity, she needs to <b>import her credentials</b> into the wallet. In this case, from the Madrid Medical Association.",
+          "This is like adding a <b>secure digital card</b> to her wallet, containing verifiable information such as her Medical Credential that certifies her profession.",
+          "Next, we detail the <b>process, it’s very simple</b>."
+        ],
+        "video": "/videos/medico.mp4",
+        "poster": "/demoglobal/medico.png",
+        "credencialImagen": "/demoglobal/medico.png",
+        "boton": "Next"
+      },
+      {
+        "id": "qr",
+        "titulo": "Add It to Your Wallet App",
+        "instrucciones": [
+          "Open the wallet application you have installed.",
+          "Look for the <b>\"Add\"</b> or <b>\"Import Credential\"</b> option.",
+          "Scan this QR code provided with your phone’s camera.",
+          "That’s it! The credential is added to your wallet, ready to be used securely and efficiently."
+        ],
+        "qrHeaderImage": "/demoglobal/colegio-ilustre.png",
+        "boton": "Ok, I already have my credential"
+      },
+
+    ]
+  }
+  
