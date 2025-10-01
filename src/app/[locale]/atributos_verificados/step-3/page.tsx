@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { QRCodeCanvas } from 'qrcode.react';
-import QRCode from 'qrcode';
 
 const PASOS = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'] as const;
 
@@ -119,7 +118,7 @@ export default function Step3() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`/locales/credenciales-profesionales/step-3/${locale}.json`, { cache: 'no-store' });
+      const res = await fetch(`/locales/atributos_verificados/step-3/${locale}.json`, { cache: 'no-store' });
       const data = (await res.json()) as Step3Json;
       setT(data);
     })();

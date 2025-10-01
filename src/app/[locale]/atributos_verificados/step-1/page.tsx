@@ -36,7 +36,7 @@ export default function Step1() {
     let alive = true;
     (async () => {
       try {
-        const res = await fetch(`/locales/credenciales-profesionales/step-1/${locale}.json`, { cache: 'no-store' });
+        const res = await fetch(`/locales/atributos_verificados/step-1/${locale}.json`, { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = (await res.json()) as Step1Translations;
         if (alive) setT(data);
@@ -67,7 +67,7 @@ export default function Step1() {
   const goNext = () => {
     localStorage.setItem('tt_role', 'medico');
     const next = pasos[currentStep + 1];
-    if (next) router.push(`/${locale}/credenciales-profesionales/${next}`);
+    if (next) router.push(`/${locale}/atributos_verificados/${next}`);
   };
 
   const buttons = t.buttons || { back: 'Back', next: 'Next' };

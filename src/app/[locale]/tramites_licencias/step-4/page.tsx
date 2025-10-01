@@ -74,8 +74,8 @@ export default function Step4() {
   useEffect(() => {
     (async () => {
       const [r4, r3] = await Promise.all([
-        fetch(`/locales/credenciales-profesionales/step-4/${locale}.json`, { cache: 'no-store' }),
-        fetch(`/locales/credenciales-profesionales/step-3/${locale}.json`, { cache: 'no-store' }),
+        fetch(`/locales/tramites_licencias/step-4/${locale}.json`, { cache: 'no-store' }),
+        fetch(`/locales/tramites_licencias/step-3/${locale}.json`, { cache: 'no-store' }),
       ]);
       const d4 = (await r4.json()) as Step4T;
       const d3 = (await r3.json()) as Step3T;
@@ -94,8 +94,8 @@ export default function Step4() {
 
   const bullets = (c.bullets ?? []).slice(0, 2);
 
-  const goBack = () => router.push(`/${locale}/credenciales-profesionales/step-3`);
-  const goNext = () => router.push(`/${locale}/credenciales-profesionales/ministerio`);
+  const goBack = () => router.push(`/${locale}/tramites_licencias/step-3`);
+  const goNext = () => router.push(`/${locale}/tramites_licencias/ministerio`);
 
   return (
     <div className="h-screen flex flex-col bg-white">

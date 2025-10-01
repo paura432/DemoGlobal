@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState, useMemo } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import QRCode from 'qrcode';
+
 
 const PASOS = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'] as const;
 
@@ -249,7 +249,7 @@ export default function Step2() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`/locales/credenciales-profesionales/step-2/${locale}.json`, {
+      const res = await fetch(`/locales/atributos_verificados/step-2/${locale}.json`, {
         cache: 'no-store'
       });
       const data = (await res.json()) as Step2Translations;
@@ -261,7 +261,7 @@ export default function Step2() {
 
   const goTo = (i: number) => {
     const step = PASOS[i];
-    if (step) router.push(`/${locale}/credenciales-profesionales/${step}`);
+    if (step) router.push(`/${locale}/atributos_verificados/${step}`);
   };
 
   const handleNext = () => {
@@ -457,7 +457,7 @@ export default function Step2() {
               
               {idx === 0 && (
                 <button
-                  onClick={() => router.push(`/${locale}/credenciales-profesionales/step-3`)}
+                  onClick={() => router.push(`/${locale}/atributos_verificados/step-3`)}
                   className="text-blue-600 text-sm underline hover:text-blue-700 transition cursor-pointer"
                 >
                   {buttons.go}

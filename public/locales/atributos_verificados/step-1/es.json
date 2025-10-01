@@ -1,0 +1,17 @@
+{
+    "conoceLabel": "Conoce a",
+    "perfiles": {
+      "medico": {
+        "nombre": "Martín",
+        "label": "Ciudadano",
+        "descripcion": "Martín es ciudadano y necesita tener una identidad digital basada en credenciales verificables para acceder a servicios.",
+        "icono": "/demoglobal/ciudadano.png",
+        "video": "/videos/ciudadano.mp4"
+      }
+    },
+    "buttons": {
+      "back": "Atrás",
+      "next": "Siguiente"
+    }
+  }
+  

@@ -1,22 +1,21 @@
 {
-    "step4": {
-      "title": "We are going to show you a <span class='text-blue-600 font-bold'>demo</span>",
-      "subtitle": "Here you will see how an official credential is imported into the digital wallet.",
-      "intro": "Imagine you are Laura: she needs to import her credential from the Madrid Medical Association to use her digital identity.",
-      "bullets": [
-        "It’s like adding a secure digital card to her wallet, with verifiable information such as her profession.",
-        "Next, we detail <b>the process</b>, it’s very simple."
-      ],
-      "mock": {
-        "image": "/credenciales-profesionales/mockup-ministerio.png",
-        "alt": "Madrid Official Medical Association",
-        "caption": "Example of issued credential"
-      },
-      "cta": "Ok, I already have my credential",
-      "buttons": {
-        "back": "Back",
-        "next": "Next"
-      }
+  "step4": {
+    "title": "Let us show you a <span class='text-blue-600 font-bold'>demo</span>",
+    "subtitle": "Here you'll see how to import an official credential into the digital wallet.",
+    "intro": "Imagine you're Laura: she needs to import her credential from the Madrid Medical Association to use her digital identity.",
+    "bullets": [
+      "It's like adding a secure digital card to your wallet, with verifiable information such as your profession.",
+      "Next, we’ll walk you through <b>the process</b> – it’s very simple."
+    ],
+    "mock": {
+      "image": "/credenciales-profesionales/mockup-ministerio.png",
+      "alt": "Madrid Medical Association credential example",
+      "caption": "Sample issued credential"
+    },
+    "cta": "Got it, I have my credential",
+    "buttons": {
+      "back": "Back",
+      "next": "Next"
     }
   }
-  
+}
