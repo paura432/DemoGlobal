@@ -112,7 +112,7 @@ export default function Step3() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`/locales/credenciales-profesionales/step-3/${locale}.json`, { cache: 'no-store' });
+      const res = await fetch(`/locales/titulos_academicos/step-3/${locale}.json`, { cache: 'no-store' });
       const data = (await res.json()) as Step3Json;
       setT(data);
     })();
