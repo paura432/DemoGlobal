@@ -20,7 +20,6 @@ export default function HoverMedia({
   objectPosition = 'center',
   className,
   blueOpacity = 0.6,
-  speedMs = 300,
 }: HoverMediaProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 

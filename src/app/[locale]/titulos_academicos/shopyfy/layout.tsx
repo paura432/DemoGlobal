@@ -74,40 +74,6 @@ function Header({ cartCount }: { cartCount: number }) {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="mt-16 border-t py-10 text-sm text-gray-600">
-      <div className="max-w-[1200px] mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div>
-          <div className="font-semibold text-gray-900 mb-2">Atención al cliente</div>
-          <ul className="space-y-1">
-            <li><a className="hover:underline" href="#">Centro de ayuda</a></li>
-            <li><a className="hover:underline" href="#">Devoluciones</a></li>
-            <li><a className="hover:underline" href="#">Envíos</a></li>
-          </ul>
-        </div>
-        <div>
-          <div className="font-semibold text-gray-900 mb-2">Compañía</div>
-          <ul className="space-y-1">
-            <li><a className="hover:underline" href="#">Quiénes somos</a></li>
-            <li><a className="hover:underline" href="#">Prensa</a></li>
-            <li><a className="hover:underline" href="#">Trabaja con nosotros</a></li>
-          </ul>
-        </div>
-        <div>
-          <div className="font-semibold text-gray-900 mb-2">Legal</div>
-          <ul className="space-y-1">
-            <li><a className="hover:underline" href="#">Privacidad</a></li>
-            <li><a className="hover:underline" href="#">Términos</a></li>
-            <li><a className="hover:underline" href="#">Cookies</a></li>
-          </ul>
-        </div>
-      </div>
-      <div className="text-center text-xs text-gray-500 mt-8">© {new Date().getFullYear()} Shopyline</div>
-    </footer>
-  );
-}
-
 export default function ShopLayout({
   children,
   cartCount = 1,

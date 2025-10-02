@@ -21,18 +21,6 @@ type BienvenidaT = {
   filas: Row[];
 };
 
-const Eye = () => (
-  <svg viewBox="0 0 24 24" className="w-4 h-4 text-slate-600">
-    <path
-      d="M1.5 12S5.5 5.5 12 5.5 22.5 12 22.5 12 18.5 18.5 12 18.5 1.5 12 1.5 12Z"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-    />
-    <circle cx="12" cy="12" r="2.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
-  </svg>
-);
-
 function DocPill({ kind }: { kind: string }) {
   const k = kind.toLowerCase();
   const map: Record<string, string> = {
@@ -70,12 +58,17 @@ export default function BienvenidaCursos() {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = (await res.json()) as BienvenidaT;
         if (!cancelled) setT(data);
-      } catch (e: any) {
+      } catch (e: unknown) {
         if (!cancelled) {
-          setError(e?.message ?? 'No se pudo cargar la información');
+          if (e instanceof Error) {
+            setError(e.message);
+          } else {
+            setError('No se pudo cargar la información');
+          }
           setT(null);
         }
       }
+      
     })();
     return () => {
       cancelled = true;

@@ -53,8 +53,14 @@ export default function MinisterioLayout({ children }: { children: React.ReactNo
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = (await res.json()) as LayoutJson;
         if (alive) setCfg(data);
-      } catch (e: any) {
-        if (alive) setErr(String(e?.message || e));
+      } catch (e: unknown) {
+        if (alive) {
+          if (e instanceof Error) {
+            setErr(e.message);
+          } else {
+            setErr(String(e));
+          }
+        }
       }
     })();
     return () => {

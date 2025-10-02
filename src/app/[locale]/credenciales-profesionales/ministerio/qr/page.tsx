@@ -1,10 +1,8 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { QRCodeCanvas } from 'qrcode.react';
 import { useEffect, useState } from 'react';
-
-type RolJson = 'doctora';
+import { QRCodeCanvas } from 'qrcode.react';
 
 type QRTxt = {
   heading: string;
@@ -14,14 +12,11 @@ type QRTxt = {
   verified: string;
 };
 
-const normalizeRole = (_r?: string | null): RolJson => 'doctora';
-
 export default function MinisterioQR() {
   const router = useRouter();
   const pathname = usePathname();
   const locale = (pathname.split('/')[1] || 'es') as 'es' | 'en';
 
-  const [rol, setRol] = useState<RolJson>('doctora');
   const [txt, setTxt] = useState<QRTxt | null>(null);
 
   const QR_SIZE = 220;
@@ -63,9 +58,6 @@ export default function MinisterioQR() {
         setIsLoading(true);
         setErrorMsg(null);
 
-        const stored = normalizeRole(typeof window !== 'undefined' ? localStorage.getItem('tt_role') : null);
-        if (!cancelled) setRol(stored);
-
         const res = await fetch(`${apiBase}/api/v1/verifier-back/procivis`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -84,8 +76,14 @@ export default function MinisterioQR() {
           setQrLink(link);
           setSessionID(sid);
         }
-      } catch (err: any) {
-        if (!cancelled) setErrorMsg(err?.message ?? 'Error al generar el QR');
+      } catch (err: unknown) {
+        if (!cancelled) {
+          if (err instanceof Error) {
+            setErrorMsg(err.message);
+          } else {
+            setErrorMsg('No se pudo cargar la información');
+          }
+        }
       } finally {
         if (!cancelled) setIsLoading(false);
       }

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState, useMemo } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import QRCode from 'qrcode';
 
 
 const PASOS = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'] as const;
@@ -398,7 +399,7 @@ export default function Step2() {
                           aria-label={app.nombre}
                         >
                           <div className="w-16 h-16 rounded-xl shadow border border-gray-200 bg-white grid place-items-center group-hover:shadow-md transition">
-                            <img
+                            <Image
                               src={app.logo}
                               alt={app.nombre}
                               className="w-10 h-10 object-contain"

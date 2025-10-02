@@ -62,15 +62,21 @@ export default function MinisterioVerificando() {
       try {
         setErr(null);
         const load = async (loc: 'es' | 'en') => {
-          const r = await fetch(`/locales/credenciales-profesionales/ministerio/verificacion/${locale}.json`, { cache: 'no-store' });
+          const r = await fetch(`/locales/credenciales-profesionales/ministerio/verificacion/${loc}.json`, { cache: 'no-store' });
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
           return (await r.json()) as TCfg;
         };
         let data: TCfg;
         try { data = await load(locale); } catch { data = await load('es'); }
         if (alive) setCfg(data);
-      } catch (e: any) {
-        if (alive) setErr(e?.message ?? 'Error cargando configuraciÃ³n');
+      } catch (e: unknown) {
+        if (alive) {
+          if (e instanceof Error) {
+            setErr(e.message);
+          } else {
+            setErr(String(e));
+          }
+        }
       }
     })();
     return () => { alive = false; };
@@ -102,7 +108,6 @@ export default function MinisterioVerificando() {
   const pct = steps.length ? Math.min(100, Math.round((doneCount / steps.length) * 100)) : 0;
 
   const containerW = cfg.layout?.compacto ? 480 : 640;
-  const centered = cfg.layout?.centrado !== false;
 
   return (
     <div
@@ -182,4 +187,4 @@ export default function MinisterioVerificando() {
       </div>
     </div>
   );
-  
+}

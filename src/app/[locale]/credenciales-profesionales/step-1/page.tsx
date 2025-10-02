@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
-type Perfil = 'medico';
+
 
 type Step1Translations = {
   conoceLabel?: string;

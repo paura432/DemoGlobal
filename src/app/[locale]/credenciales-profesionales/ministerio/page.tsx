@@ -44,7 +44,7 @@ export default function MinisterioPage() {
       try {
         setErr(null);
         const load = async (loc: 'es' | 'en') => {
-          const r = await fetch(`/locales/credenciales-profesionales/ministerio/${locale}.json`, { cache: 'no-store' });
+          const r = await fetch(`/locales/credenciales-profesionales/ministerio/${loc}.json`, { cache: 'no-store' });
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
           return (await r.json()) as CardsDoc;
         };
@@ -55,9 +55,14 @@ export default function MinisterioPage() {
           data = await load('es');
         }
         if (alive) setDoc(data);
-      } catch (e: any) {
+      } catch (e: unknown) {
+  
         if (alive) {
-          setErr(e?.message ?? 'No se pudo cargar la configuración');
+          if (e instanceof Error) {
+            setErr(e.message);
+          } else {
+            setErr('No se pudo cargar la configuración');
+          }
           setDoc({ cards: [] });
         }
       }
