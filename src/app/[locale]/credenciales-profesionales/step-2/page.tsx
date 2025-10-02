@@ -323,6 +323,7 @@ export default function Step2() {
       const titleParts = restTitle.split('Wallet');
       return { firstChar, titleParts };
     }
+    return { firstChar: '', titleParts: [''] };
   };
 
   const { firstChar, titleParts } = getTitleForPhase();
