@@ -306,11 +306,18 @@ export default function Step2() {
 
   const getTitleForPhase = () => {
     if (idx === 2) {
-      return {
-        firstChar: 'I',
-        titleParts: ['nstala ', 'tu aplicación ', '']
-      };
-    } else {
+      if(locale === 'es'){
+        return {
+          firstChar: 'I',
+          titleParts: ['nstala ' ,'tu aplicación ' , '']
+        };
+      }else if(locale === 'en'){
+        return {
+          firstChar: 'I',
+          titleParts: ['nstall ', 'the app ', '']
+        };
+      }
+    }else {
       const firstChar = t.tituloFijo.slice(0, 1);
       const restTitle = t.tituloFijo.slice(1);
       const titleParts = restTitle.split('Wallet');
@@ -414,7 +421,7 @@ export default function Step2() {
                 </div>
               ) : (
                 <>
-                
+
                   <div className="mt-3 flex gap-2 items-start">
                     <TickSmall />
                     <span className="text-sm text-gray-600 font-semibold">{bloque.subtitulo}</span>
