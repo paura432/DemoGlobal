@@ -156,12 +156,12 @@ export default function Step3() {
       setIssuedWrapQr('');
       const apiurl = process.env.NEXT_PUBLIC_VCS_API_URL || 'http://localhost:8085';
       const payload = {
-        schema: 'medico',
+        schema: 'estudiante',
         credential: {
-          Nombre: 'Laura',
-          Apellidos: 'García López',
-          Centro: 'Centro Universitario de Madrid',
-          Especialidad: 'Cardiología'
+          Nombre: 'Miguel',
+          Apellidos: 'Fernandez Ruiz',
+          Carrera: 'Ingenieria Informática',
+          Edad: '22'
         }
       };
       const res = await fetch(`${apiurl}/api/v1/createCredential/procivis`, {
