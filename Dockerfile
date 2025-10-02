@@ -14,7 +14,7 @@ RUN pnpm install --frozen-lockfile
 # Copiar código fuente
 COPY . .
 
-ENV NEXT_PUBLIC_VCS_API_URL=https://vcs.trustos.telefonicatech.com:9443
+ENV NEXT_PUBLIC_VCS_API_URL=https://norteverse.trustos.telefonicatech.com:9443
 ENV NEXT_PUBLIC_ENV_MODE=prod
 
 # Build

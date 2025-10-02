@@ -11,7 +11,7 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_VCS_API_URL=https://vcs.trustos.telefonicatech.com:9443
+      - NEXT_PUBLIC_VCS_API_URL=https://norteverse.trustos.telefonicatech.com:9443
       - NEXT_PUBLIC_ENV_MODE=prod
       - AUTH_SECRET=${AUTH_SECRET}
       - AUTH_URL=${AUTH_URL:-http://localhost:3000/api/auth}
