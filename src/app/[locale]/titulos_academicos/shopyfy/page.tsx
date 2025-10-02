@@ -120,19 +120,6 @@ function useStudentCred() {
     discountPercent: 0,
   });
 
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem('tt_student');
-      if (raw) setSt(JSON.parse(raw));
-    } catch {}
-  }, []);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem('tt_student', JSON.stringify(st));
-    } catch {}
-  }, [st]);
-
   return { st, setSt };
 }
 
@@ -464,7 +451,7 @@ export default function CartPage() {
     
             <div className="flex gap-3">
               <div className="w-20 h-24 relative overflow-hidden rounded">
-                <Image src={ITEM.image} alt={ITEM.title} className="w-full h-full object-cover" />
+                <Image width={40} height={40} src={ITEM.image} alt={ITEM.title} className="w-full h-full object-cover" />
               </div>
               <div className="flex-1">
                 <div className="flex items-start justify-between gap-3">
