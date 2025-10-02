@@ -155,7 +155,7 @@ export default function Step4() {
               onClick={goBack}
               className="border border-blue-600 text-blue-600 px-8 py-2 rounded-full text-sm font-medium transition hover:bg-blue-50"
             >
-              {locale === 'en' ? 'Back' : 'AtrÃ¡s'}
+              {locale === 'en' ? 'Back' : 'Atrás'}
             </button>
             <div className="flex-1 flex justify-center">
               <button
