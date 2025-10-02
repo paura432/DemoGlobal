@@ -1,54 +1,53 @@
 {
-    "tituloFijo": "First you will need a Wallet",
-    "bloques": [
-      {
-        "subtitulo": "What are Verifiable Credential Wallets?",
-        "texto": "Imagine a digital wallet on your phone that, instead of holding money or credit cards, stores verifiable credentials. Think of them as important documents, but in a secure digital format (ID, passport, degrees, etc.).",
-        "video": "/videos/step-2-1.mp4"
-      },
-      {
-        "subtitulo": "How do they work?",
-        "texto": "Verifiable credential wallets give users full control over their data. You decide what information to share and with whom. For example, if you only need to prove your age to access a service, you just share your date of birth without revealing your full ID.",
-        "video": "/videos/step-2-2.mp4"
-      },
-      {
-        "subtitulo": "Install your Wallet app",
-        "texto": "First, install one of the compatible applications on your smartphone. You can view the QR code by tapping on the icons.",
-        "video": "/videos/step-2-3.mp4",
-        "apps": [
-          { 
-            "id": "procivis", 
-            "nombre": "Procivis", 
-            "logo": "/demoglobal/procivis.png"
-          }
-        ],
-        "modalItems": [
-          { 
-            "title": "Download <strong>Procivis</strong> on your phone",
-            "sub": "Scan this QR code with your phone or use the store buttons. You can also search for \"Procivis\" in your app store."
-          },
-          { 
-            "title": "Complete the process in the app."
-          }
-        ]
-      }
-    ],
-    "qrByAppStore": {
-      "procivis": {
-        "appstore": "https://apps.apple.com/app/procivis-wallet/id6477862867",
-        "play": "https://play.google.com/store/apps/details?id=one.procivis.wallet"
-      }
+  "tituloFijo": "First, you will need a Wallet",
+  "bloques": [
+    {
+      "subtitulo": "What are Verifiable Credential Wallets?",
+      "texto": "Imagine a digital wallet on your phone that, instead of storing money or credit cards, stores verifiable credentials. Think of them as important documents, but in a digital and secure format (ID card, passport, diplomas, etc.).",
+      "video": "/videos/step-2-1.mp4"
     },
-    "ui": {
-      "modalSubtitle": "Download the app and complete the process",
-      "close": "Close",
-      "done": "Done",
-      "extraStep": "Click on the app to get the download QR"
+    {
+      "subtitulo": "How do they work?",
+      "texto": "Verifiable credential wallets give their users full control over their data. You decide what information to share and with whom. For example, if you only need to prove your age to access a service, you can share just your date of birth without revealing your full identity.",
+      "video": "/videos/step-2-2.mp4"
     },
-    "buttons": {
-      "back": "Back",
-      "next": "Next",
-      "go": "Import credential"
+    {
+      "subtitulo": "Install your Wallet app",
+      "texto": "First, install one of the compatible apps on your smartphone. You can view the QR code by tapping on the icons.",
+      "video": "/videos/step-2-3.mp4",
+      "apps": [
+        { 
+          "id": "procivis", 
+          "nombre": "Procivis", 
+          "logo": "/demoglobal/procivis.png"
+        }
+      ],
+      "modalItems": [
+        { 
+          "title": "Download <strong>Procivis</strong> on your phone",
+          "sub": "Scan this QR code with your phone or use the store buttons. You can also search for \"Procivis\" in your app store."
+        },
+        {
+          "title": "Complete the process in the app."
+        }
+      ]
     }
+  ],
+  "qrByAppStore": {
+    "procivis": {
+      "appstore": "https://apps.apple.com/us/app/procivis-one-wallet/id6480111491",
+      "play": "https://play.google.com/store/apps/details?id=ch.procivis.one.wallet.trial&hl=en"
+    }
+  },
+  "ui": {
+    "modalSubtitle": "Download the app and complete the process",
+    "close": "Close",
+    "done": "Done",
+    "extraStep": "Click on the app to get the download QR code"
+  },
+  "buttons": {
+    "back": "Back",
+    "next": "Next",
+    "go": "I already have a wallet"
   }
-  
+}

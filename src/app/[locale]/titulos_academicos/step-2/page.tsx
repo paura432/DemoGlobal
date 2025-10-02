@@ -400,6 +400,8 @@ export default function Step2() {
                         >
                           <div className="w-16 h-16 rounded-xl shadow border border-gray-200 bg-white grid place-items-center group-hover:shadow-md transition">
                             <Image
+                              width={40}
+                              height={40}
                               src={app.logo}
                               alt={app.nombre}
                               className="w-10 h-10 object-contain"

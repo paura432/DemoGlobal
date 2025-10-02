@@ -68,4 +68,4 @@ ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
 # 🚀 Importante: arrancar con el server.js generado
-CMD ["node", ".next/standalone/server.js"]
+CMD ["pnpm", "start"]
