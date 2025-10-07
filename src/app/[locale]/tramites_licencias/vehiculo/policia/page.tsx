@@ -9,18 +9,76 @@ import { useDemo } from '@/components/ui/demoContext';
 
 const apiBase = process.env.NEXT_PUBLIC_VCS_API_URL || 'http://localhost:8085';
 
+type Locale = 'es' | 'en';
+
+interface Translation {
+  header: { title: string; subtitle: string };
+  left: {
+    title: string;
+    desc: string;
+    roleTitle: string;
+    role: string;
+    verifyTitle: string;
+    doc1: string;
+    doc2: string;
+    back: string;
+  };
+  right: {
+    initTitle: string;
+    initDesc: string;
+    startBtn: string;
+    loading: string;
+    qrText: string;
+    waiting: string;
+    verifyingTitle: string;
+    completeBtn: string;
+    validTitle: string;
+    validDesc: string;
+    finishBtn: string;
+  };
+  steps: string[];
+  error: string;
+}
+
+interface Credenciales {
+  carnet: {
+    nombre: string;
+    apellidos: string;
+    dni: string;
+    categoria: string;
+    fechaExpiracion: string;
+  };
+  permiso: {
+    marcaModelo: string;
+    matricula: string;
+    tipoVehiculo: string;
+    seguro: string;
+  };
+}
+
+interface ApiStartResponse {
+  data?: { appUrl: string; sessionID: string };
+  appUrl?: string;
+  sessionID?: string;
+}
+
+interface ApiStatusResponse {
+  data?: { status?: string };
+  status?: string;
+}
+
 export default function VerificacionPolicia() {
   const router = useRouter();
   const pathname = usePathname();
-  const locale = pathname.match(/^\/(es|en)/)?.[1] || 'es';
+  const locale = (pathname.match(/^\/(es|en)/)?.[1] as Locale) || 'es';
   const { marcarCasoCompletado } = useDemo();
 
-  const [t, setT] = useState<any>(null);
+  const [t, setT] = useState<Translation | null>(null);
   const [phase, setPhase] = useState<'init' | 'loading' | 'qr' | 'verifying' | 'ready' | 'error'>('init');
   const [sessionID, setSessionID] = useState('');
   const [qrLink, setQrLink] = useState('');
   const [activeStep, setActiveStep] = useState(0);
-  const [credenciales, setCredenciales] = useState<any>(null);
+  const [credenciales, setCredenciales] = useState<Credenciales | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const START_ENDPOINT = `${apiBase}/api/v1/verifier-back/procivis`;
@@ -30,7 +88,7 @@ export default function VerificacionPolicia() {
   useEffect(() => {
     (async () => {
       const res = await fetch(`/locales/tramites_licencias/vehiculo/policia/${locale}.json`);
-      const json = await res.json();
+      const json = (await res.json()) as Translation;
       setT(json);
     })();
   }, [locale]);
@@ -48,15 +106,16 @@ export default function VerificacionPolicia() {
       });
 
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = await res.json();
-      const data = json?.data ?? json;
+      const json = (await res.json()) as ApiStartResponse;
+      const data = json.data ?? json;
 
       if (!data?.appUrl || !data?.sessionID) throw new Error('Respuesta incompleta');
       setQrLink(data.appUrl);
       setSessionID(data.sessionID);
       setPhase('qr');
     } catch (e) {
-      setErrorMsg(e instanceof Error ? e.message : t?.error || 'Error');
+      const msg = e instanceof Error ? e.message : t?.error || 'Error';
+      setErrorMsg(msg);
       setPhase('error');
     }
   };
@@ -69,25 +128,29 @@ export default function VerificacionPolicia() {
       try {
         const res = await fetch(STATUS_ENDPOINT(sessionID));
         if (!res.ok) return;
-        const json = await res.json();
-        const data = json?.data ?? json;
 
-        if (data.status === 'success' || data.status === 'verified') {
+        const json = (await res.json()) as ApiStatusResponse;
+        const data = json.data ?? json;
+        const status = data.status;
+
+        if (status === 'success' || status === 'verified') {
           setPhase('verifying');
           setActiveStep(0);
-          t?.steps?.forEach((_: any, i: number) =>
+          t?.steps?.forEach((_, i) =>
             setTimeout(() => setActiveStep(i + 1), 900 * (i + 1))
           );
           setTimeout(() => setPhase('ready'), 900 * ((t?.steps?.length ?? 4) + 1));
           clearInterval(interval);
         }
 
-        if (['error', 'rejected', 'expired'].includes(data.status)) {
+        if (['error', 'rejected', 'expired'].includes(status ?? '')) {
           setPhase('error');
           setErrorMsg(t?.error || 'Error de verificación');
           clearInterval(interval);
         }
-      } catch {}
+      } catch {
+        // ignorar errores de polling
+      }
     }, 1500);
 
     return () => clearInterval(interval);
@@ -114,7 +177,9 @@ export default function VerificacionPolicia() {
 
   const handleFinish = () => router.push(`/${locale}/demoglobal`);
 
-  if (!t) return <div className="p-10 text-center text-gray-500">Cargando interfaz...</div>;
+  if (!t)
+    return <div className="p-10 text-center text-gray-500">Cargando interfaz...</div>;
+
   const pct = Math.round((activeStep / (t.steps?.length ?? 4)) * 100);
 
   return (
@@ -210,7 +275,7 @@ export default function VerificacionPolicia() {
                 />
               </div>
               <ul className="text-xs text-gray-600 space-y-1">
-                {t.steps.map((step: string, i: number) => (
+                {t.steps.map((step, i) => (
                   <li key={i} className={i < activeStep ? 'text-blue-700 font-medium' : ''}>
                     {i < activeStep ? '✓ ' : '○ '} {step}
                   </li>
@@ -238,10 +303,18 @@ export default function VerificacionPolicia() {
               <h3 className="font-semibold text-green-700">{t.right.validTitle}</h3>
               <p className="text-gray-700">{t.right.validDesc}</p>
               <div className="bg-gray-50 p-2 rounded text-xs space-y-1">
-                <p><b>Nombre:</b> {credenciales.carnet.nombre} {credenciales.carnet.apellidos}</p>
-                <p><b>DNI:</b> {credenciales.carnet.dni}</p>
-                <p><b>Vehículo:</b> {credenciales.permiso.marcaModelo}</p>
-                <p><b>Matrícula:</b> {credenciales.permiso.matricula}</p>
+                <p>
+                  <b>Nombre:</b> {credenciales.carnet.nombre} {credenciales.carnet.apellidos}
+                </p>
+                <p>
+                  <b>DNI:</b> {credenciales.carnet.dni}
+                </p>
+                <p>
+                  <b>Vehículo:</b> {credenciales.permiso.marcaModelo}
+                </p>
+                <p>
+                  <b>Matrícula:</b> {credenciales.permiso.matricula}
+                </p>
               </div>
               <button
                 onClick={handleFinish}

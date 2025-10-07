@@ -1,7 +1,6 @@
 'use client';
 
 import { DemoProvider } from '@/components/ui/demoContext';
-import Image from 'next/image';
 
 export default function AtributosVerificadosLayout({
   children,
