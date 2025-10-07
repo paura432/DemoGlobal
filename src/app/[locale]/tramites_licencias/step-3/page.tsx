@@ -15,9 +15,9 @@ type Block = {
   instrucciones: string[];
   video?: string;
   poster?: string;
+  boton?: string;
   credencialImagen?: string;
   qrHeaderImage?: string;
-  boton?: string;
 };
 
 type Step3Json = {
@@ -31,6 +31,7 @@ const UI = {
     gotoMinistry: 'Ir a Ministerio',
     generating: 'Generando QR…',
     preparing: 'Preparando QR',
+    issueErrorPrefix: 'Error emitiendo credencial: '
   },
   en: {
     back: 'Back',
@@ -38,6 +39,7 @@ const UI = {
     gotoMinistry: 'Go to Ministry',
     generating: 'Generating QR…',
     preparing: 'Preparing QR',
+    issueErrorPrefix: 'Error issuing credential: '
   }
 } as const;
 
@@ -94,25 +96,64 @@ export default function Step3() {
   const [t, setT] = useState<Step3Json | null>(null);
   const [subIdx, setSubIdx] = useState(0);
   const [issuing, setIssuing] = useState(false);
+  const [issueError, setIssueError] = useState<string | null>(null);
   const [issuedWrapQr, setIssuedWrapQr] = useState('');
   const hasIssuedRef = useRef(false);
   const QR_SIZE = 160;
 
+  // cargar json ciudadano
   useEffect(() => {
     (async () => {
-      const res = await fetch(
-        `/locales/atributos_verificados/step-3/${locale}.json`,
-        { cache: 'no-store' }
-      );
-      const data = (await res.json()) as Step3Json;
-      setT(data);
+      try {
+        const res = await fetch(
+          `/locales//tramites_licencias/step-3/${locale}.json`,
+          { cache: 'no-store' }
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = (await res.json()) as Step3Json;
+        setT(data);
+      } catch (e) {
+        console.error('Error cargando JSON step-3 ciudadano', e);
+        setT(null);
+      }
     })();
   }, [locale]);
 
-  const blocks = t?.bloques ?? [];
-  const block = blocks[Math.max(0, Math.min(subIdx, blocks.length - 1))];
+  const allBlocks = t?.bloques ?? [];
+  const block = allBlocks[Math.max(0, Math.min(subIdx, allBlocks.length - 1))];
 
-  // Simulación de emisión de credencial al entrar en el bloque "qr"
+  // emisión credencial ciudadano
+
+  const issueCredential = async () => {
+    try {
+      setIssuing(true);
+      setIssueError(null);
+      setIssuedWrapQr('');
+      const apiurl = process.env.NEXT_PUBLIC_VCS_API_URL || 'http://localhost:8085';
+      const payload = {
+        schema: 'ciudadano',
+        credential: {
+          Nombre: 'Laura',
+          Apellidos: 'García López',
+          DNI: '12345678X',
+        }
+      };
+      const res = await fetch(`${apiurl}/api/v1/createCredential/procivis`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      setIssuedWrapQr(data.urls.appUrl);
+    } catch (e: unknown) {
+      const error = e as Error;
+      setIssueError(error?.message ?? 'Error');
+    } finally {
+      setIssuing(false);
+    }
+  };
+
   useEffect(() => {
     if (!block) return;
     if (block.id !== 'qr') {
@@ -121,25 +162,26 @@ export default function Step3() {
     }
     if (hasIssuedRef.current) return;
     hasIssuedRef.current = true;
-
-    setIssuing(true);
-    setTimeout(() => {
-      setIssuedWrapQr('https://example.org/credencial-emitida'); // mock QR
-      setIssuing(false);
-    }, 1500);
+    issueCredential();
   }, [block]);
 
   const goTo = (step: typeof PASOS[number]) =>
     router.push(pathname.replace(/step-\d+(.*)?$/, `${step}$1`));
 
   const goBack = () => {
-    if (subIdx > 0) setSubIdx((p) => p - 1);
-    else goTo('step-2');
+    if (subIdx > 0) {
+      setSubIdx((p) => p - 1);
+    } else {
+      goTo('step-2');
+    }
   };
 
   const goNext = () => {
-    if (subIdx < blocks.length - 1) setSubIdx((p) => p + 1);
-    else goTo('step-4');
+    if (subIdx < allBlocks.length - 1) {
+      setSubIdx((p) => p + 1);
+    } else {
+      goTo('step-4');
+    }
   };
 
   if (!block) return null;
@@ -147,7 +189,7 @@ export default function Step3() {
   return (
     <div className="h-screen flex flex-col bg-white">
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
-        {/* pasos arriba */}
+        {/* progreso */}
         <div className="w-full flex justify-center pt-1 pb-6">
           <div className="flex gap-2 items-center">
             {PASOS.map((_, i) => (
@@ -192,6 +234,12 @@ export default function Step3() {
                   </li>
                 ))}
               </ul>
+              {block.id === 'qr' && issueError && (
+                <p className="mt-2 text-sm text-red-600">
+                  {UI[locale].issueErrorPrefix}
+                  {issueError}
+                </p>
+              )}
             </div>
 
             {/* derecha */}
@@ -203,15 +251,16 @@ export default function Step3() {
               {block.id === 'qr' && (
                 <div className="rounded-2xl shadow-lg bg-white border border-gray-200 p-5">
                   <div className="w-[180px] md:w-[220px] lg:w-[260px] mx-auto grid place-items-center">
-                    {block.qrHeaderImage && (
-                      <Image
-                        src={block.qrHeaderImage}
-                        alt="Colegio de Médicos"
-                        width={160}
-                        height={160}
-                        className="w-[180px] h-auto object-contain mb-3"
-                      />
-                    )}
+                    {/* Nueva cabecera "CIUDADANO" */}
+                    <div className="mb-3">
+                      <div className="text-center font-semibold text-sm text-gray-600 uppercase tracking-wide bg-gray-100 px-4 py-1 rounded-full shadow-sm">
+                        CIUDADANO
+                      </div>
+                    </div>
+
+                    {/* Imagen opcional de cabecera */}
+
+                    {/* QR Code */}
                     {issuedWrapQr ? (
                       <div className="flex flex-col items-center">
                         <QRCodeCanvas
@@ -252,7 +301,10 @@ export default function Step3() {
                 onClick={goNext}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full text-sm font-medium transition"
               >
-                {block.boton ?? (subIdx < blocks.length - 1 ? UI[locale].next : UI[locale].gotoMinistry)}
+                {block.boton ??
+                  (subIdx < allBlocks.length - 1
+                    ? UI[locale].next
+                    : UI[locale].gotoMinistry)}
               </button>
             </div>
             <div className="w-[110px]" />

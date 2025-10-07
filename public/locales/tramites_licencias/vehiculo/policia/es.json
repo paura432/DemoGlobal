@@ -1,0 +1,36 @@
+{
+  "header": {
+    "title": "Portal de Policía",
+    "subtitle": "Dirección General de Tráfico"
+  },
+  "left": {
+    "title": "Control policial de vehículos",
+    "desc": "Sistema de verificación de credenciales para controles de tráfico. Comprueba el carnet de conducir y el permiso de circulación de forma segura y digital.",
+    "roleTitle": "Actuando como:",
+    "role": "Agente de Policía",
+    "verifyTitle": "Documentos a verificar:",
+    "doc1": "Carnet de conducir",
+    "doc2": "Permiso de circulación",
+    "back": "← Volver al panel"
+  },
+  "right": {
+    "initTitle": "Control de Tráfico",
+    "initDesc": "Verificación de documentación",
+    "startBtn": "Iniciar verificación",
+    "loading": "Generando QR de verificación…",
+    "qrText": "Escanea este código QR con tu wallet Procivis para verificar credenciales.",
+    "waiting": "Esperando validación automática…",
+    "verifyingTitle": "Verificando identidad",
+    "completeBtn": "Verificación completada",
+    "validTitle": "✓ Credenciales válidas",
+    "validDesc": "Los documentos son auténticos y vigentes.",
+    "finishBtn": "Finalizar control"
+  },
+  "steps": [
+    "Verificando identidad ciudadana",
+    "Validando credenciales",
+    "Confirmando permiso de circulación",
+    "Autenticando carnet de conducir"
+  ],
+  "error": "Error de verificación"
+}

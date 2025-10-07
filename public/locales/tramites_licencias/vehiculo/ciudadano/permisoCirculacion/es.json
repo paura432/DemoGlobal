@@ -1,0 +1,21 @@
+{
+  "header": {
+    "title": "Permiso de Circulación",
+    "subtitle": "Credencial Verificable Digital"
+  },
+  "loading": {
+    "issuing": "Emitiendo credencial...",
+    "generating": "Generando código QR..."
+  },
+  "qr": {
+    "title": "Emisión del Permiso de Circulación",
+    "instruction": "Escanea este código QR con tu wallet digital para recibir la credencial del vehículo",
+    "button": "He escaneado el QR",
+    "hint": "Pulsa si ya has escaneado el código con tu wallet"
+  },
+  "error": {
+    "title": "Error en la emisión",
+    "retry": "Intentar de nuevo"
+  },
+  "footer": "Demo de credenciales verificables · Telefónica Tech · DGT"
+}

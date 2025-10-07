@@ -1,0 +1,36 @@
+{
+  "header": {
+    "title": "Police Portal",
+    "subtitle": "General Directorate of Traffic"
+  },
+  "left": {
+    "title": "Vehicle inspection control",
+    "desc": "Credential verification system for traffic checks. Securely verify the driver's license and vehicle registration.",
+    "roleTitle": "Acting as:",
+    "role": "Police Officer",
+    "verifyTitle": "Documents to verify:",
+    "doc1": "Driver’s license",
+    "doc2": "Vehicle registration",
+    "back": "← Back to dashboard"
+  },
+  "right": {
+    "initTitle": "Traffic Control",
+    "initDesc": "Document verification",
+    "startBtn": "Start verification",
+    "loading": "Generating verification QR…",
+    "qrText": "Scan this QR code with your Procivis wallet to verify credentials.",
+    "waiting": "Waiting for automatic validation…",
+    "verifyingTitle": "Verifying identity",
+    "completeBtn": "Verification completed",
+    "validTitle": "✓ Valid credentials",
+    "validDesc": "The documents are authentic and valid.",
+    "finishBtn": "Finish control"
+  },
+  "steps": [
+    "Verifying citizen identity",
+    "Validating credentials",
+    "Confirming vehicle permit",
+    "Authenticating driver’s license"
+  ],
+  "error": "Verification error"
+}

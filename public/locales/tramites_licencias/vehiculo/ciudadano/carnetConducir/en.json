@@ -1,0 +1,21 @@
+{
+  "header": {
+    "title": "Driver’s License",
+    "subtitle": "Verifiable Digital Credential"
+  },
+  "loading": {
+    "issuing": "Issuing credential...",
+    "generating": "Generating QR code..."
+  },
+  "qr": {
+    "title": "Driver’s License Issuance",
+    "instruction": "Scan the QR code with your digital wallet to receive your verifiable credential",
+    "button": "I have scanned the QR",
+    "hint": "Click if you already scanned the code with your wallet"
+  },
+  "error": {
+    "title": "Issuance error",
+    "retry": "Try again"
+  },
+  "footer": "Verifiable Credentials Demo · Telefónica Tech · DGT"
+}

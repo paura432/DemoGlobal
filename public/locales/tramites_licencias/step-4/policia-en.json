@@ -1,0 +1,16 @@
+{
+  "step4": {
+    "title": "Police roadside check",
+    "subtitle": "Here you will see how an officer verifies digital credentials.",
+    "intro": "As a police officer, you can scan the citizen’s QR code and check their permits in seconds.",
+    "bullets": [
+      "Verify circulation permit and driving license.",
+      "The check is instant and secure."
+    ],
+    "mock": {
+      "image": "/tramites_licencias/policia_mockup_ingles.png",
+      "alt": "Police control screen"
+    },
+    "cta": "Simulate control"
+  }
+}

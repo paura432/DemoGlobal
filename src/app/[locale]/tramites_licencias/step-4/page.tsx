@@ -17,19 +17,39 @@ type Step4T = {
   };
 };
 
-type Block = { id: 'install' | 'import' | 'qr' | 'use'; titulo: string; instrucciones: string[] };
-type Step3T = { bloques: Block[] };
-
 function TickSmall() {
   return (
-    <svg className="mt-[4px] w-3 h-3 text-blue-600 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z" stroke="currentColor" strokeWidth="2"/>
-      <path d="m8 12 3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg
+      className="mt-[4px] w-3 h-3 text-blue-600 shrink-0"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+      <path
+        d="m8 12 3 3 5-6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
-function DesktopMock({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
+function DesktopMock({
+  src,
+  alt,
+  caption,
+}: {
+  src: string;
+  alt: string;
+  caption?: string;
+}) {
   return (
     <figure className="w-full flex flex-col items-center">
       <div
@@ -43,7 +63,6 @@ function DesktopMock({ src, alt, caption }: { src: string; alt: string; caption?
             src={src}
             alt={alt}
             fill
-            priority
             sizes="(min-width:1024px) 36vw, 94vw"
             className="object-contain"
           />
@@ -69,33 +88,41 @@ export default function Step4() {
   const currentStep = PASOS.findIndex((s) => pathname.includes(s));
 
   const [s4, setS4] = useState<Step4T | null>(null);
-  const [s3, setS3] = useState<Step3T | null>(null);
 
   useEffect(() => {
     (async () => {
-      const [r4, r3] = await Promise.all([
-        fetch(`/locales/tramites_licencias/step-4/${locale}.json`, { cache: 'no-store' }),
-        fetch(`/locales/tramites_licencias/step-3/${locale}.json`, { cache: 'no-store' }),
-      ]);
-      const d4 = (await r4.json()) as Step4T;
-      const d3 = (await r3.json()) as Step3T;
-      setS4(d4);
-      setS3(d3);
+      try {
+        const rol = localStorage.getItem('rol') || 'ciudadano';
+        const url = `/locales/tramites_licencias/step-4/${rol}-${locale}.json`;
+
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const d4 = (await res.json()) as Step4T;
+        setS4(d4);
+      } catch (e) {
+        console.error('❌ Error cargando JSON Step-4:', e);
+        setS4(null);
+      }
     })();
   }, [locale]);
 
   const c = s4?.step4;
   if (!c) return null;
 
-  const useBlock = s3?.bloques?.find((b) => b.id === 'use');
-
-  const mergedTitle = useBlock?.titulo || c.title;
-  const mergedSubtext = useBlock?.instrucciones?.[0] || c.subtitle || '';
-
-  const bullets = (c.bullets ?? []).slice(0, 2);
-
-  const goBack = () => router.push(`/${locale}/tramites_licencias/step-3`);
-  const goNext = () => router.push(`/${locale}/tramites_licencias/ministerio`);
+  const goBack = () => {
+    const rol = localStorage.getItem('rol') || 'ciudadano';
+    if(rol === 'ciudadano')
+      router.push(`/${locale}//tramites_licencias/step-3`);
+    else
+      router.push(`/${locale}//tramites_licencias/step-1`);
+  }
+  const goNext = () => {
+    const rol = localStorage.getItem('rol') || 'ciudadano';
+    if(rol === 'ciudadano')
+      router.push(`/${locale}//tramites_licencias/vehiculo/ciudadano`);
+    else
+      router.push(`/${locale}//tramites_licencias/vehiculo/policia`);
+  }
 
   return (
     <div className="h-screen flex flex-col bg-white">
@@ -114,40 +141,57 @@ export default function Step4() {
                 >
                   {i + 1}
                 </div>
-                {i < PASOS.length - 1 && <div className="w-8 h-[2px] bg-gray-300 mx-1 sm:mx-2" />}
+                {i < PASOS.length - 1 && (
+                  <div className="w-8 h-[2px] bg-gray-300 mx-1 sm:mx-2" />
+                )}
               </div>
             ))}
           </div>
         </div>
 
+        {/* Contenido */}
         <div className="w-full max-w-[1100px] px-4 sm:px-10 mt-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start min-h-[300px]">
             <div className="min-h-[280px]">
-            <h2
+              <h2
                 className="text-2xl font-semibold text-gray-800 mb-1"
-                dangerouslySetInnerHTML={{ __html: mergedTitle }}
-                />
+                dangerouslySetInnerHTML={{ __html: c.title }}
+              />
 
-              {mergedSubtext && (
-                <p className="text-sm text-gray-500 mb-4" dangerouslySetInnerHTML={{ __html: mergedSubtext }} />
+              {c.subtitle && (
+                <p
+                  className="text-sm text-gray-500 mb-4"
+                  dangerouslySetInnerHTML={{ __html: c.subtitle }}
+                />
               )}
 
               <ul className="mb-1 space-y-3">
-                {bullets.map((line, i) => (
-                  <li key={i} className="flex gap-2 items-start text-sm text-gray-700 leading-relaxed">
+                {c.bullets.map((line, i) => (
+                  <li
+                    key={i}
+                    className="flex gap-2 items-start text-sm text-gray-700 leading-relaxed"
+                  >
                     <TickSmall />
-                    <span className="leading-relaxed" dangerouslySetInnerHTML={{ __html: line }} />
+                    <span
+                      className="leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: line }}
+                    />
                   </li>
                 ))}
               </ul>
             </div>
 
             <div className="flex justify-center lg:justify-end">
-              <DesktopMock src={c.mock.image} alt={c.mock.alt} caption={c.mock.caption} />
+              <DesktopMock
+                src={c.mock.image}
+                alt={c.mock.alt}
+                caption={c.mock.caption}
+              />
             </div>
           </div>
         </div>
 
+        {/* Navegación */}
         <div className="w-full max-w-[1020px] px-4 sm:px-10 pt-5">
           <hr className="mb-10 border-gray-200" />
           <div className="flex justify-between items-center mb-16">
@@ -155,7 +199,7 @@ export default function Step4() {
               onClick={goBack}
               className="border border-blue-600 text-blue-600 px-8 py-2 rounded-full text-sm font-medium transition hover:bg-blue-50"
             >
-              {locale === 'en' ? 'Back' : 'AtrÃ¡s'}
+              {locale === 'en' ? 'Back' : 'Atrás'}
             </button>
             <div className="flex-1 flex justify-center">
               <button

@@ -1,17 +1,23 @@
 {
-    "conoceLabel": "Conoce a",
-    "perfiles": {
-      "medico": {
-        "nombre": "Laura",
-        "label": "Médico",
-        "descripcion": "Laura es médico y necesita tener una identidad digital basada en credenciales verificables para acceder a servicios.",
-        "icono": "/demoglobal/medico.png",
-        "video": "/videos/medico.mp4"
-      }
+  "conoceLabel": "Conoce a",
+  "perfiles": {
+    "ciudadano": {
+      "nombre": "Luis",
+      "label": "Ciudadano",
+      "descripcion": "Luis es ciudadano y necesita obtener documentación digital verificable de sus vehículos para poder circular legalmente.",
+      "icono": "/tramites_licencias/ciudadano.png",
+      "video": "/videos/ciudadano.mp4"
     },
-    "buttons": {
-      "back": "Atrás",
-      "next": "Siguiente"
+    "policia": {
+      "nombre": "Carlos",
+      "label": "Policía",
+      "descripcion": "Carlos es agente de policía y necesita verificar de forma segura las credenciales de conductores durante controles de tráfico.",
+      "icono": "/tramites_licencias/policia.png",
+      "video": "/videos/policia.mp4"
     }
+  },
+  "buttons": {
+    "back": "Atrás",
+    "next": "Siguiente"
   }
-  
+}

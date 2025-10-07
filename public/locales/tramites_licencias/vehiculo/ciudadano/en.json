@@ -1,0 +1,32 @@
+{
+  "header": {
+    "title": "Citizen Portal",
+    "subtitle": "General Directorate of Traffic"
+  },
+  "alert": {
+    "title": "Pending Procedures",
+    "intro": "You have 2 mandatory procedures pending. Complete these documents to legally drive your vehicle."
+  },
+  "carnet": {
+    "title": "Driver's License",
+    "desc": "Mandatory document to drive motor vehicles",
+    "action": "Start procedure"
+  },
+  "permiso": {
+    "title": "Vehicle Registration",
+    "desc": "Required authorization for your vehicle to circulate",
+    "action": "Start procedure"
+  },
+  "info": {
+    "title": "Important Information",
+    "points": [
+      "Both documents are required to circulate",
+      "The process is digital and secure",
+      "You will receive status notifications"
+    ]
+  },
+  "buttons": {
+    "back": "Back",
+    "goPolicia": "Go to Police Portal"
+  }
+}

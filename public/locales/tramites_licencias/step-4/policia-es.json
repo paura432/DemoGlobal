@@ -1,0 +1,16 @@
+{
+  "step4": {
+    "title": "Control policial en carretera",
+    "subtitle": "Aquí verás cómo un agente verifica credenciales digitales.",
+    "intro": "Como policía, puedes escanear el QR del ciudadano y comprobar sus permisos en segundos.",
+    "bullets": [
+      "Verifica permiso de circulación y carnet de conducir.",
+      "El control es inmediato y seguro."
+    ],
+    "mock": {
+      "image": "/tramites_licencias/policia_mockup.png",
+      "alt": "Pantalla de control policial"
+    },
+    "cta": "Simular control"
+  }
+}

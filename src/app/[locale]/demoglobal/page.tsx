@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { JSX, useEffect, useState } from 'react';
-import { FaGraduationCap, FaHeart, /*FaCar, FaBuilding*/ } from 'react-icons/fa';
+import { FaGraduationCap, FaHeart, FaCar, /*FaBuilding*/ } from 'react-icons/fa';
 import LanguageDropdown from '@/components/ui/LenguajeDropDown';
 import DemoCard from '@/components/ui/DemoCard';
 
@@ -79,17 +79,18 @@ export default function DemoGlobalPage() {
       video: '/videos/estudiante.mp4',
       objectPosition: '50% 45%',
     },
-    // {
-    //   key: 'coches',
-    //   href: `/${locale}/atributos_verificados/step-1`,
-    //   icon: <FaBuilding />,
-    //   image: '/demoglobal/Atributos.jpg',
-    //   objectPosition: 'center',
-    // },
+    {
+      key: 'coches',
+      href: `/${locale}//tramites_licencias/step-1`,
+      icon: <FaCar />,
+      image: '/demoglobal/Atributos.jpg',
+      video: '/videos/policia.mp4',
+      objectPosition: 'center',
+    },
     // {
     //   key: 'tramites',
     //   href: `/${locale}/tramites_licencias`,
-    //   icon: <FaCar />,
+    //   icon: <FaBuilding />,
     //   image: '/demoglobal/telefonica.jpg',
     //   objectPosition: 'center',
     // },

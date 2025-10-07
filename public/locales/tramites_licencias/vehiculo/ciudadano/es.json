@@ -1,0 +1,32 @@
+{
+  "header": {
+    "title": "Portal de Ciudadanía",
+    "subtitle": "Dirección General de Tráfico"
+  },
+  "alert": {
+    "title": "Trámites Pendientes",
+    "intro": "Tienes 2 trámites obligatorios pendientes. Completa estos documentos para poder circular legalmente."
+  },
+  "carnet": {
+    "title": "Carnet de Conducir",
+    "desc": "Documento obligatorio para conducir vehículos a motor",
+    "action": "Iniciar trámite"
+  },
+  "permiso": {
+    "title": "Permiso de Circulación",
+    "desc": "Autorización necesaria para que tu vehículo pueda circular",
+    "action": "Iniciar trámite"
+  },
+  "info": {
+    "title": "Información importante",
+    "points": [
+      "Ambos documentos son necesarios para circular",
+      "El proceso es digital y seguro",
+      "Recibirás notificaciones del estado"
+    ]
+  },
+  "buttons": {
+    "back": "Volver",
+    "goPolicia": "Ir al portal de Policía"
+  }
+}

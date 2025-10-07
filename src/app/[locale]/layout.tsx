@@ -10,7 +10,8 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
 
   const hideLayout =
   !!pathname?.match(/\/credenciales-profesionales\/ministerio(?:\/|$)/) ||
-  !!pathname?.match(/\/titulos_academicos\/shopyfy(?:\/|$)/);
+  !!pathname?.match(/\/titulos_academicos\/shopyfy(?:\/|$)/) ||
+  !!pathname?.match(/\/tramites_licencias\/vehiculo(?:\/|$)/);
 
   if (hideLayout) {
     return <div className="min-h-screen bg-white">{children}</div>;

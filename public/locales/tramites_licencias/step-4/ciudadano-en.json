@@ -1,0 +1,16 @@
+{
+  "step4": {
+    "title": "Request your digital credentials",
+    "subtitle": "Here you will see how to process your official documentation.",
+    "intro": "As a citizen, you can obtain your circulation permit and driving license in digital format.",
+    "bullets": [
+      "The credential is issued by an official authority.",
+      "You will always carry your documentation securely in your wallet."
+    ],
+    "mock": {
+      "image": "/tramites_licencias/mock_up_ingles.png",
+      "alt": "Citizen’s procedure screen"
+    },
+    "cta": "Go to procedures"
+  }
+}

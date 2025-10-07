@@ -1,0 +1,16 @@
+{
+  "step4": {
+    "title": "Solicita tus credenciales digitales",
+    "subtitle": "Aquí verás cómo tramitar tu documentación oficial.",
+    "intro": "Como ciudadano, puedes obtener tu permiso de circulación y carnet de conducir en formato digital.",
+    "bullets": [
+      "La credencial se emite desde un organismo oficial.",
+      "Podrás llevar siempre tu documentación en tu wallet."
+    ],
+    "mock": {
+      "image": "/tramites_licencias/ciudadano_mockup.png",
+      "alt": "Pantalla de trámites del ciudadano"
+    },
+    "cta": "Ir a trámites"
+  }
+}

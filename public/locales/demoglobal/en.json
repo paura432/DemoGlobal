@@ -4,9 +4,9 @@
       "subtitle": "The future of digital identity",
       "intro": "Discover the power of <strong>Self-Sovereign Identity (SSI)</strong> through interactive demos, illustrating how digital credentials integrate with eIDAS guidelines. Get ready for a new era of trust and control in the digital world.",
       "cards": {
-        "estudios": "Academic Degrees",
         "salud": "Professional Credentials",
-        "coches": "Cars",
+        "estudios": "Academic Degrees",
+        "coches": "Licenses and taxes",
         "telefonica": "Telefónica",
         "tramites": "Procedures"
       }

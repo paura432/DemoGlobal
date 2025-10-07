@@ -1,0 +1,21 @@
+{
+  "header": {
+    "title": "Vehicle Registration Permit",
+    "subtitle": "Verifiable Digital Credential"
+  },
+  "loading": {
+    "issuing": "Issuing credential...",
+    "generating": "Generating QR code..."
+  },
+  "qr": {
+    "title": "Vehicle Registration Issuance",
+    "instruction": "Scan this QR code with your digital wallet to receive the vehicle credential",
+    "button": "I have scanned the QR",
+    "hint": "Click if you already scanned the code with your wallet"
+  },
+  "error": {
+    "title": "Issuance error",
+    "retry": "Try again"
+  },
+  "footer": "Verifiable Credentials Demo · Telefónica Tech · DGT"
+}

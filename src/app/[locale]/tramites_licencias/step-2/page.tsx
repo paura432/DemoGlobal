@@ -250,7 +250,7 @@ export default function Step2() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`/locales/tramites_licencias/step-2/${locale}.json`, {
+      const res = await fetch(`/locales//tramites_licencias/step-2/${locale}.json`, {
         cache: 'no-store'
       });
       const data = (await res.json()) as Step2Translations;
@@ -262,7 +262,7 @@ export default function Step2() {
 
   const goTo = (i: number) => {
     const step = PASOS[i];
-    if (step) router.push(`/${locale}/tramites_licencias/${step}`);
+    if (step) router.push(`/${locale}//tramites_licencias/${step}`);
   };
 
   const handleNext = () => {
@@ -307,19 +307,28 @@ export default function Step2() {
 
   const getTitleForPhase = () => {
     if (idx === 2) {
-      return {
-        firstChar: 'I',
-        titleParts: ['nstala ', 'tu aplicación ', '']
-      };
-    } else {
+      if(locale === 'es'){
+        return {
+          firstChar: 'I',
+          titleParts: ['nstala ' ,'tu aplicación ' , '']
+        };
+      }else if(locale === 'en'){
+        return {
+          firstChar: 'I',
+          titleParts: ['nstall ', 'the app ', '']
+        };
+      }
+    }else {
       const firstChar = t.tituloFijo.slice(0, 1);
       const restTitle = t.tituloFijo.slice(1);
       const titleParts = restTitle.split('Wallet');
       return { firstChar, titleParts };
     }
+    return { firstChar: '', titleParts: [''] };
   };
 
   const { firstChar, titleParts } = getTitleForPhase();
+
 
   const buttons = {
     back: t.buttons?.back ?? 'Atrás',
@@ -400,6 +409,8 @@ export default function Step2() {
                         >
                           <div className="w-16 h-16 rounded-xl shadow border border-gray-200 bg-white grid place-items-center group-hover:shadow-md transition">
                             <Image
+                              width={40}
+                              height={40}
                               src={app.logo}
                               alt={app.nombre}
                               className="w-10 h-10 object-contain"
@@ -458,7 +469,7 @@ export default function Step2() {
               
               {idx === 0 && (
                 <button
-                  onClick={() => router.push(`/${locale}/tramites_licencias/step-3`)}
+                  onClick={() => router.push(`/${locale}//tramites_licencias/step-3`)}
                   className="text-blue-600 text-sm underline hover:text-blue-700 transition cursor-pointer"
                 >
                   {buttons.go}

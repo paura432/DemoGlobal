@@ -1,0 +1,21 @@
+{
+  "header": {
+    "title": "Carnet de Conducir",
+    "subtitle": "Credencial Verificable Digital"
+  },
+  "loading": {
+    "issuing": "Emitiendo credencial...",
+    "generating": "Generando código QR..."
+  },
+  "qr": {
+    "title": "Emisión de Carnet de Conducir",
+    "instruction": "Escanea el código QR con tu wallet digital para recibir tu credencial verificable",
+    "button": "He escaneado el QR",
+    "hint": "Pulsa si ya has escaneado el código con tu wallet"
+  },
+  "error": {
+    "title": "Error en la emisión",
+    "retry": "Intentar de nuevo"
+  },
+  "footer": "Demo de credenciales verificables · Telefónica Tech · DGT"
+}
