@@ -33,19 +33,16 @@ export default function FooterDemo() {
 
   return (
     <footer className="w-full bg-[#0057B8] text-white">
-      {/* Sección superior con logo */}
-      <div className="flex flex-col items-center justify-center py-6 space-y-3">
-        <Image
-          src="/demoglobal/telefonica-tech-logo.png"
-          alt="Telefónica Tech"
-          width={160}
-          height={40}
-          className="opacity-90"
-        />
-        <p className="text-xs font-light opacity-80 text-center max-w-xs">
-          {locale === 'es'
-            ? 'Demostración de credenciales verificables de Telefónica Tech.'
-            : 'Telefónica Tech Verifiable Credentials demo.'}
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-3-y py-3 px-6">
+      <Image
+        src="/demoglobal/telefonica-tech-logo.png"
+        alt="Telefónica Tech"
+        width={160}
+        height={40}
+        className="opacity-90"
+      />
+        <p className="text-sm px-6 text-right">
+          Demostración de credenciales verificables de Telefónica Tech.
         </p>
       </div>
 
@@ -81,11 +78,6 @@ export default function FooterDemo() {
             </Link>
           ))}
         </div>
-      </div>
-
-      {/* Copyright */}
-      <div className="text-center py-2 bg-[#004C9A] text-[10px] font-extralight text-[#F2F4FF]/80">
-        © {new Date().getFullYear()} Telefónica Tech — TrustOS
       </div>
     </footer>
   );
