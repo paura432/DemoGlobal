@@ -1,14 +1,19 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Header from '@/components/ui/Header';
 import '@/components/ui/global.css';
 import FooterDemo from '@/components/ui/footer';
 
+
 export default function HealthLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
+  useEffect(() => {
+    document.body.classList.add('loaded');
+  }, []);
+  
   const hideLayout =
     !!pathname?.match(/\/credenciales-profesionales\/ministerio(?:\/|$)/) ||
     !!pathname?.match(/\/titulos_academicos\/shopyfy(?:\/|$)/) ||
@@ -19,7 +24,7 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="h-screen flex flex-col bg-white">
       {/* Header con altura flexible */}
       <div className="flex-shrink-0">
         <Header />
@@ -38,10 +43,7 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
         )}
       </main>
 
-      {/* Footer */}
-      <div className="flex-shrink-0">
-        <FooterDemo />
-      </div>
+      <FooterDemo />
     </div>
   );
 }

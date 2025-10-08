@@ -6,9 +6,8 @@
       "cards": {
         "salud": "Credenciales profesionales",
         "estudios": "Títulos académicos",
-        "coches": "Licencias y tributos",
-        "telefonica": "Atributos verificables",
-        "tramites": "Firma de documentos"
+        "tramites": "Firma de documentos",
+        "atributos": "Atributos verificados"
       }
     }
   }

@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 export default function CredencialesLayout({ children }: { children: ReactNode }) {
   return (
-    <div>
+    <div className="h-screen flex flex-col bg-white">
       {children}
     </div>
   );

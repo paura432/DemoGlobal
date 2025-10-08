@@ -80,3 +80,11 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+footer {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+body.loaded footer {
+  opacity: 1;
+}

@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { JSX, useEffect, useState } from 'react';
-import { FaGraduationCap, FaHeart } from 'react-icons/fa';
+import { FaGraduationCap, FaHeart, FaBuilding } from 'react-icons/fa';
 import LanguageDropdown from '@/components/ui/LenguajeDropDown';
 import DemoCard from '@/components/ui/DemoCard';
 import { FaNewspaper } from 'react-icons/fa6';
@@ -81,7 +81,7 @@ export default function DemoGlobalPage() {
       objectPosition: '50% 45%',
     },
     {
-      key: 'coches',
+      key: 'tramites',
       href: `/${locale}/tramites_licencias/step-1`,
       icon: <FaNewspaper />,
       image: '/demoglobal/Atributos.jpg',
@@ -89,8 +89,8 @@ export default function DemoGlobalPage() {
       objectPosition: 'center',
     },
     // {
-    //   key: 'tramites',
-    //   href: `/${locale}/tramites_licencias`,
+    //   key: 'atributos',
+    //   href: `/${locale}/atributos_verificados/step-1`,
     //   icon: <FaBuilding />,
     //   image: '/demoglobal/telefonica.jpg',
     //   objectPosition: 'center',
