@@ -117,7 +117,7 @@ export default function CiudadanoPage() {
               <span className="text-xs font-semibold text-red-700">⚠️ {locale === 'es' ? 'TRÁMITE OBLIGATORIO' : 'MANDATORY PROCESS'}</span>
             </div>
             <button
-              onClick={() => router.push(`/${locale}//tramites_licencias/vehiculo/ciudadano/carnetConducir`)}
+              onClick={() => router.push(`/${locale}/tramites_licencias/vehiculo/ciudadano/carnetConducir`)}
               className="w-full bg-[#0066CC] hover:bg-[#004A99] text-white font-semibold py-1.5 rounded-full text-sm"
             >
               {t.carnet.action}
@@ -133,7 +133,7 @@ export default function CiudadanoPage() {
               <span className="text-xs font-semibold text-red-700">⚠️ {locale === 'es' ? 'TRÁMITE OBLIGATORIO' : 'MANDATORY PROCESS'}</span>
             </div>
             <button
-              onClick={() => router.push(`/${locale}//tramites_licencias/vehiculo/ciudadano/permisoCirculacion`)}
+              onClick={() => router.push(`/${locale}/tramites_licencias/vehiculo/ciudadano/permisoCirculacion`)}
               className="w-full bg-[#0066CC] hover:bg-[#004A99] text-white font-semibold py-1.5 rounded-full text-sm"
             >
               {t.permiso.action}
@@ -163,7 +163,7 @@ export default function CiudadanoPage() {
             {t.buttons.back}
           </button>
           <button
-            onClick={() => router.push(`/${locale}//tramites_licencias/step-1`)}
+            onClick={() => router.push(`/${locale}/tramites_licencias/step-1`)}
             className="bg-[#004A99] hover:bg-[#003C7A] text-white px-5 py-1.5 rounded-full text-sm font-medium flex items-center gap-1"
           >
             {t.buttons.goPolicia}

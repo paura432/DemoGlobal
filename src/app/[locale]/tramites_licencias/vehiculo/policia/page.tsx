@@ -21,6 +21,7 @@ interface Translation {
     verifyTitle: string;
     doc1: string;
     doc2: string;
+    doc3: string;
     back: string;
   };
   right: {
@@ -223,6 +224,9 @@ export default function VerificacionPolicia() {
                 </p>
                 <p className={`${phase === 'ready' ? 'text-green-700' : 'text-gray-500'}`}>
                   {phase === 'ready' ? '✓' : '○'} {t.left.doc2}
+                </p>
+                <p className={`${phase === 'ready' ? 'text-green-700' : 'text-gray-500'}`}>
+                  {phase === 'ready' ? '✓' : '○'} {t.left.doc3}
                 </p>
               </div>
             </div>

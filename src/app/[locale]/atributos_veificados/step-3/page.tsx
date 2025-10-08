@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import HomeButton from '@/components/ui/HomeButton';
 import { QRCodeCanvas } from 'qrcode.react';
 
 const PASOS = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'] as const;
@@ -101,7 +102,7 @@ export default function Step3() {
   useEffect(() => {
     (async () => {
       const res = await fetch(
-        `/locales//tramites_licencias/step-3/${locale}.json`,
+        `/locales/tramites_licencias/step-3/${locale}.json`,
         { cache: 'no-store' }
       );
       const data = (await res.json()) as Step3Json;
@@ -146,18 +147,24 @@ export default function Step3() {
 
   return (
     <div className="h-screen flex flex-col bg-white">
+
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
         {/* pasos arriba */}
-        <div className="w-full flex justify-center pt-1 pb-6">
+        {/* Progreso con HomeButton */}
+        <div className="w-full flex justify-center pt-1 pb-6 relative">
+          {/* Botón Home alineado con el progreso */}
+          <div className="absolute left-3 sm:left-8 lg:left-14 top-1">
+            <HomeButton />
+          </div>
+
           <div className="flex gap-2 items-center">
             {PASOS.map((_, i) => (
               <div key={i} className="flex items-center">
                 <div
-                  className={`w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center border ${
-                    i === 2
+                  className={`w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center border ${i === 2
                       ? 'bg-blue-600 text-white border-blue-600'
                       : 'bg-white text-gray-400 border-gray-300'
-                  }`}
+                    }`}
                 >
                   {i + 1}
                 </div>

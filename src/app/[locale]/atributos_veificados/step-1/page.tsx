@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import HomeButton from '@/components/ui/HomeButton';
 
 
 
@@ -36,7 +37,7 @@ export default function Step1() {
     let alive = true;
     (async () => {
       try {
-        const res = await fetch(`/locales//tramites_licencias/step-1/${locale}.json`, { cache: 'no-store' });
+        const res = await fetch(`/locales/tramites_licencias/step-1/${locale}.json`, { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = (await res.json()) as Step1Translations;
         if (alive) setT(data);
@@ -67,18 +68,25 @@ export default function Step1() {
   const goNext = () => {
     localStorage.setItem('tt_role', 'medico');
     const next = pasos[currentStep + 1];
-    if (next) router.push(`/${locale}//tramites_licencias/${next}`);
+    if (next) router.push(`/${locale}/tramites_licencias/${next}`);
   };
 
   const buttons = t.buttons || { back: 'Back', next: 'Next' };
 
   return (
     <div className="h-screen flex flex-col bg-white">
+    
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
         {/* Progreso */}
-        <div className="w-full flex justify-center pt-1 pb-6">
-          <div className="flex gap-2 items-center">
-            {pasos.map((_, i) => (
+      {/* Progreso con HomeButton */}
+      <div className="w-full flex justify-center pt-1 pb-6 relative">
+        {/* Botón Home alineado con el progreso */}
+        <div className="absolute left-3 sm:left-8 lg:left-14 top-1">
+          <HomeButton />
+        </div>
+        
+        <div className="flex gap-2 items-center">
+          {pasos.map((_, i) => (
               <div key={i} className="flex items-center">
                 <div
                   className={`w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center border ${

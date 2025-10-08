@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import HomeButton from '@/components/ui/HomeButton';
 
 
 
@@ -74,11 +75,18 @@ export default function Step1() {
 
   return (
     <div className="h-screen flex flex-col bg-white">
+    
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
         {/* Progreso */}
-        <div className="w-full flex justify-center pt-1 pb-6">
-          <div className="flex gap-2 items-center">
-            {pasos.map((_, i) => (
+{/* Progreso con HomeButton */}
+<div className="w-full flex justify-center pt-1 pb-6 relative">
+  {/* Botón Home alineado con el progreso */}
+  <div className="absolute left-3 sm:left-9 lg:left-14 top-1">
+    <HomeButton />
+  </div>
+  
+  <div className="flex gap-2 items-center">
+    {pasos.map((_, i) => (
               <div key={i} className="flex items-center">
                 <div
                   className={`w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center border ${

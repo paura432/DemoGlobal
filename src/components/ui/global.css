@@ -1,17 +1,75 @@
 /* Carga todo Tailwind v4 de una vez */
 @import "tailwindcss";
 
-/* Reset y control de overflow */
+/* ===== CONFIGURACIÓN DE TELEFÓNICA SANS ===== */
+@layer base {
+  /* Aplicar Telefónica Sans globalmente */
+  * {
+    font-family: var(--font-telefonica-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  /* Estilos base para títulos con Telefónica Sans */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+
+  /* Scroll suave */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ===== UTILIDADES PERSONALIZADAS PARA PESOS DE FUENTE ===== */
+@layer utilities {
+  .font-telefonica-hairline {
+    font-weight: 100;
+  }
+
+  .font-telefonica-thin {
+    font-weight: 200;
+  }
+
+  .font-telefonica-light {
+    font-weight: 300;
+  }
+
+  .font-telefonica-regular {
+    font-weight: 400;
+  }
+
+  .font-telefonica-medium {
+    font-weight: 500;
+  }
+
+  .font-telefonica-demibold {
+    font-weight: 600;
+  }
+
+  .font-telefonica-bold {
+    font-weight: 700;
+  }
+
+  .font-telefonica-extrabold {
+    font-weight: 800;
+  }
+
+  .font-telefonica-black {
+    font-weight: 900;
+  }
+}
+
+/* ===== RESET Y CONTROL DE OVERFLOW ===== */
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* quita scroll horizontal */
-  overflow-y: hidden;   /* scroll vertical solo si hace falta */
-  font-family: Arial, sans-serif;
   background-color: #fff;
 }
 
-/* Tus estilos globales */
+/* ===== ESTILOS PERSONALIZADOS PARA INPUTS ===== */
 input[type='number'] {
   -moz-appearance: textfield;
   appearance: textfield;
@@ -21,27 +79,4 @@ input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-/* ===== ESCALADO RESPONSIVE PARA PANTALLAS GRANDES ===== */
-
-/* Pantallas extra grandes (1800px+) - Zoom 1.4x */
-@media screen and (min-width: 1800px) {
-  body {
-    zoom: 1.4;
-  }
-}
-
-/* Pantallas grandes (1400px - 1799px) - Zoom 1.2x */
-@media screen and (min-width: 1400px) and (max-width: 1799px) {
-  body {
-    zoom: 1.2;
-  }
-}
-
-/* Pantallas normales (hasta 1399px) - Sin zoom */
-@media screen and (max-width: 1399px) {
-  body {
-    zoom: 1;
-  }
 }

@@ -11,6 +11,7 @@
     "verifyTitle": "Documents to verify:",
     "doc1": "Driver’s license",
     "doc2": "Vehicle registration",
+    "doc3": "Citizen credential",
     "back": "← Back to dashboard"
   },
   "right": {

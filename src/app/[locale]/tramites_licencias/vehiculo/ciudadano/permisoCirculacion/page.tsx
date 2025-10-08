@@ -87,7 +87,7 @@ export default function PermisoPage() {
   // ✅ Botón al completar escaneo
   const handleScanComplete = () => {
     localStorage.setItem('permisoCompleted', 'true');
-    router.push(`/${locale}//tramites_licencias/vehiculo/ciudadano`);
+    router.push(`/${locale}/tramites_licencias/vehiculo/ciudadano`);
   };
 
   if (!t) return <div className="p-10 text-center text-gray-500">Cargando interfaz...</div>;

@@ -1,0 +1,92 @@
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { FaInstagram, FaLinkedin, FaXTwitter, FaYoutube } from "react-icons/fa6";
+
+const LINKS = {
+  legal: {
+    es: [
+      { url: '/legal', text: 'Aviso Legal' },
+      { url: '/cookies', text: 'Política de Cookies' },
+      { url: '/privacidad', text: 'Privacidad' },
+    ],
+    en: [
+      { url: '/legal', text: 'Legal Notice' },
+      { url: '/cookies', text: 'Cookies Policy' },
+      { url: '/privacy', text: 'Privacy Policy' },
+    ],
+  },
+  social: [
+    { url: 'https://www.linkedin.com/company/telefonicatech/', icon: FaLinkedin },
+    { url: 'https://twitter.com/TelefonicaTech', icon: FaXTwitter },
+    { url: 'https://www.instagram.com/TelefonicaTech', icon: FaInstagram },
+    { url: 'https://www.youtube.com/c/TelefonicaTech', icon: FaYoutube },
+  ],
+};
+
+export default function FooterDemo() {
+  const pathname = usePathname();
+  const locale = (pathname.split('/')[1] || 'es') as 'es' | 'en';
+  const legalLinks = LINKS.legal[locale];
+
+  return (
+    <footer className="w-full bg-[#0057B8] text-white">
+      {/* Sección superior con logo */}
+      <div className="flex flex-col items-center justify-center py-6 space-y-3">
+        <Image
+          src="/demoglobal/telefonica-tech-logo.png"
+          alt="Telefónica Tech"
+          width={160}
+          height={40}
+          className="opacity-90"
+        />
+        <p className="text-xs font-light opacity-80 text-center max-w-xs">
+          {locale === 'es'
+            ? 'Demostración de credenciales verificables de Telefónica Tech.'
+            : 'Telefónica Tech Verifiable Credentials demo.'}
+        </p>
+      </div>
+
+      {/* Línea divisoria */}
+      <div className="w-full border-t border-[#F2F4FF]/30" />
+
+      {/* Sección inferior con enlaces y redes */}
+      <div className="flex flex-col md:flex-row items-center justify-between max-w-5xl mx-auto px-6 py-4 text-xs">
+        {/* Enlaces legales */}
+        <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-3 md:mb-0">
+          {legalLinks.map((link, index) => (
+            <Link
+              key={index}
+              href={link.url}
+              className="opacity-80 hover:opacity-100 transition-all"
+            >
+              {link.text}
+            </Link>
+          ))}
+        </div>
+
+        {/* Redes sociales */}
+        <div className="flex items-center justify-center gap-5">
+          {LINKS.social.map((network, index) => (
+            <Link
+              key={index}
+              href={network.url}
+              target="_blank"
+              className="opacity-80 hover:opacity-100 transition-all"
+              aria-label="social link"
+            >
+              <network.icon className="text-lg" />
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="text-center py-2 bg-[#004C9A] text-[10px] font-extralight text-[#F2F4FF]/80">
+        © {new Date().getFullYear()} Telefónica Tech — TrustOS
+      </div>
+    </footer>
+  );
+}

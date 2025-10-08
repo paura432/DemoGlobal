@@ -2,9 +2,10 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { JSX, useEffect, useState } from 'react';
-import { FaGraduationCap, FaHeart, FaCar, /*FaBuilding*/ } from 'react-icons/fa';
+import { FaGraduationCap, FaHeart } from 'react-icons/fa';
 import LanguageDropdown from '@/components/ui/LenguajeDropDown';
 import DemoCard from '@/components/ui/DemoCard';
+import { FaNewspaper } from 'react-icons/fa6';
 
 type DemoTranslations = {
   demoglobal: {
@@ -81,10 +82,10 @@ export default function DemoGlobalPage() {
     },
     {
       key: 'coches',
-      href: `/${locale}//tramites_licencias/step-1`,
-      icon: <FaCar />,
+      href: `/${locale}/tramites_licencias/step-1`,
+      icon: <FaNewspaper />,
       image: '/demoglobal/Atributos.jpg',
-      video: '/videos/policia.mp4',
+      video: '/videos/ciudadano.mp4',
       objectPosition: 'center',
     },
     // {
@@ -107,7 +108,7 @@ export default function DemoGlobalPage() {
     <>
       <header className="w-full">
         <div className="border-b border-gray-200">
-          <div className="max-w-[1000px] mx-auto px-3 grid grid-cols-3 items-center">
+          <div className="max-w-[1000px] mx-auto px-20 grid grid-cols-3 items-center">
             <div className="justify-self-start text-base font-semibold text-gray-600 select-none">
               Trust<span className="text-blue-600">OS</span>
             </div>

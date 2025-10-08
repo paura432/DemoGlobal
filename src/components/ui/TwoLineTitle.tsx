@@ -12,7 +12,7 @@ export default function TwoLineTitle({ text, className = "" }: TwoLineTitleProps
   if (words.length === 1) {
     // Si es una sola palabra, mostrarla completa
     return (
-      <span className={`text-xs leading-tight text-center font-medium group-hover:text-blue-700 transition-colors ${className}`}>
+      <span className={`text-xs sm:text-sm leading-tight text-center font-medium group-hover:text-blue-700 transition-colors ${className}`}>
         {text}
       </span>
     );
@@ -21,7 +21,7 @@ export default function TwoLineTitle({ text, className = "" }: TwoLineTitleProps
   // Si son 2 palabras, una en cada línea
   if (words.length === 2) {
     return (
-      <span className={`text-xs leading-tight text-center font-medium group-hover:text-blue-700 transition-colors ${className}`}>
+      <span className={`text-xs sm:text-sm leading-tight text-center font-medium group-hover:text-blue-700 transition-colors ${className}`}>
         {words[0]}
         <br />
         {words[1]}
@@ -35,7 +35,7 @@ export default function TwoLineTitle({ text, className = "" }: TwoLineTitleProps
   const secondLine = words.slice(midPoint).join(' ');
 
   return (
-    <span className={`text-xs leading-tight text-center font-medium group-hover:text-blue-700 transition-colors ${className}`}>
+    <span className={`text-xs sm:text-sm leading-tight text-center font-medium group-hover:text-blue-700 transition-colors ${className}`}>
       {firstLine}
       <br />
       {secondLine}

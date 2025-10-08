@@ -23,7 +23,7 @@ export default function DemoCard({
   return (
     <Link
       href={href}
-      className="w-[120px] sm:w-[140px] flex flex-col items-center group min-h-[210px]"
+      className="w-full max-w-[120px] sm:max-w-[140px] md:max-w-[160px] lg:max-w-[170px] flex flex-col items-center group min-h-[180px] sm:min-h-[210px] lg:min-h-[230px]"
       aria-label={label}
     >
       <HoverMedia
@@ -33,8 +33,8 @@ export default function DemoCard({
         objectPosition={objectPosition}
       />
 
-      <div className="flex items-start gap-2 mt-2 text-gray-800">
-        <span className="text-gray-500 group-hover:text-blue-700 transition-colors text-base leading-none mt-[2px]">
+      <div className="flex items-start gap-2 mt-2 text-gray-800 w-full justify-center">
+        <span className="text-gray-500 group-hover:text-blue-700 transition-colors text-sm sm:text-base leading-none mt-[2px] flex-shrink-0">
           {icon}
         </span>
         <TwoLineTitle text={label} />

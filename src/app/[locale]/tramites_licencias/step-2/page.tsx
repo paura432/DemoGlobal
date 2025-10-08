@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState, useMemo } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import HomeButton from '@/components/ui/HomeButton';
 import QRCode from 'qrcode';
 
 
@@ -338,9 +339,15 @@ export default function Step2() {
 
   return (
     <div className="h-screen flex flex-col bg-white">
+    
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
         {/* Pasos */}
-        <div className="w-full flex justify-center pt-1 pb-6">
+        <div className="w-full flex justify-center pt-1 pb-6 relative">
+          {/* Botón Home alineado con el progreso */}
+          <div className="absolute left-3 sm:left-8 lg:left-14 top-1">
+            <HomeButton />
+          </div>
+          
           <ol className="flex items-center gap-2">
             {PASOS.map((_, i) => (
               <li key={i} className="flex items-center">

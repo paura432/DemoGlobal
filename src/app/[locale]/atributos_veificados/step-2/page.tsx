@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState, useMemo } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import HomeButton from '@/components/ui/HomeButton';
 import QRCode from 'qrcode';
 
 
@@ -250,7 +251,7 @@ export default function Step2() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`/locales//tramites_licencias/step-2/${locale}.json`, {
+      const res = await fetch(`/locales/tramites_licencias/step-2/${locale}.json`, {
         cache: 'no-store'
       });
       const data = (await res.json()) as Step2Translations;
@@ -262,7 +263,7 @@ export default function Step2() {
 
   const goTo = (i: number) => {
     const step = PASOS[i];
-    if (step) router.push(`/${locale}//tramites_licencias/${step}`);
+    if (step) router.push(`/${locale}/tramites_licencias/${step}`);
   };
 
   const handleNext = () => {
@@ -329,9 +330,15 @@ export default function Step2() {
 
   return (
     <div className="h-screen flex flex-col bg-white">
+    
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
         {/* Pasos */}
-        <div className="w-full flex justify-center pt-1 pb-6">
+        <div className="w-full flex justify-center pt-1 pb-6 relative">
+          {/* Botón Home alineado con el progreso */}
+          <div className="absolute left-3 sm:left-8 lg:left-14 top-1">
+            <HomeButton />
+          </div>
+          
           <ol className="flex items-center gap-2">
             {PASOS.map((_, i) => (
               <li key={i} className="flex items-center">
@@ -458,7 +465,7 @@ export default function Step2() {
               
               {idx === 0 && (
                 <button
-                  onClick={() => router.push(`/${locale}//tramites_licencias/step-3`)}
+                  onClick={() => router.push(`/${locale}/tramites_licencias/step-3`)}
                   className="text-blue-600 text-sm underline hover:text-blue-700 transition cursor-pointer"
                 >
                   {buttons.go}

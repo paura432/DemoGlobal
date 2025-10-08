@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import HomeButton from '@/components/ui/HomeButton';
 
 const PASOS = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'] as const;
 
@@ -74,8 +75,8 @@ export default function Step4() {
   useEffect(() => {
     (async () => {
       const [r4, r3] = await Promise.all([
-        fetch(`/locales//tramites_licencias/step-4/${locale}.json`, { cache: 'no-store' }),
-        fetch(`/locales//tramites_licencias/step-3/${locale}.json`, { cache: 'no-store' }),
+        fetch(`/locales/tramites_licencias/step-4/${locale}.json`, { cache: 'no-store' }),
+        fetch(`/locales/tramites_licencias/step-3/${locale}.json`, { cache: 'no-store' }),
       ]);
       const d4 = (await r4.json()) as Step4T;
       const d3 = (await r3.json()) as Step3T;
@@ -94,14 +95,21 @@ export default function Step4() {
 
   const bullets = (c.bullets ?? []).slice(0, 2);
 
-  const goBack = () => router.push(`/${locale}//tramites_licencias/step-3`);
-  const goNext = () => router.push(`/${locale}//tramites_licencias/ministerio`);
+  const goBack = () => router.push(`/${locale}/tramites_licencias/step-3`);
+  const goNext = () => router.push(`/${locale}/tramites_licencias/ministerio`);
 
   return (
     <div className="h-screen flex flex-col bg-white">
+    
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
         {/* Progreso */}
-        <div className="w-full flex justify-center pt-1 pb-6">
+        {/* Progreso con HomeButton */}
+        <div className="w-full flex justify-center pt-1 pb-6 relative">
+          {/* Botón Home alineado con el progreso */}
+          <div className="absolute left-3 sm:left-8 lg:left-14 top-1">
+            <HomeButton />
+          </div>
+          
           <div className="flex gap-2 items-center">
             {PASOS.map((_, i) => (
               <div key={i} className="flex items-center">
