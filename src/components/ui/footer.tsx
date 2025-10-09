@@ -49,8 +49,8 @@ export default function FooterDemo() {
   const legalLinks = LINKS.legal[locale];
 
   return (
-    <footer className="w-full bg-[#0057B8] text-white">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-3-y py-3 px-6">
+    <footer className="w-full bg-[#0157b8] text-white">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-left items-center pt-10 px-10 pb-6">
       <Image
         src="/demoglobal/telefonica-tech-logo.png"
         alt="Telefónica Tech"
@@ -58,18 +58,22 @@ export default function FooterDemo() {
         height={40}
         className="opacity-90"
       />
-        <p className="text-sm px-6 text-right">
-          Demostración de credenciales verificables de Telefónica Tech.
+      </div>
+      <div className="max-w-1xl mx-auto flex flex-col justify-left pb-6 px-5">
+        <p className="text-sm px-6 text-left">
+        Telefónica Tech es la compañía líder en transformación digital. La compañía cuenta con una amplia oferta de servicios y
+        </p>
+        <p className="text-sm px-6 text-left">
+        soluciones tecnológicas integradas de Ciberseguridad, Cloud, IoT, Big Data o Blockchain.
         </p>
       </div>
-
       {/* Línea divisoria */}
       <div className="w-full border-t border-[#F2F4FF]/30" />
 
       {/* Sección inferior con enlaces y redes */}
-      <div className="flex flex-col md:flex-row items-center justify-between max-w-5xl mx-auto px-6 py-4 text-xs">
+      <div className="flex flex-col md:flex-row items-center justify-between max-w-1xl mx-auto px-10 py-4 text-xs">
         {/* Enlaces legales */}
-        <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-3 md:mb-0">
+        <div className="flex flex-wrap justify-center md:justify-start gap-3 pb-3">
           {legalLinks.map((link, index) => (
             <Link
               key={index}

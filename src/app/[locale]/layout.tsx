@@ -24,7 +24,7 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white">
       {/* Header con altura flexible */}
       <div className="flex-shrink-0">
         <Header />
@@ -33,11 +33,11 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
       {/* Main content responsive */}
       <main className="flex-1 flex justify-center w-full">
         {!!pathname?.match(/demoglobal(?:\/|$)/) ? (
-          <div className="w-full max-w-8xl px-4 sm:px-6 lg:px-8 py-2 sm:py-4 lg:py-8 flex flex-col">
+          <div className="w-full max-w-8xl px-4 sm:px-6 lg:px-8 py-3 flex flex-col">
             {children}
           </div>
          ) : (
-          <div className="w-full max-w-[1000px] max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 flex flex-coll">
+          <div className="w-full max-w-[1000px] max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col">
             {children}
           </div>
         )}
@@ -47,4 +47,3 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
     </div>
   );
 }
-
