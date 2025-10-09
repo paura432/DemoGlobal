@@ -8,9 +8,26 @@ import { FaInstagram, FaLinkedin, FaXTwitter, FaYoutube } from "react-icons/fa6"
 const LINKS = {
   legal: {
     es: [
-      { url: '/legal', text: 'Aviso Legal' },
-      { url: '/cookies', text: 'Política de Cookies' },
-      { url: '/privacidad', text: 'Privacidad' },
+      {
+        url: 'https://www.telefonica.com/aviso-legal',
+        text: 'Aviso Legal'
+    },
+    {
+        url: 'https://www.telefonica.com/es/cookies',
+        text: 'Política de Cookies'
+    },
+    {
+        url: 'https://www.telefonica.com/es/telefonica-accesible',
+        text: 'Accesibilidad'
+    },
+    {
+        url: 'https://www.telefonica.com/politica-de-privacidad',
+        text: 'Privacidad'
+    },
+    {
+        url: 'https://www.telefonica.com/mapa-sitio',
+        text: 'Mapa del sitio'
+    }
     ],
     en: [
       { url: '/legal', text: 'Legal Notice' },

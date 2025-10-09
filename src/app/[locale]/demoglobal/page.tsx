@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { JSX, useEffect, useState } from 'react';
-import { FaGraduationCap, FaHeart, FaBuilding } from 'react-icons/fa';
+import { FaGraduationCap, FaHeart } from 'react-icons/fa';
 import LanguageDropdown from '@/components/ui/LenguajeDropDown';
 import DemoCard from '@/components/ui/DemoCard';
 import { FaNewspaper } from 'react-icons/fa6';
