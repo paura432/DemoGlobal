@@ -1,54 +1,148 @@
 {
+  "cliente": {
     "tituloFijo": "Primero necesitará una Wallet",
     "bloques": [
       {
-        "subtitulo": "¿Qué son las Wallets de Credenciales Verificables?",
-        "texto": "Imagina una billetera digital en el móvil que, en vez de guardar dinero o tarjetas de crédito, almacena credenciales verificables. Piensa en ellas como documentos importantes, pero en formato digital y seguro (DNI, pasaporte, títulos, etc.).",
-        "video": "/videos/step-2-1.mp4"
+        "id": "intro",
+        "titulo": "Quiere comprar online más segura",
+        "instrucciones": [
+          "Le gustaría realizar una <b>compra más segura</b>.",
+          "Sin compartir ni rellenar <b>datos personales</b>.",
+          "En un solo click, datos personales y de pago.",
+          "Su <b>banco particular</b> le ofrece la opción de generar su propia credencial para realizar compras online."
+        ],
+        "video": "/videos/cliente-online.mp4",
+        "poster": "/demoglobal/cliente-online.png",
+        "boton": "Siguiente"
       },
       {
-        "subtitulo": "¿Cómo funcionan?",
-        "texto": "Las wallets de credenciales verificables otorgan a sus usuarios el control total sobre sus datos. Se decide qué información compartir y con quién. Por ejemplo, si solo se necesita demostrar la edad para acceder a un servicio, únicamente se comparte la fecha de nacimiento, sin revelar toda la identificación.",
-        "video": "/videos/step-2-2.mp4"
+        "id": "wallets",
+        "titulo": "¿Qué son las Wallets de Credenciales Verificables?",
+        "instrucciones": [
+          "Imagina una <b>billetera digital</b> en tu móvil que, en lugar de guardar dinero o tarjetas, almacena <b>credenciales verificables</b>.",
+          "Piensa en ellas como documentos importantes (DNI, pasaporte, carnet profesional), pero en formato digital y seguro.",
+          "Te permiten demostrar información verificada sin tener que compartir tus datos personales completos."
+        ],
+        "video": "/videos/step-2-1.mp4",
+        "poster": "/demoglobal/wallet-intro.png",
+        "boton": "Siguiente"
       },
       {
-        "subtitulo": "Instala tu aplicación Wallet",
-        "texto": "Primero, instala alguna de las aplicaciones compatibles en tu smartphone. Puedes ver el QR tocando en los iconos.",
+        "id": "funcion",
+        "titulo": "¿Cómo funcionan?",
+        "instrucciones": [
+          "Las Wallets te dan el <b>control total sobre tus datos</b>.",
+          "Tú eliges qué compartir y con quién.",
+          "Por ejemplo, si solo necesitas demostrar tu edad para acceder a un servicio, compartes solo tu fecha de nacimiento, sin mostrar tu DNI completo."
+        ],
+        "video": "/videos/step-2-2.mp4",
+        "poster": "/demoglobal/wallet-funcion.png",
+        "boton": "Siguiente"
+      },
+      {
+        "id": "apps",
+        "titulo": "Instala tu aplicación Wallet",
+        "instrucciones": [
+          "Instala una de las <b>aplicaciones compatibles</b> en tu smartphone.",
+          "Puedes tocar el icono para mostrar el código QR de descarga o abrir directamente el enlace a la tienda."
+        ],
         "video": "/videos/step-2-3.mp4",
+        "poster": "/demoglobal/procivis-promo.png",
         "apps": [
-          { 
-            "id": "procivis", 
-            "nombre": "Procivis", 
+          {
+            "id": "procivis",
+            "nombre": "Procivis",
             "logo": "/demoglobal/procivis.png"
           }
         ],
         "modalItems": [
-          { 
+          {
             "title": "Descarga <strong>Procivis</strong> en tu móvil",
-            "sub": "Escanea este código QR con tu móvil o usa los botones de tienda. También puedes buscar \"Procivis\" en tu tienda de apps."
+            "sub": "Escanea este código QR o usa los botones de tienda. También puedes buscar 'Procivis' en tu tienda de apps."
           },
           {
-            "title": "Completa el proceso en la app."
+            "title": "Completa el proceso en la app para activar tu wallet."
           }
-        ]
+        ],
+        "boton": "Ya tengo mi wallet"
       }
-    ],
-    "qrByAppStore": {
-      "procivis": {
-        "appstore": "https://apps.apple.com/app/procivis-wallet/id6477862867",
-        "play": "https://play.google.com/store/apps/details?id=one.procivis.wallet"
+    ]
+  },
+
+  "empresario": {
+    "tituloFijo": "Primero necesitará una Wallet",
+    "bloques": [
+      {
+        "id": "intro",
+        "titulo": "Quiere realizar operaciones seguras",
+        "instrucciones": [
+          "Le gustaría <b>darse de alta en plataformas</b> y hacer gestiones seguras.",
+          "En un solo click, con los datos de la empresa.",
+          "Su <b>banco particular</b> le ofrece la opción de generar su propia credencial de empresa para realizar operaciones seguras."
+        ],
+        "video": "/videos/empresario-operaciones.mp4",
+        "poster": "/demoglobal/empresa-operaciones.png",
+        "boton": "Siguiente"
+      },
+      {
+        "id": "wallets",
+        "titulo": "¿Qué son las Wallets de Credenciales Verificables?",
+        "instrucciones": [
+          "Las Wallets permiten a las empresas <b>gestionar credenciales digitales</b> de forma segura.",
+          "Pueden emitir credenciales verificables para empleados, clientes o partners.",
+          "Estas credenciales permiten automatizar procesos de confianza sin almacenar datos sensibles."
+        ],
+        "video": "/videos/step-2-empresario-1.mp4",
+        "poster": "/demoglobal/empresa-wallet.png",
+        "boton": "Siguiente"
+      },
+      {
+        "id": "apps",
+        "titulo": "Instala tu aplicación Wallet",
+        "instrucciones": [
+          "Para operar con credenciales verificables, instala una wallet en tu dispositivo móvil.",
+          "Recomendamos <b>Procivis</b> por su compatibilidad y facilidad de uso."
+        ],
+        "video": "/videos/step-2-3.mp4",
+        "poster": "/demoglobal/procivis-promo.png",
+        "apps": [
+          {
+            "id": "procivis",
+            "nombre": "Procivis",
+            "logo": "/demoglobal/procivis.png"
+          }
+        ],
+        "modalItems": [
+          {
+            "title": "Descarga <strong>Procivis</strong> en tu móvil",
+            "sub": "Escanea este código QR o usa los botones de tienda."
+          },
+          {
+            "title": "Abre la app y completa el proceso inicial."
+          }
+        ],
+        "boton": "Ya tengo mi wallet"
       }
-    },
-    "ui": {
-      "modalSubtitle": "Descarga la app y completa el proceso",
-      "close": "Cerrar",
-      "done": "Hecho",
-      "extraStep": "Haz click en la app para conseguir el QR de descarga"
-    },
-    "buttons": {
-      "back": "Atrás",
-      "next": "Siguiente",
-      "go": "Ya tengo una wallet"
+    ]
+  },
+
+  "qrByAppStore": {
+    "procivis": {
+      "appstore": "https://apps.apple.com/app/procivis-wallet/id6477862867",
+      "play": "https://play.google.com/store/apps/details?id=one.procivis.wallet"
     }
+  },
+
+  "ui": {
+    "modalSubtitle": "Descarga la app y completa el proceso",
+    "close": "Cerrar",
+    "done": "Hecho",
+    "extraStep": "Haz click en la app para conseguir el QR de descarga"
+  },
+
+  "buttons": {
+    "back": "Atrás",
+    "next": "Siguiente",
+    "go": "Ya tengo una wallet"
   }
-  
+}

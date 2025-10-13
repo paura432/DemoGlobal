@@ -1,17 +1,23 @@
 {
-    "conoceLabel": "Conoce a",
-    "perfiles": {
-      "medico": {
-        "nombre": "Laura",
-        "label": "Médico",
-        "descripcion": "Laura es médico y necesita tener una identidad digital basada en credenciales verificables para acceder a servicios.",
-        "icono": "/demoglobal/medico.png",
-        "video": "/videos/medico.mp4"
-      }
+  "conoceLabel": "Conoce a",
+  "perfiles": {
+    "cliente": {
+      "nombre": "Carolina",
+      "label": "Usuario",
+      "descripcion": "Carolina es un usuario tipo que realiza compras por internet de forma frecuente.",
+      "icono": "/atributos_verificados/cliente.png",
+      "video": "/videos/cliente.mp4"
     },
-    "buttons": {
-      "back": "Atrás",
-      "next": "Siguiente"
+    "empresario": {
+      "nombre": "Álvaro",
+      "label": "Empresario",
+      "descripcion": "Álvaro es un empresario que trabaja con diferentes clientes y proveedores.",
+      "icono": "/atributos_verificados/empresario.png",
+      "video": "/videos/empresario.mp4"
     }
+  },
+  "buttons": {
+    "back": "Atrás",
+    "next": "Siguiente"
   }
-  
+}

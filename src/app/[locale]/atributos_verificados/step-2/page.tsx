@@ -6,32 +6,35 @@ import { usePathname, useRouter } from 'next/navigation';
 import HomeButton from '@/components/ui/HomeButton';
 import QRCode from 'qrcode';
 
-
+/* --- Config general --- */
 const PASOS = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'] as const;
 
 type StoreId = 'appstore' | 'play';
-type AppId = 'privadoid' | 'nik' | 'vidwallet';
+type AppId = 'procivis';
+type Rol = 'cliente' | 'empresario';
 
 type AppItem = { id: AppId; nombre: string; logo: string };
 type ModalItem = { title: string; sub?: string };
 
 type Bloque = {
-  subtitulo: string;
-  texto: string;
+  id: string;
+  titulo: string;
+  instrucciones: string[];
   video?: string;
   poster?: string;
   imagen?: string;
   apps?: AppItem[];
   modalItems?: ModalItem[];
+  boton?: string;
 };
 
-type StoreLinks = Partial<Record<StoreId, string>>;
-type QrByAppStore = Partial<Record<AppId, StoreLinks>>;
-
 type Step2Translations = {
-  tituloFijo: string;
-  bloques: Bloque[];
-  qrByAppStore?: QrByAppStore;
+  [key in Rol]: {
+    tituloFijo: string;
+    bloques: Bloque[];
+  };
+} & {
+  qrByAppStore?: Record<AppId, Record<StoreId, string>>;
   ui?: {
     modalSubtitle: string;
     close: string;
@@ -45,6 +48,7 @@ type Step2Translations = {
   };
 };
 
+/* --- Icono tick azul --- */
 function TickSmall() {
   return (
     <svg
@@ -69,6 +73,7 @@ function TickSmall() {
   );
 }
 
+/* --- Tarjeta de vídeo --- */
 function MediaCard({ mediaSrc, poster }: { mediaSrc?: string; poster?: string }) {
   return (
     <div className="rounded-xl shadow-lg overflow-hidden bg-black/5">
@@ -95,6 +100,7 @@ function MediaCard({ mediaSrc, poster }: { mediaSrc?: string; poster?: string })
   );
 }
 
+/* --- Modal descarga app --- */
 function AppDownloadModal({
   open,
   onClose,
@@ -123,12 +129,8 @@ function AppDownloadModal({
         type="button"
         onClick={() => onStoreChange(id)}
         aria-pressed={isActive}
-        title={label}
-        aria-label={label}
         className={`transition-all duration-200 ${
-          isActive
-            ? 'opacity-100 transform scale-100'
-            : 'opacity-60 transform scale-95 hover:opacity-80'
+          isActive ? 'opacity-100 scale-100' : 'opacity-60 scale-95 hover:opacity-80'
         }`}
       >
         <Image src={src} alt={label} width={80} height={24} className="h-6 w-auto object-contain" />
@@ -140,7 +142,7 @@ function AppDownloadModal({
     <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl">
         <div className="p-8">
-          {/* Header con logo de la app */}
+          {/* Header */}
           <div className="flex items-center gap-3 mb-8">
             {app.logo ? (
               <Image
@@ -151,34 +153,22 @@ function AppDownloadModal({
                 className="w-10 h-10 rounded-lg border border-gray-200 shadow-sm object-contain"
               />
             ) : (
-              <div className="w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 grid place-items-center shadow-sm">
-                <span className="text-gray-500 font-bold text-xs">App</span>
+              <div className="w-10 h-10 bg-gray-100 grid place-items-center text-xs text-gray-500">
+                App
               </div>
             )}
-            <div className="flex-1">
+            <div>
               <h3 className="text-lg font-semibold text-gray-900">{app.nombre}</h3>
             </div>
           </div>
 
-          {/* Layout horizontal: Contenido izquierda, QR derecha */}
+          {/* Layout horizontal */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            {/* Columna izquierda - Lista de pasos */}
             <div className="space-y-4">
               {items.map((it, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div className="mt-0.5">
-                    <svg className="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="none">
-                      <circle cx="12" cy="12" r="10" fill="currentColor" />
-                      <path
-                        d="m8 12 3 3 5-6"
-                        stroke="white"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
+                  <TickSmall />
+                  <div>
                     <p
                       className="text-sm text-gray-700 font-medium"
                       dangerouslySetInnerHTML={{ __html: it.title }}
@@ -194,32 +184,20 @@ function AppDownloadModal({
               ))}
             </div>
 
-            {/* Columna derecha - QR */}
             <div className="text-center">
-              {/* Botones de tienda */}
               <div className="flex justify-center gap-3 mb-6">
                 <StoreBtn id="appstore" label="App Store" src="/demoglobal/apple-store-badge.png" />
                 <StoreBtn id="play" label="Google Play" src="/demoglobal/google-play-badge.png" />
               </div>
-
-              {/* QR Code */}
               <div className="inline-block bg-white p-4 rounded-xl border border-gray-200 mb-6">
                 {qrDataUrl ? (
-                  <Image
-                    src={qrDataUrl}
-                    alt={`QR ${app.nombre}`}
-                    width={140}
-                    height={140}
-                    className="object-contain"
-                  />
+                  <Image src={qrDataUrl} alt={`QR ${app.nombre}`} width={140} height={140} />
                 ) : (
                   <div className="w-35 h-35 grid place-items-center text-gray-400 text-sm">
                     Generando QR...
                   </div>
                 )}
               </div>
-
-              {/* Botón Hecho */}
               <button
                 onClick={onClose}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-sm font-medium transition-colors"
@@ -234,6 +212,7 @@ function AppDownloadModal({
   );
 }
 
+/* --- Componente principal --- */
 export default function Step2() {
   const pathname = usePathname();
   const router = useRouter();
@@ -241,17 +220,19 @@ export default function Step2() {
   const currentStep = PASOS.findIndex((s) => pathname.includes(s));
 
   const [t, setT] = useState<Step2Translations | null>(null);
+  const [rol, setRol] = useState<Rol>('cliente');
   const [idx, setIdx] = useState(0);
+  const [hydrated, setHydrated] = useState(false);
 
-  // Estado para modal y QR
   const [showModal, setShowModal] = useState(false);
   const [selectedApp, setSelectedApp] = useState<AppItem | null>(null);
   const [selectedStore, setSelectedStore] = useState<StoreId>('appstore');
   const [qrDataUrl, setQrDataUrl] = useState('');
 
+  /* --- Carga de traducciones --- */
   useEffect(() => {
     (async () => {
-      const res = await fetch(`/locales/tramites_licencias/step-2/${locale}.json`, {
+      const res = await fetch(`/locales/atributos_verificados/step-2/${locale}.json`, {
         cache: 'no-store'
       });
       const data = (await res.json()) as Step2Translations;
@@ -259,32 +240,39 @@ export default function Step2() {
     })();
   }, [locale]);
 
-  const bloque = useMemo(() => (t ? t.bloques[idx] : null), [t, idx]);
+  /* --- Recuperar rol desde localStorage --- */
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('atributos_rol') as Rol | null;
+      if (stored === 'empresario' || stored === 'cliente') setRol(stored);
+      setHydrated(true);
+    }
+  }, []);
+
+  /* --- Extraer bloques del JSON según rol --- */
+  const bloques = useMemo(() => {
+    if (!t || !hydrated) return [];
+    return t[rol]?.bloques ?? [];
+  }, [t, hydrated, rol]);
+
+  const bloque = bloques[idx];
 
   const goTo = (i: number) => {
     const step = PASOS[i];
-    if (step) router.push(`/${locale}/tramites_licencias/${step}`);
+    if (step) router.push(`/${locale}/atributos_verificados/${step}`);
   };
 
   const handleNext = () => {
-    if (!t) return;
-    if (idx < t.bloques.length - 1) setIdx((p) => p + 1);
+    if (idx < bloques.length - 1) setIdx((p) => p + 1);
     else goTo(currentStep + 1);
   };
 
-  // Generar QR según app/tienda
+  /* --- Generar QR --- */
   const genQrFor = async (app: AppItem, store: StoreId) => {
     const url = t?.qrByAppStore?.[app.id]?.[store] ?? '';
-    if (!url) {
-      setQrDataUrl('');
-      return;
-    }
+    if (!url) return setQrDataUrl('');
     try {
-      const dataUrl = await QRCode.toDataURL(url, {
-        width: 220,
-        margin: 1,
-        errorCorrectionLevel: 'M'
-      });
+      const dataUrl = await QRCode.toDataURL(url, { width: 220, margin: 1 });
       setQrDataUrl(dataUrl);
     } catch {
       setQrDataUrl('');
@@ -306,44 +294,25 @@ export default function Step2() {
 
   if (!t || !bloque) return null;
 
-  const getTitleForPhase = () => {
-    if (idx === 2) {
-      return {
-        firstChar: 'I',
-        titleParts: ['nstala ', 'tu aplicación ', '']
-      };
-    } else {
-      const firstChar = t.tituloFijo.slice(0, 1);
-      const restTitle = t.tituloFijo.slice(1);
-      const titleParts = restTitle.split('Wallet');
-      return { firstChar, titleParts };
-    }
-  };
-
-  const { firstChar, titleParts } = getTitleForPhase();
-
   const buttons = {
     back: t.buttons?.back ?? 'Atrás',
     next: t.buttons?.next ?? 'Siguiente',
-    go: t.buttons?.go ?? 'Importar credencial'
+    go: t.buttons?.go ?? 'Ya tengo una wallet'
   };
 
   return (
     <div className="flex flex-col bg-white">
-    
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
-        {/* Pasos */}
+        {/* Progreso */}
         <div className="w-full flex justify-center pt-1 pb-6 relative">
-          {/* Botón Home alineado con el progreso */}
           <div className="absolute left-3 sm:left-8 lg:left-14 top-1">
             <HomeButton />
           </div>
-          
           <ol className="flex items-center gap-2">
             {PASOS.map((_, i) => (
               <li key={i} className="flex items-center">
                 <div
-                  className={`w-6 h-6 rounded-full grid place-items-center border font-bold leading-none text-[11px] ${
+                  className={`w-6 h-6 rounded-full grid place-items-center border font-bold text-[11px] ${
                     i === currentStep
                       ? 'bg-blue-600 text-white border-blue-600'
                       : 'bg-white text-gray-400 border-gray-300'
@@ -351,88 +320,58 @@ export default function Step2() {
                 >
                   {i + 1}
                 </div>
-                {i < PASOS.length - 1 && (
-                  <span className="block w-8 h-[2px] bg-gray-300 mx-1 sm:mx-2" />
-                )}
+                {i < PASOS.length - 1 && <span className="block w-8 h-[2px] bg-gray-300 mx-1" />}
               </li>
             ))}
           </ol>
         </div>
 
-        {/* Contenido */}
+        {/* Contenido principal */}
         <div className="w-full max-w-[1100px] px-4 sm:px-10 mt-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start min-h-[300px]">
-            {/* Texto + apps */}
+            {/* Texto */}
             <div className="min-h-[280px] mt-2">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-1">
-                <span>{firstChar}</span>
-                {titleParts.map((p, i) => (
-                  <span key={i}>
-                    {p}
-                    {idx !== 2 && i < titleParts.length - 1 && (
-                      <span className="text-blue-600 font-bold">Wallet</span>
-                    )}
-                    {idx === 2 && i === 2 && (
-                      <span className="text-blue-600 font-bold">Wallet</span>
-                    )}
-                  </span>
-                ))}
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                {bloque.titulo || 'Sin título'}
               </h2>
-
-              {idx === 2 ? (
-                <div className="mt-3 pl-2 space-y-4">
-                  {/* Bullet 1 */}
-                  <div className="flex gap-2 items-start">
+              <ul className="space-y-3">
+                {bloque.instrucciones?.map((inst, i) => (
+                  <li key={i} className="flex items-start gap-2">
                     <TickSmall />
-                    <span className="text-sm text-gray-600 font-semibold">{bloque.texto}</span>
-                  </div>
+                    <span
+                      className="text-sm text-gray-700 leading-snug"
+                      dangerouslySetInnerHTML={{ __html: inst }}
+                    />
+                  </li>
+                ))}
+              </ul>
 
-                  {/* Bullet 2 */}
-                  <div className="flex gap-2 items-start">
-                    <TickSmall />
-                    <span className="text-sm text-gray-600 font-semibold">{t.ui?.extraStep}</span>
-                  </div>
-
-                  {/* Apps */}
-                  {bloque.apps?.length && (
-                    <div className="flex gap-6 pl-6 mt-6">
-                      {bloque.apps.map((app) => (
-                        <button
-                          key={app.id}
-                          type="button"
-                          onClick={() => openAppModal(app)}
-                          className="group flex flex-col items-center focus:outline-none"
-                          title={app.nombre}
-                          aria-label={app.nombre}
-                        >
-                          <div className="w-16 h-16 rounded-xl shadow border border-gray-200 bg-white grid place-items-center group-hover:shadow-md transition">
-                            <Image
-                              src={app.logo}
-                              alt={app.nombre}
-                              className="w-10 h-10 object-contain"
-                            />
-                          </div>
-                          <span className="text-sm text-gray-600 mt-2">{app.nombre}</span>
-                        </button>
-                      ))}
-                    </div>
-                  )}
+              {/* Apps */}
+              {bloque.apps?.length && (
+                <div className="flex gap-6 pl-2 mt-6">
+                  {bloque.apps.map((app) => (
+                    <button
+                      key={app.id}
+                      onClick={() => openAppModal(app)}
+                      className="group flex flex-col items-center focus:outline-none"
+                    >
+                      <div className="w-16 h-16 rounded-xl shadow border border-gray-200 bg-white grid place-items-center group-hover:shadow-md transition">
+                        <Image
+                          src={app.logo}
+                          alt={app.nombre}
+                          className="w-10 h-10 object-contain"
+                          width={40}
+                          height={40}
+                        />
+                      </div>
+                      <span className="text-sm text-gray-600 mt-2">{app.nombre}</span>
+                    </button>
+                  ))}
                 </div>
-              ) : (
-                <>
-                  <div className="mt-3 flex gap-2 items-start">
-                    <TickSmall />
-                    <span className="text-sm text-gray-600 font-semibold">{bloque.subtitulo}</span>
-                  </div>
-                  <p
-                    className="mt-2 text-sm text-gray-600 leading-relaxed pl-6"
-                    dangerouslySetInnerHTML={{ __html: bloque.texto }}
-                  />
-                </>
               )}
             </div>
 
-            {/* Media */}
+            {/* Vídeo / imagen */}
             <div className="flex justify-center lg:justify-end">
               <MediaCard mediaSrc={bloque.video} poster={bloque.poster} />
             </div>
@@ -454,7 +393,6 @@ export default function Step2() {
                 {buttons.back}
               </button>
             </div>
-
             <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
               <button
                 onClick={handleNext}
@@ -462,23 +400,20 @@ export default function Step2() {
               >
                 {buttons.next}
               </button>
-              
               {idx === 0 && (
                 <button
-                  onClick={() => router.push(`/${locale}/tramites_licencias/step-3`)}
+                  onClick={() => router.push(`/${locale}/atributos_verificados/step-3`)}
                   className="text-blue-600 text-sm underline hover:text-blue-700 transition cursor-pointer"
                 >
                   {buttons.go}
                 </button>
               )}
             </div>
-
-            <div className="ml-auto w-[110px]"></div>
           </div>
         </div>
       </div>
 
-      {/* Modal descarga app */}
+      {/* Modal */}
       <AppDownloadModal
         open={showModal}
         onClose={() => setShowModal(false)}

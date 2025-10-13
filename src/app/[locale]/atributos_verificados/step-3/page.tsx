@@ -102,7 +102,7 @@ export default function Step3() {
   useEffect(() => {
     (async () => {
       const res = await fetch(
-        `/locales/tramites_licencias/step-3/${locale}.json`,
+        `/locales/atributos_verificados/step-3/${locale}.json`,
         { cache: 'no-store' }
       );
       const data = (await res.json()) as Step3Json;

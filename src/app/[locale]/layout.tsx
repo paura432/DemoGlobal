@@ -18,7 +18,7 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
   useEffect(() => {
     setShowFooter(false);
     
-    let fallbackTimer: NodeJS.Timeout;
+    const fallbackTimer: NodeJS.Timeout;
 
     const checkContent = () => {
       if (mainRef.current) {
@@ -55,7 +55,8 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
   const hideLayout =
     pathname?.includes('/credenciales-profesionales/ministerio') ||
     pathname?.includes('/titulos_academicos/shopyfy') ||
-    pathname?.includes('/tramites_licencias/vehiculo');
+    pathname?.includes('/tramites_licencias/vehiculo') ||
+    pathname?.includes('/atributos_verificados/ministerio');
 
   // Layout reducido sin header/footer
   if (hideLayout) {

@@ -6,9 +6,8 @@
       "cards": {
         "salud": "Professional Credentials",
         "estudios": "Academic Degrees",
-        "coches": "Licenses and taxes",
-        "telefonica": "Telefónica",
-        "tramites": "Procedures"
+        "tramites": "Licenses and taxes",
+        "atributos": "Verified Attributes"
       }
     }
   }

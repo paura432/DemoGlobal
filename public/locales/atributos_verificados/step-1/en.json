@@ -1,17 +1,23 @@
 {
-    "conoceLabel": "Meet",
-    "perfiles": {
-      "medico": {
-        "nombre": "Laura",
-        "label": "Doctor",
-        "descripcion": "Laura is a doctor and needs to have a digital identity based on verifiable credentials to access services.",
-        "icono": "/demoglobal/estudiante.png",
-        "video": "/videos/estudiante.mp4"
-      }
+  "conoceLabel": "Meet",
+  "perfiles": {
+    "cliente": {
+      "nombre": "Carolina",
+      "label": "User",
+      "descripcion": "Carolina is a typical user who frequently shops online.",
+      "icono": "/atributos_verificados/cliente.png",
+      "video": "/videos/cliente.mp4"
     },
-    "buttons": {
-      "back": "Back",
-      "next": "Next"
+    "empresario": {
+      "nombre": "Álvaro",
+      "label": "Businessman",
+      "descripcion": "Álvaro is a businessman who works with different clients and suppliers.",
+      "icono": "/atributos_verificados/empresario.png",
+      "video": "/videos/empresario.mp4"
     }
+  },
+  "buttons": {
+    "back": "Back",
+    "next": "Next"
   }
-  
+}

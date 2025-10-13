@@ -16,8 +16,8 @@ type DemoTranslations = {
       estudios: string;
       salud: string;
       coches: string;
-      telefonica: string;
       tramites: string;
+      atributos: string;
     };
   };
 };
@@ -85,6 +85,14 @@ export default function DemoGlobalPage() {
       video: '/videos/ciudadano.mp4',
       objectPosition: 'center',
     },
+    // {
+    //   key: 'atributos',
+    //   href: `/${locale}/atributos_verificados/step-1`,
+    //   icon: <Fa42Group />,
+    //   image: '/demoglobal/telefonica.jpg',
+    //   video: '/videos/empresario.mp4',
+    //   objectPosition: 'center',
+    // }
   ];
 
   return (

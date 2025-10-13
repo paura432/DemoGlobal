@@ -75,8 +75,8 @@ export default function Step4() {
   useEffect(() => {
     (async () => {
       const [r4, r3] = await Promise.all([
-        fetch(`/locales/tramites_licencias/step-4/${locale}.json`, { cache: 'no-store' }),
-        fetch(`/locales/tramites_licencias/step-3/${locale}.json`, { cache: 'no-store' }),
+        fetch(`/locales/atributos_verificados/step-4/${locale}.json`, { cache: 'no-store' }),
+        fetch(`/locales/atributos_verificados/step-3/${locale}.json`, { cache: 'no-store' }),
       ]);
       const d4 = (await r4.json()) as Step4T;
       const d3 = (await r3.json()) as Step3T;

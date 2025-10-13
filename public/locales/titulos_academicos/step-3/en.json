@@ -4,27 +4,27 @@
         "id": "import",
         "titulo": "Import Your Credential",
         "instrucciones": [
-          "For Laura to use her digital identity, she needs to <b>import her credentials</b> into the wallet. In this case, from the Madrid Medical Association.",
-          "This is like adding a <b>secure digital card</b> to her wallet, containing verifiable information such as her Medical Credential that certifies her profession.",
-          "Next, we detail the <b>process, it’s very simple</b>."
+          "For Miguel to use his digital identity, he needs to <b>import his credentials</b> into the wallet. In this case, from the <b>Madrid Student Association</b>.",
+          "This is like adding a <b>secure digital card</b> to his wallet, containing verifiable information, such as his Student credential certifying his education.",
+          "Below we detail the <b>process, it's very simple</b>."
         ],
         "video": "/videos/estudiante.mp4",
-        "poster": "/titulos_academicos/shoplyline-carrito.png",
-        "credencialImagen": "/demoglobal/estudiante.png",
+        "poster": "/demoglobal/estudiantes.png",
+        "credencialImagen": "/demoglobal/estudiantes.png",
         "boton": "Next"
       },
       {
         "id": "qr",
-        "titulo": "Add It to Your Wallet App",
+        "titulo": "Add it to Your Wallet App",
         "instrucciones": [
           "Open the wallet application you have installed.",
-          "Look for the <b>\"Add\"</b> or <b>\"Import Credential\"</b> option.",
-          "Scan this QR code provided with your phone’s camera.",
-          "That’s it! The credential is added to your wallet, ready to be used securely and efficiently."
+          "Look for the option <b>'Add'</b> or <b>'Import Credential'</b>.",
+          "Scan this QR code that will be provided to you with your phone's camera.",
+          "It's that easy, the credential is added to your wallet, ready to be used securely and efficiently."
         ],
-        "qrHeaderImage": "/demoglobal/colegio-ilustre.png",
-        "boton": "Ok, I already have my credential"
+        "qrHeaderImage": "/titulos_academicos/estudiantes.jpg",
+        "boton": "Okay, I have my credential"
       }
     ]
-  }
+}
   
