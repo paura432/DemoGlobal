@@ -187,7 +187,7 @@ export default function Step3() {
   if (!block) return null;
 
   return (
-    <div className="h-screen flex flex-col bg-white">
+    <div className="flex flex-col bg-white">
     
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
         {/* progreso */}

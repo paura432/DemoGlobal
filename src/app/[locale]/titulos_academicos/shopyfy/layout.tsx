@@ -97,7 +97,7 @@ export default function ShopLayout({
 
   if (noScroll) {
     return (
-      <div className="h-screen overflow-hidden bg-white text-gray-900 flex flex-col">
+      <div className="overflow-hidden bg-white text-gray-900 flex flex-col">
         <div className="w-full bg-indigo-100 text-center text-[13px] py-2 flex-shrink-0">
           Envío gratuito para pedidos superiores a 30€
         </div>

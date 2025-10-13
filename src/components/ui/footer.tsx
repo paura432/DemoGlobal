@@ -50,28 +50,33 @@ export default function FooterDemo() {
 
   return (
     <footer className="w-full bg-[#0157b8] text-white">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-left items-center pt-10 px-10 pb-6">
-      <Image
-        src="/demoglobal/telefonica-tech-logo.png"
-        alt="Telefónica Tech"
-        width={160}
-        height={40}
-        className="opacity-90"
-      />
+      {/* ✅ Contenedor del logo con padding fijo en lugar de max-width */}
+      <div className="w-full px-10 pt-10 pb-6">
+        <div className="inline-block">
+          <Image
+            src="/demoglobal/telefonica-tech-logo.png"
+            alt="Telefónica Tech"
+            width={160}
+            height={40}
+            className="opacity-90"
+            priority
+          />
+        </div>
       </div>
-      <div className="max-w-1xl mx-auto flex flex-col justify-left pb-6 px-5">
-        <p className="text-sm px-6 text-left">
-        Telefónica Tech es la compañía líder en transformación digital. La compañía cuenta con una amplia oferta de servicios y
-        </p>
-        <p className="text-sm px-6 text-left">
-        soluciones tecnológicas integradas de Ciberseguridad, Cloud, IoT, Big Data o Blockchain.
+
+      {/* ✅ Texto descriptivo con padding consistente */}
+      <div className="w-full px-16 pb-6">
+        <p className="text-sm text-left">
+          Telefónica Tech es la compañía líder en transformación digital. La compañía cuenta con una amplia oferta de servicios y
+          soluciones tecnológicas integradas de Ciberseguridad, Cloud, IoT, Big Data o Blockchain.
         </p>
       </div>
+
       {/* Línea divisoria */}
       <div className="w-full border-t border-[#F2F4FF]/30" />
 
       {/* Sección inferior con enlaces y redes */}
-      <div className="flex flex-col md:flex-row items-center justify-between max-w-1xl mx-auto px-10 py-4 text-xs">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full px-10 py-4 text-xs">
         {/* Enlaces legales */}
         <div className="flex flex-wrap justify-center md:justify-start gap-3 pb-3">
           {legalLinks.map((link, index) => (

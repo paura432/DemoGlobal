@@ -338,7 +338,7 @@ export default function Step2() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-white">
+    <div className="flex flex-col bg-white">
     
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
         {/* Pasos */}

@@ -435,7 +435,7 @@ export default function CartPage() {
     ${student.verified ? 'bg-green-600 hover:bg-green-700 text-white' : 'bg-black hover:opacity-90 text-white'}`;
 
     return (
-      <div className="h-screen bg-white text-gray-900 flex flex-col">
+      <div className="bg-white text-gray-900 flex flex-col">
         <main className="flex-1 max-w-[1100px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 py-6">
           
           <section>

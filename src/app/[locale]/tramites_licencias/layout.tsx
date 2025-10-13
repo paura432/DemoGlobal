@@ -6,7 +6,7 @@ export default function AtributosVerificadosLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="h-screen flex flex-col bg-white">
+    <div className="flex flex-col bg-white">
       <DemoProvider>
       {children}
       </DemoProvider>
