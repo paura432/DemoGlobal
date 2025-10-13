@@ -50,11 +50,11 @@ export default function PermisoPage() {
         credential: {
           Nombre: 'Carlos',
           Apellidos: 'García López',
-          FechaMatriculacion: '2022-03-15',
-          Marca: 'SEAT',
+          FechaMatriculación: '2022-03-15',
+          Marca: 'Seat León 1.6 TDI',
           Matricula: 'ABC1234',
           Seguro: 'Activo',
-          TipoVehiculo: 'Turismo'
+          TipoVehículo: 'Turismo'
         }
       };
 

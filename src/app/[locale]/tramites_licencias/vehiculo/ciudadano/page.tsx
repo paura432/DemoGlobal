@@ -240,7 +240,7 @@ export default function CiudadanoPage() {
             <button
               onClick={() => {
                 sessionStorage.clear(); // 🧹 LIMPIA TODO ANTES DE SALIR
-                router.push(`/${locale}/demoglobal`);
+                router.push(`/`);
               }}
               className="border border-[#004A99] text-[#004A99] hover:bg-[#004A99] hover:text-white px-5 py-2 rounded-full text-sm font-medium"
             >

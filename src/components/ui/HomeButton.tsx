@@ -1,15 +1,13 @@
 'use client';
 
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { FaHouse } from 'react-icons/fa6';
 
 export default function HomeButton() {
   const router = useRouter();
-  const pathname = usePathname();
-  const locale = (pathname.split('/')[1] || 'es') as 'es' | 'en';
 
   const handleClick = () => {
-    router.push(`/${locale}/demoglobal`);
+    router.push(`/`);
   };
 
   return (

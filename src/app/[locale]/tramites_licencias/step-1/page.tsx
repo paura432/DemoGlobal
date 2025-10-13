@@ -206,6 +206,14 @@ export default function Step1() {
               <p className="text-sm text-gray-600 leading-relaxed max-w-[95%]">
                 {currentProfile.descripcion}
               </p>
+              {selected === 'policia' && (
+                <h2 className="text-sm text-gray-600 leading-relaxed max-w-[95%] mt-4">
+                  {locale === 'es'
+                    ? '* Atención debes hacer primero la demo de ciudadano'
+                    : '* Attention you must first do the citizen demo'}
+
+                </h2>
+              )}
             </div>
 
             <div className="flex justify-center lg:justify-end">
@@ -231,7 +239,7 @@ export default function Step1() {
           <hr className="mb-10 border-gray-200" />
           <div className="flex justify-between items-center mb-16">
             <button
-              onClick={() => router.push(`/${locale}/demoglobal`)}
+              onClick={() => router.push(`/`)}
               className="border border-blue-600 text-blue-600 px-8 py-2 rounded-full text-sm font-medium transition hover:bg-blue-50"
             >
               {t.buttons.back}

@@ -162,7 +162,7 @@ export default function Step1() {
           <hr className="mb-10 border-gray-200" />
           <div className="flex justify-between items-center mb-16">
             <button
-              onClick={() => router.push(`/${locale}/demoglobal`)}
+              onClick={() => router.push(`/`)}
               className="border border-blue-600 text-blue-600 px-8 py-2 rounded-full text-sm font-medium transition hover:bg-blue-50"
             >
               {t.buttons.back}

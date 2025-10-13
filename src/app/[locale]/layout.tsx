@@ -18,8 +18,6 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
   useEffect(() => {
     setShowFooter(false);
     
-    const fallbackTimer: NodeJS.Timeout;
-
     const checkContent = () => {
       if (mainRef.current) {
         const hasContent = mainRef.current.textContent && 
@@ -40,7 +38,7 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
       }
     }, 100);
 
-    fallbackTimer = setTimeout(() => {
+    const fallbackTimer = setTimeout(() => {
       clearInterval(checkInterval);
       setShowFooter(true);
     }, 1500);
@@ -51,14 +49,16 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
     };
   }, [pathname]);
 
-  // ✅ Calcula hideLayout directamente sin estado
   const hideLayout =
+    pathname === '/' || 
+    pathname === '/en' || 
+    pathname === '/es' ||
+    /^\/(es|en)\/demoglobal$/.test(pathname || '') ||
     pathname?.includes('/credenciales-profesionales/ministerio') ||
     pathname?.includes('/titulos_academicos/shopyfy') ||
     pathname?.includes('/tramites_licencias/vehiculo') ||
     pathname?.includes('/atributos_verificados/ministerio');
 
-  // Layout reducido sin header/footer
   if (hideLayout) {
     return <div className="bg-white">{children}</div>;
   }
@@ -68,15 +68,9 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
       <Header />
   
       <main ref={mainRef} className="flex justify-center w-full flex-grow">
-        {!!pathname?.match(/demoglobal(?:\/|$)/) ? (
-          <div className="w-full max-w-8xl px-4 sm:px-6 lg:px-8 py-3">
-            {children}
-          </div>
-         ) : (
           <div className="w-full max-w-[1000px] px-4 sm:px-6 lg:px-8 py-6">
             {children}
           </div>
-        )}
       </main>
       
       {showFooter && (

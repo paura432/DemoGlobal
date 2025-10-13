@@ -52,7 +52,7 @@ export default function CarnetPage() {
           Apellidos: 'García López',
           DNI: '12345678X',
           AutoridadEmisora: 'Dirección General de Tráfico',
-          Categoria: 'B',
+          Categoría: 'B',
           FechaEmisón: '2024-01-15',
           FechaExpiración: '2034-01-15'
         }

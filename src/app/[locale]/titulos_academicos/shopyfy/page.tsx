@@ -2,7 +2,6 @@
 
 import React, { useMemo, useState, useEffect } from 'react';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
 import { QRCodeCanvas } from 'qrcode.react';
 
 /* =========================
@@ -414,9 +413,7 @@ function DiscountDropdown({
    Página principal compacta
    ========================= */
 export default function CartPage() {
-  const pathname = usePathname();
   const router = useRouter();
-  const locale = (pathname?.split('/')[1] || 'es') as string;
 
   const [qty, setQty] = useState<number>(ITEM.qty);
   const { st: student, setSt } = useStudentCred();
@@ -428,7 +425,7 @@ export default function CartPage() {
   );
   const total = useMemo(() => +(subtotal - discountAmount).toFixed(2), [subtotal, discountAmount]);
 
-  const goDemo = () => router.push(`/${locale}/demoglobal`);
+  const goDemo = () => router.push(`/`);
 
   const ctaLabel = student.verified ? 'Volver a demo' : 'Comprar';
   const ctaClasses = `w-full h-9 rounded text-sm font-semibold flex items-center justify-center gap-1.5 transition

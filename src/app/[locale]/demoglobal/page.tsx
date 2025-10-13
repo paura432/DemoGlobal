@@ -51,13 +51,19 @@ export default function DemoGlobalPage() {
       }
     })();
   }, [locale]);
-
+  
   const handleSelectLocale = (next: 'es' | 'en') => {
     if (next === locale) return;
-    const newPath =
-      pathname.replace(/^\/(es|en)(?=\/|$)/, `/${next}`) ||
-      `/${next}${pathname.startsWith('/') ? '' : '/'}${pathname}`;
-    router.push(newPath);
+    
+    // Si ya tiene prefijo de idioma, reemplázalo
+    if (pathname.match(/^\/(es|en)/)) {
+      const newPath = pathname.replace(/^\/(es|en)/, `/${next}`);
+      router.push(newPath);
+    } else {
+      // Si no tiene prefijo, agrégalo
+      const newPath = `/${next}${pathname}`;
+      router.push(newPath);
+    }
   };
 
   const cards: CardItem[] = [
@@ -99,8 +105,8 @@ export default function DemoGlobalPage() {
     <>
       <header className="w-full">
         <div className="border-b border-gray-200">
-          <div className="max-w-[1000px] mx-auto px-20 grid grid-cols-3 items-center">
-            <div className="justify-self-start text-base font-semibold text-gray-600 select-none">
+          <div className="mx-auto px-20 grid grid-cols-3 items-center px-47">
+            <div className="justify-self-start text-base font-semibold text-gray-600 select-none ">
               Trust<span className="text-blue-600">OS</span>
             </div>
             <div className="justify-self-center" />

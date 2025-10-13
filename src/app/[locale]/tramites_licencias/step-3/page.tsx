@@ -133,7 +133,7 @@ export default function Step3() {
       const payload = {
         schema: 'ciudadano',
         credential: {
-          Nombre: 'Laura',
+          Nombre: 'Carlos',
           Apellidos: 'García López',
           DNI: '12345678X',
         }

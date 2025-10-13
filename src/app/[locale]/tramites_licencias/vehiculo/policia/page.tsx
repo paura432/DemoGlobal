@@ -176,7 +176,7 @@ export default function VerificacionPolicia() {
     marcarCasoCompletado('verificar-documentos');
   };
 
-  const handleFinish = () => router.push(`/${locale}/demoglobal`);
+  const handleFinish = () => router.push(`/`);
 
   if (!t)
     return <div className="p-10 text-center text-gray-500">Cargando interfaz...</div>;
