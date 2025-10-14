@@ -3,7 +3,7 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { QRCodeCanvas } from 'qrcode.react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 /* =========================
    Config / Mock de producto
