@@ -22,7 +22,7 @@ type DemoTranslations = {
   };
 };
 
-type CardKey = 'estudios' | 'salud' | 'coches' | 'telefonica' | 'tramites';
+type CardKey = 'estudios' | 'salud' | 'coches' | 'tramites';
 
 type CardItem = {
   key: CardKey;
