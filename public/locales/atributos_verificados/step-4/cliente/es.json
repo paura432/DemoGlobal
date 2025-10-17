@@ -1,0 +1,17 @@
+{
+  "step4": {
+    "title": "Usa tu Credencial de Cliente",
+    "subtitle": "Ya tienes tu credencial bancaria lista para usar",
+    "intro": "Ahora puedes usar tu credencial digital para realizar compras seguras",
+    "bullets": [
+      "Realiza <b>compras online</b> de forma segura sin compartir datos personales",
+      "Accede a <b>servicios exclusivos</b> con un solo click usando tu credencial verificada"
+    ],
+    "mock": {
+      "image": "/atributos_verificados/cliente-mock.png",
+      "alt": "Uso de credencial de cliente",
+      "caption": "Compra segura con credencial bancaria"
+    },
+    "cta": "Probar compra segura"
+  }
+}

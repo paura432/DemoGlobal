@@ -6,7 +6,8 @@
       "cards": {
         "salud": "Credenciales profesionales",
         "estudios": "Títulos académicos",
-        "tramites": "Trámites y licencias"
+        "tramites": "Trámites y licencias",
+        "atributos": "Atributos verificados"
       }
     }
   }

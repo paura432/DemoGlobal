@@ -1,0 +1,37 @@
+{
+  "cart": {
+    "banner": "¡Ofertas de otoño disponibles! Aprovecha hasta -40% en moda y accesorios.",
+    "title": "Tu cesta de compra",
+    "shipping": {
+      "by": "Envío gestionado por Shopyline Logistics",
+      "date": "Entrega prevista: 18 - 19 de octubre"
+    },
+    "productNew": "Nuevo producto",
+    "qty": "Cantidad",
+    "moveToFav": "Mover a favoritos",
+    "reminder": "Recuerda: tu compra será más segura si verificas tus datos bancarios mediante credencial.",
+    "summary": {
+      "title": "Resumen del pedido",
+      "subtotal": "Subtotal",
+      "shipping": "Envío",
+      "total": "Total",
+      "vatIncluded": "IVA incluido",
+      "cta": "Continuar con el pago seguro"
+    },
+    "payment": {
+      "acceptedTitle": "Métodos de pago aceptados",
+      "couponsTitle": "¿Tienes un cupón?",
+      "couponsPlaceholder": "Introduce tu código aquí",
+      "couponsApply": "Aplicar"
+    },
+    "header": {
+      "search": "Buscar productos...",
+      "woman": "Mujer",
+      "man": "Hombre",
+      "news": "Novedades",
+      "clothes": "Ropa",
+      "shoes": "Zapatos",
+      "accessories": "Accesorios"
+    }
+  }
+}

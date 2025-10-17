@@ -1,0 +1,28 @@
+{
+  "verification": {
+    "header": {
+      "language": { "es": "ES", "en": "EN" }
+    },
+    "title": "Verificación de identidad",
+    "credential": {
+      "iconLabel": "Credencial",
+      "name": "Identidad del titular"
+    },
+    "loading": "Preparando la verificación de identidad...",
+    "error": {
+      "title": "Error en la verificación",
+      "message": "No se ha podido iniciar el proceso de verificación. Inténtelo de nuevo más tarde."
+    },
+    "help": "¿Necesita ayuda con su credencial?",
+    "footer": {
+      "copyright": "© 2025 Adquira. Todos los derechos reservados.",
+      "links": {
+        "trustCenter": "Centro de confianza",
+        "ethicCode": "Código ético",
+        "privacyPolicy": "Política de privacidad",
+        "legalNotice": "Aviso legal"
+      },
+      "customerService": { "label": "Atención al cliente", "emoji": "💬" }
+    }
+  }
+}

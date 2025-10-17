@@ -1,0 +1,27 @@
+{
+  "bloques": [
+    {
+      "id": "import",
+      "titulo": "Import Your Company Credential",
+      "instrucciones": [
+        "To manage secure operations, you need to <b>import the company credential</b> to the wallet.",
+        "This credential contains verifiable information about your company, such as Tax ID, legal representative and banking details.",
+        "Below we detail the <b>process, it's very simple</b>."
+      ],
+      "video": "/videos/empresario.mp4",
+      "poster": "/demoglobal/step-3-import-empresa.png"
+    },
+    {
+      "id": "qr",
+      "titulo": "Add it to Your Wallet App",
+      "instrucciones": [
+        "Open the wallet application you have installed.",
+        "Look for the <b>\"Add\"</b> or <b>\"Import Credential\"</b> option.",
+        "Scan this QR code that will be provided to you with your mobile camera.",
+        "That easy, the company credential is added to your wallet, ready to perform secure operations."
+      ],
+      "qrHeaderImage": "/atributos_verificados/personal_bank.png",
+      "boton": "Ok, I have my credential"
+    }
+  ]
+}

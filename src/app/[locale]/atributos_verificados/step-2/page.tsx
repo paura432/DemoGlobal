@@ -6,7 +6,6 @@ import { usePathname, useRouter } from 'next/navigation';
 import HomeButton from '@/components/ui/HomeButton';
 import QRCode from 'qrcode';
 
-/* --- Config general --- */
 const PASOS = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'] as const;
 
 type StoreId = 'appstore' | 'play';
@@ -17,24 +16,22 @@ type AppItem = { id: AppId; nombre: string; logo: string };
 type ModalItem = { title: string; sub?: string };
 
 type Bloque = {
-  id: string;
-  titulo: string;
-  instrucciones: string[];
+  subtitulo: string;
+  texto?: string;
+  instrucciones?: string[];
   video?: string;
   poster?: string;
-  imagen?: string;
   apps?: AppItem[];
   modalItems?: ModalItem[];
-  boton?: string;
 };
 
-type Step2Translations = {
-  [key in Rol]: {
-    tituloFijo: string;
-    bloques: Bloque[];
-  };
-} & {
-  qrByAppStore?: Record<AppId, Record<StoreId, string>>;
+type StoreLinks = Partial<Record<StoreId, string>>;
+type QrByAppStore = Partial<Record<AppId, StoreLinks>>;
+
+type RolData = {
+  tituloFijo: string;
+  bloques: Bloque[];
+  qrByAppStore?: QrByAppStore;
   ui?: {
     modalSubtitle: string;
     close: string;
@@ -48,7 +45,10 @@ type Step2Translations = {
   };
 };
 
-/* --- Icono tick azul --- */
+type Step2Translations = {
+  [key in Rol]: RolData;
+};
+
 function TickSmall() {
   return (
     <svg
@@ -73,7 +73,6 @@ function TickSmall() {
   );
 }
 
-/* --- Tarjeta de vídeo --- */
 function MediaCard({ mediaSrc, poster }: { mediaSrc?: string; poster?: string }) {
   return (
     <div className="rounded-xl shadow-lg overflow-hidden bg-black/5">
@@ -100,7 +99,6 @@ function MediaCard({ mediaSrc, poster }: { mediaSrc?: string; poster?: string })
   );
 }
 
-/* --- Modal descarga app --- */
 function AppDownloadModal({
   open,
   onClose,
@@ -129,8 +127,12 @@ function AppDownloadModal({
         type="button"
         onClick={() => onStoreChange(id)}
         aria-pressed={isActive}
+        title={label}
+        aria-label={label}
         className={`transition-all duration-200 ${
-          isActive ? 'opacity-100 scale-100' : 'opacity-60 scale-95 hover:opacity-80'
+          isActive
+            ? 'opacity-100 transform scale-100'
+            : 'opacity-60 transform scale-95 hover:opacity-80'
         }`}
       >
         <Image src={src} alt={label} width={80} height={24} className="h-6 w-auto object-contain" />
@@ -142,7 +144,7 @@ function AppDownloadModal({
     <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl">
         <div className="p-8">
-          {/* Header */}
+          {/* Header con logo de la app */}
           <div className="flex items-center gap-3 mb-8">
             {app.logo ? (
               <Image
@@ -153,22 +155,34 @@ function AppDownloadModal({
                 className="w-10 h-10 rounded-lg border border-gray-200 shadow-sm object-contain"
               />
             ) : (
-              <div className="w-10 h-10 bg-gray-100 grid place-items-center text-xs text-gray-500">
-                App
+              <div className="w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 grid place-items-center shadow-sm">
+                <span className="text-gray-500 font-bold text-xs">App</span>
               </div>
             )}
-            <div>
+            <div className="flex-1">
               <h3 className="text-lg font-semibold text-gray-900">{app.nombre}</h3>
             </div>
           </div>
 
-          {/* Layout horizontal */}
+          {/* Layout horizontal: Contenido izquierda, QR derecha */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            {/* Columna izquierda - Lista de pasos */}
             <div className="space-y-4">
               {items.map((it, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <TickSmall />
-                  <div>
+                  <div className="mt-0.5">
+                    <svg className="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" fill="currentColor" />
+                      <path
+                        d="m8 12 3 3 5-6"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
                     <p
                       className="text-sm text-gray-700 font-medium"
                       dangerouslySetInnerHTML={{ __html: it.title }}
@@ -184,20 +198,32 @@ function AppDownloadModal({
               ))}
             </div>
 
+            {/* Columna derecha - QR */}
             <div className="text-center">
+              {/* Botones de tienda */}
               <div className="flex justify-center gap-3 mb-6">
                 <StoreBtn id="appstore" label="App Store" src="/demoglobal/apple-store-badge.png" />
                 <StoreBtn id="play" label="Google Play" src="/demoglobal/google-play-badge.png" />
               </div>
+
+              {/* QR Code */}
               <div className="inline-block bg-white p-4 rounded-xl border border-gray-200 mb-6">
                 {qrDataUrl ? (
-                  <Image src={qrDataUrl} alt={`QR ${app.nombre}`} width={140} height={140} />
+                  <Image
+                    src={qrDataUrl}
+                    alt={`QR ${app.nombre}`}
+                    width={140}
+                    height={140}
+                    className="object-contain"
+                  />
                 ) : (
                   <div className="w-35 h-35 grid place-items-center text-gray-400 text-sm">
                     Generando QR...
                   </div>
                 )}
               </div>
+
+              {/* Botón Hecho */}
               <button
                 onClick={onClose}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-sm font-medium transition-colors"
@@ -212,7 +238,6 @@ function AppDownloadModal({
   );
 }
 
-/* --- Componente principal --- */
 export default function Step2() {
   const pathname = usePathname();
   const router = useRouter();
@@ -224,12 +249,12 @@ export default function Step2() {
   const [idx, setIdx] = useState(0);
   const [hydrated, setHydrated] = useState(false);
 
+  // Estado para modal y QR
   const [showModal, setShowModal] = useState(false);
   const [selectedApp, setSelectedApp] = useState<AppItem | null>(null);
   const [selectedStore, setSelectedStore] = useState<StoreId>('appstore');
   const [qrDataUrl, setQrDataUrl] = useState('');
 
-  /* --- Carga de traducciones --- */
   useEffect(() => {
     (async () => {
       const res = await fetch(`/locales/atributos_verificados/step-2/${locale}.json`, {
@@ -249,13 +274,16 @@ export default function Step2() {
     }
   }, []);
 
-  /* --- Extraer bloques del JSON según rol --- */
-  const bloques = useMemo(() => {
-    if (!t || !hydrated) return [];
-    return t[rol]?.bloques ?? [];
+  /* --- Extraer datos del rol actual --- */
+  const rolData = useMemo(() => {
+    if (!t || !hydrated) return null;
+    return t[rol] ?? null;
   }, [t, hydrated, rol]);
 
-  const bloque = bloques[idx];
+  const bloque = useMemo(() => {
+    if (!rolData) return null;
+    return rolData.bloques[idx] ?? null;
+  }, [rolData, idx]);
 
   const goTo = (i: number) => {
     const step = PASOS[i];
@@ -263,16 +291,24 @@ export default function Step2() {
   };
 
   const handleNext = () => {
-    if (idx < bloques.length - 1) setIdx((p) => p + 1);
+    if (!rolData) return;
+    if (idx < rolData.bloques.length - 1) setIdx((p) => p + 1);
     else goTo(currentStep + 1);
   };
 
-  /* --- Generar QR --- */
+  // Generar QR según app/tienda
   const genQrFor = async (app: AppItem, store: StoreId) => {
-    const url = t?.qrByAppStore?.[app.id]?.[store] ?? '';
-    if (!url) return setQrDataUrl('');
+    const url = rolData?.qrByAppStore?.[app.id]?.[store] ?? '';
+    if (!url) {
+      setQrDataUrl('');
+      return;
+    }
     try {
-      const dataUrl = await QRCode.toDataURL(url, { width: 220, margin: 1 });
+      const dataUrl = await QRCode.toDataURL(url, {
+        width: 220,
+        margin: 1,
+        errorCorrectionLevel: 'M'
+      });
       setQrDataUrl(dataUrl);
     } catch {
       setQrDataUrl('');
@@ -292,27 +328,61 @@ export default function Step2() {
     await genQrFor(selectedApp, s);
   };
 
-  if (!t || !bloque) return null;
+  if (!rolData || !bloque) return null;
+
+  const getTitleForPhase = () => {
+    if (idx === 0) {
+      return {
+        firstChar: '',
+        titleParts: [bloque.subtitulo],
+        noWallet: true
+      };
+    } 
+    if (idx === 3) {
+      // Último bloque: "Instala tu aplicación Wallet"
+      if (locale === 'es') {
+        return {
+          firstChar: 'I',
+          titleParts: ['nstala ', 'tu aplicación ', '']
+        };
+      } else if (locale === 'en') {
+        return {
+          firstChar: 'I',
+          titleParts: ['nstall ', 'the app ', '']
+        };
+      }
+    } else {
+      const firstChar = rolData.tituloFijo.slice(0, 1);
+      const restTitle = rolData.tituloFijo.slice(1);
+      const titleParts = restTitle.split('Wallet');
+      return { firstChar, titleParts };
+    }
+    return { firstChar: '', titleParts: [''] };
+  };
+
+  const { firstChar, titleParts } = getTitleForPhase();
 
   const buttons = {
-    back: t.buttons?.back ?? 'Atrás',
-    next: t.buttons?.next ?? 'Siguiente',
-    go: t.buttons?.go ?? 'Ya tengo una wallet'
+    back: rolData.buttons?.back ?? 'Atrás',
+    next: rolData.buttons?.next ?? 'Siguiente',
+    go: rolData.buttons?.go ?? 'Ya tengo una wallet'
   };
 
   return (
     <div className="flex flex-col bg-white">
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
-        {/* Progreso */}
+        {/* Pasos */}
         <div className="w-full flex justify-center pt-1 pb-6 relative">
+          {/* Botón Home alineado con el progreso */}
           <div className="absolute left-3 sm:left-8 lg:left-14 top-1">
             <HomeButton />
           </div>
+
           <ol className="flex items-center gap-2">
             {PASOS.map((_, i) => (
               <li key={i} className="flex items-center">
                 <div
-                  className={`w-6 h-6 rounded-full grid place-items-center border font-bold text-[11px] ${
+                  className={`w-6 h-6 rounded-full grid place-items-center border font-bold leading-none text-[11px] ${
                     i === currentStep
                       ? 'bg-blue-600 text-white border-blue-600'
                       : 'bg-white text-gray-400 border-gray-300'
@@ -320,58 +390,107 @@ export default function Step2() {
                 >
                   {i + 1}
                 </div>
-                {i < PASOS.length - 1 && <span className="block w-8 h-[2px] bg-gray-300 mx-1" />}
+                {i < PASOS.length - 1 && (
+                  <span className="block w-8 h-[2px] bg-gray-300 mx-1 sm:mx-2" />
+                )}
               </li>
             ))}
           </ol>
         </div>
 
-        {/* Contenido principal */}
+        {/* Contenido */}
         <div className="w-full max-w-[1100px] px-4 sm:px-10 mt-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start min-h-[300px]">
-            {/* Texto */}
+            {/* Texto + apps */}
             <div className="min-h-[280px] mt-2">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                {bloque.titulo || 'Sin título'}
-              </h2>
-              <ul className="space-y-3">
-                {bloque.instrucciones?.map((inst, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <TickSmall />
-                    <span
-                      className="text-sm text-gray-700 leading-snug"
-                      dangerouslySetInnerHTML={{ __html: inst }}
-                    />
-                  </li>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-1">
+                <span>{firstChar}</span>
+                {titleParts.map((p, i) => (
+                  <span key={i}>
+                    {p}
+                    {idx !== 3 && i < titleParts.length - 1 && (
+                      <span className="text-blue-600 font-bold">Wallet</span>
+                    )}
+                    {idx === 3 && i === 2 && (
+                      <span className="text-blue-600 font-bold">Wallet</span>
+                    )}
+                  </span>
                 ))}
-              </ul>
+              </h2>
 
-              {/* Apps */}
-              {bloque.apps?.length && (
-                <div className="flex gap-6 pl-2 mt-6">
-                  {bloque.apps.map((app) => (
-                    <button
-                      key={app.id}
-                      onClick={() => openAppModal(app)}
-                      className="group flex flex-col items-center focus:outline-none"
-                    >
-                      <div className="w-16 h-16 rounded-xl shadow border border-gray-200 bg-white grid place-items-center group-hover:shadow-md transition">
-                        <Image
-                          src={app.logo}
-                          alt={app.nombre}
-                          className="w-10 h-10 object-contain"
-                          width={40}
-                          height={40}
+              {/* Bloque 0: Con bullets e instrucciones */}
+              {idx === 0 && bloque.instrucciones ? (
+                <div className="mt-3 space-y-2">
+                    {bloque.instrucciones.map((inst, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <TickSmall />
+                        <span
+                          className="text-sm text-gray-700 leading-snug"
+                          dangerouslySetInnerHTML={{ __html: inst }}
                         />
-                      </div>
-                      <span className="text-sm text-gray-600 mt-2">{app.nombre}</span>
-                    </button>
-                  ))}
+                      </li>
+                    ))}
                 </div>
+              ) : idx === 3 ? (
+                /* Bloque 3: Instalar apps */
+                <div className="mt-3 pl-2 space-y-4">
+                  {/* Bullet 1 */}
+                  <div className="flex gap-2 items-start">
+                    <TickSmall />
+                    <span className="text-sm text-gray-600 font-semibold">{bloque.texto}</span>
+                  </div>
+
+                  {/* Bullet 2 */}
+                  <div className="flex gap-2 items-start">
+                    <TickSmall />
+                    <span className="text-sm text-gray-600 font-semibold">
+                      {rolData.ui?.extraStep}
+                    </span>
+                  </div>
+
+                  {/* Apps */}
+                  {bloque.apps?.length && (
+                    <div className="flex gap-6 pl-6 mt-6">
+                      {bloque.apps.map((app) => (
+                        <button
+                          key={app.id}
+                          type="button"
+                          onClick={() => openAppModal(app)}
+                          className="group flex flex-col items-center focus:outline-none"
+                          title={app.nombre}
+                          aria-label={app.nombre}
+                        >
+                          <div className="w-16 h-16 rounded-xl shadow border border-gray-200 bg-white grid place-items-center group-hover:shadow-md transition">
+                            <Image
+                              width={40}
+                              height={40}
+                              src={app.logo}
+                              alt={app.nombre}
+                              className="w-10 h-10 object-contain"
+                            />
+                          </div>
+                          <span className="text-sm text-gray-600 mt-2">{app.nombre}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                /* Bloques 1 y 2: Formato normal */
+                <>
+                  <div className="mt-3 flex gap-2 items-start">
+                    <TickSmall />
+                    <span className="text-sm text-gray-600 font-semibold">{bloque.subtitulo}</span>
+                  </div>
+                  <p
+                    className="mt-2 text-sm text-gray-600 leading-relaxed pl-6"
+                    dangerouslySetInnerHTML={{ __html: bloque.texto || '' }}
+                  />
+                </>
               )}
             </div>
 
-            {/* Vídeo / imagen */}
+            {/* Media */}
             <div className="flex justify-center lg:justify-end">
               <MediaCard mediaSrc={bloque.video} poster={bloque.poster} />
             </div>
@@ -393,6 +512,7 @@ export default function Step2() {
                 {buttons.back}
               </button>
             </div>
+
             <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
               <button
                 onClick={handleNext}
@@ -400,6 +520,7 @@ export default function Step2() {
               >
                 {buttons.next}
               </button>
+
               {idx === 0 && (
                 <button
                   onClick={() => router.push(`/${locale}/atributos_verificados/step-3`)}
@@ -409,11 +530,13 @@ export default function Step2() {
                 </button>
               )}
             </div>
+
+            <div className="ml-auto w-[110px]"></div>
           </div>
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Modal descarga app */}
       <AppDownloadModal
         open={showModal}
         onClose={() => setShowModal(false)}
@@ -423,9 +546,9 @@ export default function Step2() {
         qrDataUrl={qrDataUrl}
         items={bloque?.modalItems || []}
         labels={{
-          close: t.ui?.close ?? 'Cerrar',
-          done: t.ui?.done ?? 'Hecho',
-          subtitle: t.ui?.modalSubtitle ?? 'Descarga la app y completa el proceso'
+          close: rolData.ui?.close ?? 'Cerrar',
+          done: rolData.ui?.done ?? 'Hecho',
+          subtitle: rolData.ui?.modalSubtitle ?? 'Descarga la app y completa el proceso'
         }}
       />
     </div>

@@ -1,0 +1,27 @@
+{
+  "bloques": [
+    {
+      "id": "import",
+      "titulo": "Importa tu Credencial de Empresa",
+      "instrucciones": [
+        "Para poder gestionar operaciones seguras, necesitas <b>importar la credencial de empresa</b> a la wallet.",
+        "Esta credencial contiene información verificable de tu empresa, como CIF, representante legal y datos bancarios.",
+        "A continuación te detallamos el <b>proceso, es muy sencillo</b>."
+      ],
+      "video": "/videos/empresario.mp4",
+      "poster": "/demoglobal/step-3-import-empresa.png"
+    },
+    {
+      "id": "qr",
+      "titulo": "Añádela a tu App Wallet",
+      "instrucciones": [
+        "Abre la aplicación de la wallet que te has instalado.",
+        "Busca la opción <b>\"Añadir\"</b> o <b>\"Importar Credencial\"</b>.",
+        "Escanea este código QR que se te proporcionará con la cámara de tu móvil.",
+        "Así de fácil, la credencial de empresa se añade a tu wallet, lista para realizar operaciones seguras."
+      ],
+      "qrHeaderImage": "/atributos_verificados/personal_bank.png",
+      "boton": "Vale, ya tengo mi credencial"
+    }
+  ]
+}

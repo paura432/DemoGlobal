@@ -4,14 +4,12 @@
       "id": "import",
       "titulo": "Importa tu Credencial",
       "instrucciones": [
-        "Para que Miguel pueda usar su identidad digital, necesita <b>importar sus credenciales</b> a la wallet. En este caso desde el <b>universidad de estudiantes</b>.",
-        "Esto es como añadir una <b>tarjeta digital segura</b> a su billetera, que contiene información verificable, como su credencial de Estudiante que certifica su formación.",
+        "Para que Clara pueda usar su identidad digital, necesita <b>importar sus credenciales</b> a la wallet. En este caso desde el portal de credenciales bancarias",
+        "Esto es como añadir una <b>tarjeta digital segura</b> a su billetera, que contiene información verificable, como su credencial de cliente que certifica su profesión.",
         "A continuación te detallamos el <b>proceso, es muy sencillo</b>."
       ],
-      "video": "/videos/estudiante.mp4",
-      "poster": "/demoglobal/estudiantes.png",
-      "credencialImagen": "/demoglobal/estudiantes.png",
-      "boton": "Siguiente"
+      "video": "/videos/cliente.mp4",
+      "poster": "/demoglobal/step-3-import.png"
     },
     {
       "id": "qr",
@@ -22,7 +20,7 @@
         "Escanea este código QR que se te proporcionará con la cámara de tu móvil.",
         "Así de fácil, la credencial se añade a tu wallet, lista para ser usada de forma segura y eficiente."
       ],
-      "qrHeaderImage": "/titulos_academicos/estudiantes.jpg",
+      "qrHeaderImage": "/atributos_verificados/personal_bank.png",
       "boton": "Vale, ya tengo mi credencial"
     }
   ]

@@ -1,0 +1,27 @@
+{
+  "bloques": [
+    {
+      "id": "import",
+      "titulo": "Import Your Credential",
+      "instrucciones": [
+        "For Clara to use her digital identity, she needs to <b>import her credentials</b> to the wallet. In this case, from the banking credentials portal",
+        "This is like adding a <b>secure digital card</b> to her wallet, which contains verifiable information, such as her customer credential that certifies her profession.",
+        "Below we detail the <b>process, it's very simple</b>."
+      ],
+      "video": "/videos/cliente.mp4",
+      "poster": "/demoglobal/step-3-import.png"
+    },
+    {
+      "id": "qr",
+      "titulo": "Add it to Your Wallet App",
+      "instrucciones": [
+        "Open the wallet application you have installed.",
+        "Look for the <b>\"Add\"</b> or <b>\"Import Credential\"</b> option.",
+        "Scan this QR code that will be provided to you with your mobile camera.",
+        "That easy, the credential is added to your wallet, ready to be used safely and efficiently."
+      ],
+      "qrHeaderImage": "/atributos_verificados/personal_bank.png",
+      "boton": "Ok, I have my credential"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "header": {
+    "title": "SUPPLIER DATA CONSULTATION",
+    "tabs": ["USER DATA", "LABEL MANAGEMENT"]
+  },
+  "userSection": {
+    "title": "DANIEL SEGOVIA ESPADA",
+    "user": "Renovatio Comunicación S.L.",
+    "companyName": "FORCE SISTEMAS S.L.",
+    "cif": "B85608879",
+    "button": "Change IBAN Account"
+  },
+  "notifications": {
+    "title": "NOTIFICATIONS",
+    "emailSettings": "EMAIL SETTINGS",
+    "emailFormat": "Receive emails in HTML format",
+    "orders": [
+      "XML RECEIPT CANCELLED",
+      "ORDER CLOSED BY BUYER",
+      "NOTIFICATION ATTACHMENT MALWARE"
+    ]
+  },
+  "footer": {
+    "copyright": "Adquira España, S.A. © 2025 - All rights reserved",
+    "links": {
+      "trustCenter": "TRUST CENTER",
+      "ethicCode": "CODE OF ETHICS",
+      "privacyPolicy": "PRIVACY POLICY",
+      "legalNotice": "LEGAL NOTICE"
+    },
+    "customerService": { "label": "CUSTOMER SERVICE", "emoji": "🎧" }
+  }
+}

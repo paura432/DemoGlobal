@@ -1,0 +1,37 @@
+{
+  "header": {
+    "language": { "es": "ES", "en": "EN" },
+    "accessTitle": "Acceso clientes"
+  },
+  "buttons": {
+    "companyAccreditation": "Acreditación Empresa",
+    "login": "Login",
+    "recoverPassword": "Recuperar contraseña",
+    "help": "¿Necesita ayuda?"
+  },
+  "modal": {
+    "title": "Confirma tu credencial",
+    "credentialTitle": "Credencial bancaria",
+    "waiting": "Iniciando proceso de verificación...",
+    "verifyingTitle": "Verificando...",
+    "steps": {
+      "credential": "Verificando credencial",
+      "expiration": "Validando expiración",
+      "validity": "Confirmando validez profesional",
+      "auth": "Autenticando identidad"
+    },
+    "verified": "Verificación completada con éxito",
+    "error": "No se ha podido realizar la verificación.",
+    "hint": "¿No sabes cómo usarlo?"
+  },
+  "footer": {
+    "copyright": "© 2025 Adquira. Todos los derechos reservados.",
+    "links": {
+      "trustCenter": "Trust Center",
+      "ethicCode": "Código Ético",
+      "privacyPolicy": "Política de Privacidad",
+      "legalNotice": "Aviso Legal"
+    },
+    "customerService": { "label": "Atención al cliente", "emoji": "💬" }
+  }
+}

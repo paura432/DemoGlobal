@@ -1,0 +1,17 @@
+{
+  "step4": {
+    "title": "Use Your Company Credential",
+    "subtitle": "Your business credential is ready to use",
+    "intro": "Now you can use your digital credential to manage business operations",
+    "bullets": [
+      "Manage <b>business operations</b> securely and efficiently",
+      "Access <b>B2B platforms</b> with one click using your verified credential"
+    ],
+    "mock": {
+      "image": "/atributos_verificados/empresa-mock.png",
+      "alt": "Using company credential",
+      "caption": "Business management with verified credential"
+    },
+    "cta": "Try business management"
+  }
+}

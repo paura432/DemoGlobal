@@ -1,0 +1,37 @@
+{
+  "confirmation": {
+    "header": {
+      "securePayment": "Pago seguro con credencial bancaria"
+    },
+    "steps": {
+      "login": "Iniciar sesión",
+      "address": "Dirección",
+      "payment": "Pago",
+      "confirmation": "Confirmación",
+      "done": "Completado"
+    },
+    "leftColumn": {
+      "title": "Pedido confirmado",
+      "deliveryTitle": "Entrega estimada",
+      "deliveryDate": "Miércoles 22 de octubre",
+      "standardShipping": "Envío estándar",
+      "free": "Gratis",
+      "orderTitle": "Resumen del pedido",
+      "shippingBy": "Envío realizado por Shopyline Logistics",
+      "shippingDate": "Entrega en 2-3 días laborables",
+      "productNew": "Nuevo producto",
+      "qty": "Cantidad"
+    },
+    "rightColumn": {
+      "dataTitle": "Datos del pedido",
+      "bankAccreditation": "Pago verificado mediante credencial bancaria",
+      "addressLabel": "Dirección acreditada",
+      "paymentDataLabel": "Datos bancarios",
+      "completeCapture": "Captura completada",
+      "shipping": "Envío",
+      "total": "Total",
+      "vatIncluded": "IVA incluido",
+      "ctaButton": "Finalizar compra"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "header": {
+    "language": { "es": "ES", "en": "EN" },
+    "accessTitle": "Client access"
+  },
+  "buttons": {
+    "companyAccreditation": "COMPANY ACCREDITATION",
+    "login": "LOGIN",
+    "recoverPassword": "Recover password",
+    "help": "NEED HELP?"
+  },
+  "modal": {
+    "title": "Confirm your credential",
+    "credentialTitle": "Bank credential",
+    "waiting": "Generating QR code...",
+    "verified": "Credential successfully verified",
+    "error": "Credential verification failed. Please try again."
+  },
+  "footer": {
+    "copyright": "Adquira España, S.A. © 2025 - All rights reserved",
+    "links": {
+      "trustCenter": "TRUST CENTER",
+      "ethicCode": "CODE OF ETHICS",
+      "privacyPolicy": "PRIVACY POLICY",
+      "legalNotice": "LEGAL NOTICE"
+    },
+    "customerService": { "label": "CUSTOMER SERVICE", "emoji": "🎧" }
+  }
+}

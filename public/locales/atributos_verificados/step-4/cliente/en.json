@@ -1,0 +1,17 @@
+{
+  "step4": {
+    "title": "Use Your Customer Credential",
+    "subtitle": "Your banking credential is ready to use",
+    "intro": "Now you can use your digital credential to make secure purchases",
+    "bullets": [
+      "Make <b>secure online purchases</b> without sharing personal data",
+      "Access <b>exclusive services</b> with one click using your verified credential"
+    ],
+    "mock": {
+      "image": "/atributos_verificados/step-4-cliente-mock.png",
+      "alt": "Using customer credential",
+      "caption": "Secure purchase with banking credential"
+    },
+    "cta": "Try secure purchase"
+  }
+}

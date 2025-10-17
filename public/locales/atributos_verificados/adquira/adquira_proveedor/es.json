@@ -1,0 +1,56 @@
+{
+  "header": {
+    "title": "CONSULTA DE DATOS DE PROVEEDOR",
+    "tabs": ["DATOS DE USUARIO", "GESTIÓN ETIQUETAS"],
+    "nav": ["Marketplace", "Podium", "Conecta"],
+    "menu": ["Pedidos", "Facturas", "Directorio", "Favoritos", "Preferencias"]
+  },
+  "userSection": {
+    "title": "Alvaro García",
+    "user": "Tech Solutions S.L.",
+    "companyName": "Tech Solutions S.L.",
+    "cif": "B12345678",
+    "IBAN": "ES76 1234 5678 9123 4567 8901",
+    "button": "Cambiar cuenta IBAN"
+  },
+  "notifications": {
+    "title": "NOTIFICACIONES",
+    "emailSettings": "AJUSTES DE CORREO ELECTRÓNICO",
+    "emailFormat": "Recibir correos en formato HTML",
+    "orders": [
+      "RECEPCIÓN XML CANCELADA",
+      "PEDIDO CERRADO POR EL COMPRADOR",
+      "NOTIFICACIONES EXPEDIENTE ATTACHMENT MALWARE"
+    ]
+  },
+  "qr": {
+    "title": "Validación de credenciales",
+    "subtitle": "Escanee el código QR con su Wallet para continuar",
+    "transaction": "Transferencia 514...",
+    "description": "De Adquira Marketplace para Tech Solutions S.L."
+  },
+  "verification": {
+    "title": "Validación de credenciales",
+    "steps": [
+      "Verificando credencial",
+      "Validando expiración",
+      "Confirmando validez profesional",
+      "Autenticando identidad"
+    ]
+  },
+  "done": {
+    "title": "Orden de cambio de IBAN completada",
+    "subtitle": "Revise su cuenta. El ingreso debería ser automático.",
+    "button": "Volver a la demo"
+  },
+  "footer": {
+    "copyright": "Adquira España, S.A. © 2025 - Todos los derechos reservados",
+    "links": {
+      "trustCenter": "TRUST CENTER",
+      "ethicCode": "CÓDIGO ÉTICO",
+      "privacyPolicy": "POLÍTICA DE PRIVACIDAD",
+      "legalNotice": "AVISO LEGAL"
+    },
+    "customerService": { "label": "ATENCIÓN AL CLIENTE", "emoji": "🎧" }
+  }
+}

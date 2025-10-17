@@ -1,0 +1,28 @@
+{
+  "verify": {
+    "title": "Verificación de credencial bancaria",
+    "credentialTitle": "Credencial bancaria digital",
+    "loading": "Generando QR de verificación...",
+    "howToUseTitle": "Sigue estos pasos en tu aplicación Wallet:",
+    "steps": [
+      "Abre tu App Wallet compatible (Privado ID, VIDWallet, etc.)",
+      "Selecciona 'Escanear código QR'",
+      "Confirma que deseas compartir tu credencial bancaria"
+    ],
+    "waiting": "Esperando validación desde la Wallet...",
+    "verifying": "Verificando credencial",
+    "verifySteps": [
+      "Comprobando credencial",
+      "Validando fecha de expiración",
+      "Confirmando validez bancaria",
+      "Autenticando identidad"
+    ],
+    "completed": "Verificación completada",
+    "redirecting": "Redirigiendo a la confirmación de pedido...",
+    "error": {
+      "title": "Error de verificación",
+      "message": "No se pudo verificar la credencial. Inténtalo de nuevo.",
+      "retry": "Reintentar"
+    }
+  }
+}

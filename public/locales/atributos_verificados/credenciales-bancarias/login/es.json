@@ -1,0 +1,41 @@
+{
+  "login": {
+    "title": "Acceso seguro a tu cuenta",
+    "subtitle": "Selecciona tu método de acceso para continuar con el pago.",
+    "methods": {
+      "bankCredential": {
+        "label": "Credencial bancaria",
+        "available": true
+      },
+      "google": {
+        "label": "Continuar con Google",
+        "available": false
+      },
+      "apple": {
+        "label": "Continuar con Apple",
+        "available": false
+      },
+      "facebook": {
+        "label": "Continuar con Facebook",
+        "available": false
+      }
+    },
+    "note": "Solo la opción de credencial verificable está disponible en esta demostración.",
+    "modal": {
+      "title": "Verificando credencial",
+      "verifySteps": [
+        "Verificando credencial",
+        "Validando expiración",
+        "Confirmando validez bancaria",
+        "Autenticando identidad"
+      ]
+    },
+    "footer": {
+      "copyright": "Shopyline Europe © 2025 - Todos los derechos reservados",
+      "links": {
+        "terms": "Términos y condiciones",
+        "privacy": "Política de privacidad"
+      }
+    }
+  }
+}

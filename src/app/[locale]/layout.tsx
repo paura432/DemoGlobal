@@ -57,7 +57,9 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
     pathname?.includes('/credenciales-profesionales/ministerio') ||
     pathname?.includes('/titulos_academicos/shopyfy') ||
     pathname?.includes('/tramites_licencias/vehiculo') ||
-    pathname?.includes('/atributos_verificados/ministerio');
+    pathname?.includes('/atributos_verificados/ministerio') ||
+    pathname?.includes('/atributos_verificados/adquira') ||
+    pathname?.includes('/atributos_verificados/credenciales-bancarias');
 
   if (hideLayout) {
     return <div className="bg-white">{children}</div>;

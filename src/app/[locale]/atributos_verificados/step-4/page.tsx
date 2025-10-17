@@ -7,6 +7,8 @@ import HomeButton from '@/components/ui/HomeButton';
 
 const PASOS = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'] as const;
 
+type Rol = 'cliente' | 'empresario';
+
 type Step4T = {
   step4: {
     title: string;
@@ -69,24 +71,40 @@ export default function Step4() {
   const locale = (pathname.split('/')[1] || 'es') as 'es' | 'en';
   const currentStep = PASOS.findIndex((s) => pathname.includes(s));
 
+  const [rol, setRol] = useState<Rol>('cliente');
+  const [hydrated, setHydrated] = useState(false);
   const [s4, setS4] = useState<Step4T | null>(null);
   const [s3, setS3] = useState<Step3T | null>(null);
 
+  // Recuperar rol desde localStorage
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('atributos_rol') as Rol | null;
+      if (stored === 'empresario' || stored === 'cliente') {
+        setRol(stored);
+      }
+      setHydrated(true);
+    }
+  }, []);
+
+  // Cargar JSONs según rol
+  useEffect(() => {
+    if (!hydrated) return;
+
     (async () => {
       const [r4, r3] = await Promise.all([
-        fetch(`/locales/atributos_verificados/step-4/${locale}.json`, { cache: 'no-store' }),
-        fetch(`/locales/atributos_verificados/step-3/${locale}.json`, { cache: 'no-store' }),
+        fetch(`/locales/atributos_verificados/step-4/${rol}/${locale}.json`, { cache: 'no-store' }),
+        fetch(`/locales/atributos_verificados/step-3/${rol}/${locale}.json`, { cache: 'no-store' }),
       ]);
       const d4 = (await r4.json()) as Step4T;
       const d3 = (await r3.json()) as Step3T;
       setS4(d4);
       setS3(d3);
     })();
-  }, [locale]);
+  }, [locale, rol, hydrated]);
 
   const c = s4?.step4;
-  if (!c) return null;
+  if (!hydrated || !c) return null;
 
   const useBlock = s3?.bloques?.find((b) => b.id === 'use');
 
@@ -95,17 +113,17 @@ export default function Step4() {
 
   const bullets = (c.bullets ?? []).slice(0, 2);
 
-  const goBack = () => router.push(`/${locale}/tramites_licencias/step-3`);
-  const goNext = () => router.push(`/${locale}/tramites_licencias/ministerio`);
+  const goBack = () => router.push(`/${locale}/atributos_verificados/step-3`);
+  const goNext = () => {
+    if (rol === 'empresario') router.push(`/${locale}/atributos_verificados/adquira`);
+    else router.push(`/${locale}/atributos_verificados/credenciales-bancarias/cesta`);
+  }
 
   return (
     <div className="flex flex-col bg-white">
-    
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
-        {/* Progreso */}
         {/* Progreso con HomeButton */}
         <div className="w-full flex justify-center pt-1 pb-6 relative">
-          {/* Botón Home alineado con el progreso */}
           <div className="absolute left-3 sm:left-8 lg:left-14 top-1">
             <HomeButton />
           </div>
@@ -131,10 +149,10 @@ export default function Step4() {
         <div className="w-full max-w-[1100px] px-4 sm:px-10 mt-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start min-h-[300px]">
             <div className="min-h-[280px]">
-            <h2
+              <h2
                 className="text-2xl font-semibold text-gray-800 mb-1"
                 dangerouslySetInnerHTML={{ __html: mergedTitle }}
-                />
+              />
 
               {mergedSubtext && (
                 <p className="text-sm text-gray-500 mb-4" dangerouslySetInnerHTML={{ __html: mergedSubtext }} />
@@ -163,7 +181,7 @@ export default function Step4() {
               onClick={goBack}
               className="border border-blue-600 text-blue-600 px-8 py-2 rounded-full text-sm font-medium transition hover:bg-blue-50"
             >
-              {locale === 'en' ? 'Back' : 'AtrÃ¡s'}
+              {locale === 'en' ? 'Back' : 'Atrás'}
             </button>
             <div className="flex-1 flex justify-center">
               <button
