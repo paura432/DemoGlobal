@@ -5,7 +5,7 @@ import { JSX, useEffect, useState } from 'react';
 import { FaGraduationCap, FaHeart } from 'react-icons/fa';
 import LanguageDropdown from '@/components/ui/LenguajeDropDown';
 import DemoCard from '@/components/ui/DemoCard';
-import { Fa42Group, FaNewspaper } from 'react-icons/fa6';
+import { FaCheck, FaNewspaper } from 'react-icons/fa6';
 
 type DemoTranslations = {
   demoglobal: {
@@ -94,7 +94,7 @@ export default function DemoGlobalPage() {
     {
       key: 'atributos',
       href: `/${locale}/atributos_verificados/step-1`,
-      icon: <Fa42Group />,
+      icon: <FaCheck />,
       image: '/demoglobal/telefonica.jpg',
       video: '/videos/empresario.mp4',
       objectPosition: 'center',
