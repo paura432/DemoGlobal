@@ -49,7 +49,7 @@ export default function FooterDemo() {
   const legalLinks = LINKS.legal[locale];
 
   return (
-    <footer className="w-full bg-[#0157b8] text-white">
+    <footer className="w-full bg-[#0066FF] text-white">
       {/* ✅ Contenedor del logo con padding fijo en lugar de max-width */}
       <div className="w-full px-10 pt-10 pb-6">
         <div className="inline-block">
