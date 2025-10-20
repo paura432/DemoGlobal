@@ -2,7 +2,7 @@
   "bloques": [
     {
       "id": "import",
-      "titulo": "Import Your Citizen Credential",
+      "titulo": "Import Your Identity Credential",
       "instrucciones": [
         "To use your digital identity, you need to <b>import your credential</b> into the wallet.",
         "It's like adding a <b>secure digital card</b> to your wallet, containing your verifiable information as a citizen.",
@@ -15,7 +15,7 @@
     },
     {
       "id": "qr",
-      "titulo": "Add Your Citizen Credential to Your Wallet App",
+      "titulo": "Add Your Identity Credential to Your Wallet App",
       "instrucciones": [
         "Open the wallet application you installed.",
         "Look for the option <b>\"Add\"</b> or <b>\"Import Credential\"</b>.",

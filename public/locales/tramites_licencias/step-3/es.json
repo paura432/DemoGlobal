@@ -2,7 +2,7 @@
   "bloques": [
     {
       "id": "import",
-      "titulo": "Importa tu Credencial de Ciudadano",
+      "titulo": "Importa tu Credencial de Identidad",
       "instrucciones": [
         "Para poder usar tu identidad digital, necesitas <b>importar tu credencial</b> a la wallet.",
         "Esto es como añadir una <b>tarjeta digital segura</b> a tu billetera, que contiene tu información verificable como ciudadano.",
@@ -15,7 +15,7 @@
     },
     {
       "id": "qr",
-      "titulo": "Añade tu Credencial de Ciudadano a tu App Wallet",
+      "titulo": "Añade tu Credencial de Identidad a tu App Wallet",
       "instrucciones": [
         "Abre la aplicación de la wallet que te has instalado.",
         "Busca la opción <b>\"Añadir\"</b> o <b>\"Importar Credencial\"</b>.",
