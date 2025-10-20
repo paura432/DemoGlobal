@@ -122,7 +122,7 @@ export default function AdquiraProveedorPage() {
             router.push(`/${locale}/atributos_verificados/adquira/adquira_proveedor2`);
           }, 800 * (totalSteps + 1));
         }
-      } catch (error) {
+      } catch {
         clearInterval(interval);
         setPhase('verifying');
         setActiveStep(0);
@@ -144,7 +144,7 @@ export default function AdquiraProveedorPage() {
     }, 1500);
     
     return () => clearInterval(interval);
-  }, [sessionID, phase, t, locale, router, apiBase]);
+  }, [sessionID, phase, t, locale, router]);
 
   if (!t) return null;
   const pct = Math.round((activeStep / (t.verification.steps.length || 1)) * 100);

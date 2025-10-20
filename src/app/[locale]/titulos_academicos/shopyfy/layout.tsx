@@ -54,7 +54,16 @@ const IconSearch = () => (
   </svg>
 );
 
-function Header({ cartCount, t }: { cartCount: number; t: any }) {
+type HeaderTranslations = {
+  tabs: string[];
+  account: string;
+  favorites: string;
+  cart: string;
+  search: string;
+  freeShipping: string;
+};
+
+function Header({ cartCount, t }: { cartCount: number; t: HeaderTranslations }) {
   return (
     <header className="w-full border-b flex-shrink-0">
       <div className="max-w-[1200px] mx-auto px-4 flex items-center gap-6 h-16">

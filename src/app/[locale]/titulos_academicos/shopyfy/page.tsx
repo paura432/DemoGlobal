@@ -5,6 +5,39 @@ import Image from 'next/image';
 import { QRCodeCanvas } from 'qrcode.react';
 import { useRouter, usePathname } from 'next/navigation';
 
+
+type DiscountOption = {
+  id: string;
+  label: string;
+  description: string;
+  available?: boolean;
+};
+
+type TranslationSet = {
+  discount: {
+    options: DiscountOption[];
+    applied: string;
+    percentage: string;
+  };
+  verification: {
+    steps: string[];
+    error: string;
+    studentVerified: string;
+    discountApplied: string;
+    applyDiscount: string;
+    modalTitle: string;
+    close: string;
+    generating: string;
+    instructions: string[];
+    autoVerifying: string;
+    verifying: string;
+  };
+  summary: {
+    discounts: string;
+    studentDiscount: string;
+  };
+};
+
 /* =========================
    Config / Mock de producto
    ========================= */
@@ -298,7 +331,7 @@ function DiscountDropdown({
 }: {
   current: StudentState;
   onVerified: (s: StudentState) => void;
-  t: any;
+  t: TranslationSet;
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -316,7 +349,7 @@ function DiscountDropdown({
   const START_ENDPOINT = `${apiBase}/api/v1/verifier-back/procivis`;
   const STATUS_ENDPOINT = (sid: string) => `${apiBase}/api/v1/verifier-status/procivis/${sid}`;
 
-  const discountOptions = t.discount.options.map((opt: any) => ({
+  const discountOptions = t.discount.options.map((opt: DiscountOption) => ({
     ...opt,
     available: opt.id === 'verifiable-credential'
   }));
@@ -387,7 +420,7 @@ function DiscountDropdown({
           setActiveStep(0);
 
           const timers: ReturnType<typeof setTimeout>[] = [];
-          t.verification.steps.forEach((_: any, i: number) => {
+          t.verification.steps.forEach((_, i: number) => {
             timers.push(setTimeout(() => setActiveStep(i + 1), 900 * (i + 1)));
           });
           timers.push(setTimeout(() => setPhase('ready'), 900 * (t.verification.steps.length + 1)));
@@ -438,7 +471,7 @@ function DiscountDropdown({
 
           {dropdownOpen && (
             <div className="absolute top-full left-0 right-0 mt-1 bg-white border rounded shadow-lg z-20 max-h-32 overflow-y-auto">
-              {discountOptions.map((option: any) => (
+              {discountOptions.map((option: DiscountOption) => (
                 <button
                   key={option.id}
                   onClick={() => handleOptionClick(option.id)}
