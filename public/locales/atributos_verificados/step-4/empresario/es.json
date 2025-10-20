@@ -4,8 +4,9 @@
     "subtitle": "Ya tienes tu credencial empresarial lista para usar",
     "intro": "Ahora puedes usar tu credencial digital para gestionar operaciones empresariales",
     "bullets": [
+      "Accede a <b>plataformas B2B</b> con un solo click usando tu credencial verificada",
       "Gestiona <b>operaciones empresariales</b> de forma segura y eficiente",
-      "Accede a <b>plataformas B2B</b> con un solo click usando tu credencial verificada"
+      "Modifica el <b>IBAN</b> de cuenta de proveedor"
     ],
     "mock": {
       "image": "/atributos_verificados/empresario_mockup.png",

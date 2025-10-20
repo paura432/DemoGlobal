@@ -111,7 +111,7 @@ export default function Step4() {
   const mergedTitle = useBlock?.titulo || c.title;
   const mergedSubtext = useBlock?.instrucciones?.[0] || c.subtitle || '';
 
-  const bullets = (c.bullets ?? []).slice(0, 2);
+  const bullets = (c.bullets ?? []).slice(0, 3);
 
   const goBack = () => router.push(`/${locale}/atributos_verificados/step-3`);
   const goNext = () => {

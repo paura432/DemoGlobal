@@ -1,7 +1,7 @@
 {
   "header": {
     "language": { "es": "ES", "en": "EN" },
-    "accessTitle": "Client access"
+    "accessTitle": "Access with your credential"
   },
   "buttons": {
     "companyAccreditation": "Company accreditation",

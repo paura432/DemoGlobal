@@ -26,7 +26,7 @@
   "qr": {
     "title": "Cambio de IBAN",
     "subtitle": "Escanee el código QR con su Wallet para continuar",
-    "transaction": "Transferencia  ES76 1234 5678 9123 4567 8901",
+    "transaction": "ES76 1234 5678 9123 4567 8901",
     "description": "De Adquira Marketplace para Tech Solutions S.L."
   },
   "verification": {

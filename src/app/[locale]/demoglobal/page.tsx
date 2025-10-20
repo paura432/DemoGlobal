@@ -1,9 +1,8 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { JSX, useEffect, useState } from 'react';
 import { FaGraduationCap, FaHeart } from 'react-icons/fa';
-import LanguageDropdown from '@/components/ui/LenguajeDropDown';
 import DemoCard from '@/components/ui/DemoCard';
 import { FaCheck, FaNewspaper } from 'react-icons/fa6';
 
@@ -36,7 +35,6 @@ type CardItem = {
 export default function DemoGlobalPage() {
   const [translations, setTranslations] = useState<DemoTranslations | null>(null);
   const pathname = usePathname();
-  const router = useRouter();
   const match = pathname.match(/^\/(es|en)/);
   const locale = (match ? match[1] : 'es') as 'es' | 'en';
 
@@ -52,19 +50,6 @@ export default function DemoGlobalPage() {
     })();
   }, [locale]);
   
-  const handleSelectLocale = (next: 'es' | 'en') => {
-    if (next === locale) return;
-    
-    // Si ya tiene prefijo de idioma, reemplázalo
-    if (pathname.match(/^\/(es|en)/)) {
-      const newPath = pathname.replace(/^\/(es|en)/, `/${next}`);
-      router.push(newPath);
-    } else {
-      // Si no tiene prefijo, agrégalo
-      const newPath = `/${next}${pathname}`;
-      router.push(newPath);
-    }
-  };
 
   const cards: CardItem[] = [
     {
@@ -110,9 +95,6 @@ export default function DemoGlobalPage() {
               Trust<span className="text-blue-600">OS</span>
             </div>
             <div className="justify-self-center" />
-            <div className="justify-self-end">
-              <LanguageDropdown locale={locale} onSelect={handleSelectLocale} />
-            </div>
           </div>
         </div>
       </header>

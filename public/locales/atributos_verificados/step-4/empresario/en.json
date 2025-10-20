@@ -4,8 +4,9 @@
     "subtitle": "Your business credential is ready to use",
     "intro": "Now you can use your digital credential to manage business operations",
     "bullets": [
+      "Access <b>B2B platforms</b> with one click using your verified credential",
       "Manage <b>business operations</b> securely and efficiently",
-      "Access <b>B2B platforms</b> with one click using your verified credential"
+      "Modify supplier account IBAN"
     ],
     "mock": {
       "image": "/atributos_verificados/empresario_mockup_in.png",

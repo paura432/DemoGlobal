@@ -35,8 +35,8 @@
     ],
     "qrByAppStore": {
       "procivis": {
-        "appstore": "https://apps.apple.com/app/procivis-wallet/id6477862867",
-        "play": "https://play.google.com/store/apps/details?id=one.procivis.wallet"
+      "appstore": "https://apps.apple.com/us/app/procivis-one-wallet/id6480111491",
+      "play": "https://play.google.com/store/apps/details?id=ch.procivis.one.wallet.trial&pcampaignid=web_share"
       }
     },
     "ui": {
