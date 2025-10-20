@@ -41,10 +41,11 @@ const CREDENTIALS = {
   cliente: {
     schema: 'cliente',
     data: {
-      Titular: 'Clara Martínez García',
+      Titular: 'Carolina Martínez García',
       NúmeroTarjeta: '1234 5678 9012 3456',
-      IBAN: 'ES7620770024003102575766',
       FechaEmisón: '2024-06-01',
+      FechaExpedición: '2030-06-01',
+      MayorEdad: 'true',
     },
   },
   empresario: {

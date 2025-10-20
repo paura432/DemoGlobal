@@ -1,34 +1,49 @@
 {
-    "tituloFijo": "First you will need a Wallet",
+  "cliente": {
+    "tituloFijo": "First, you'll need a Wallet",
     "bloques": [
       {
+        "subtitulo": "You want to shop online more securely",
+        "instrucciones": [
+          "You'd like to make a <b>safer online purchase</b>",
+          "Without sharing or filling in <b>personal data</b>",
+          "In just one click, personal and payment data included",
+          "Your <b>personal bank</b> offers you the option to generate your own credential to make secure online purchases"
+        ],
+        "video": "/videos/cliente-online.mp4",
+        "poster": "/demoglobal/cliente-online.png"
+      },
+      {
         "subtitulo": "What are Verifiable Credential Wallets?",
-        "texto": "Imagine a digital wallet on your phone that, instead of holding money or credit cards, stores verifiable credentials. Think of them as important documents, but in a secure digital format (ID, passport, degrees, etc.).",
-        "video": "/videos/step-2-1.mp4"
+        "texto": "Imagine a <b>digital wallet</b> on your phone that, instead of storing money or credit cards, holds <b>verifiable credentials</b>. Think of them as important documents but in a digital and secure format (ID, passport, degrees, etc.).",
+        "video": "/videos/step-2-1.mp4",
+        "poster": "/demoglobal/wallet-intro.png"
       },
       {
         "subtitulo": "How do they work?",
-        "texto": "Verifiable credential wallets give users full control over their data. You decide what information to share and with whom. For example, if you only need to prove your age to access a service, you just share your date of birth without revealing your full ID.",
-        "video": "/videos/step-2-2.mp4"
+        "texto": "Verifiable credential wallets give users <b>full control over their data</b>. You decide what information to share and with whom. For example, if you only need to prove your age to access a service, you can share just your date of birth without revealing your entire identity.",
+        "video": "/videos/step-2-2.mp4",
+        "poster": "/demoglobal/wallet-funcion.png"
       },
       {
         "subtitulo": "Install your Wallet app",
-        "texto": "First, install one of the compatible applications on your smartphone. You can view the QR code by tapping on the icons.",
+        "texto": "First, install one of the compatible applications on your smartphone. You can view the QR by tapping on the icons.",
         "video": "/videos/step-2-3.mp4",
+        "poster": "/demoglobal/procivis-promo.png",
         "apps": [
-          { 
-            "id": "procivis", 
-            "nombre": "Procivis", 
+          {
+            "id": "procivis",
+            "nombre": "Procivis",
             "logo": "/demoglobal/procivis.png"
           }
         ],
         "modalItems": [
-          { 
+          {
             "title": "Download <strong>Procivis</strong> on your phone",
             "sub": "Scan this QR code with your phone or use the store buttons. You can also search for \"Procivis\" in your app store."
           },
-          { 
-            "title": "Complete the process in the app."
+          {
+            "title": "Complete the process in the app to activate your wallet."
           }
         ]
       }
@@ -48,7 +63,74 @@
     "buttons": {
       "back": "Back",
       "next": "Next",
-      "go": "Import credential"
+      "go": "I already have a wallet"
+    }
+  },
+
+  "empresario": {
+    "tituloFijo": "First, you'll need a Wallet",
+    "bloques": [
+      {
+        "subtitulo": "You want to carry out secure operations",
+        "instrucciones": [
+          "You'd like to <b>register on platforms</b> and perform secure transactions",
+          "In just one click, using your company data",
+          "Your <b>personal bank</b> offers you the option to generate your own company credential to perform secure operations"
+        ],
+        "video": "/videos/empresario-operaciones.mp4",
+        "poster": "/demoglobal/empresa-operaciones.png"
+      },
+      {
+        "subtitulo": "What are Verifiable Credential Wallets?",
+        "texto": "Imagine a <b>digital wallet</b> on your phone that, instead of storing money or credit cards, holds <b>verifiable credentials</b>. Think of them as important documents but in a digital and secure format (ID, passport, degrees, etc.).",
+        "video": "/videos/step-2-1.mp4",
+        "poster": "/demoglobal/wallet-intro.png"
+      },
+      {
+        "subtitulo": "How do they work?",
+        "texto": "Verifiable credential wallets give users <b>full control over their data</b>. You decide what information to share and with whom. For example, if you only need to prove your age to access a service, you can share just your date of birth without revealing your entire identity.",
+        "video": "/videos/step-2-2.mp4",
+        "poster": "/demoglobal/wallet-funcion.png"
+      },
+      {
+        "subtitulo": "Install your Wallet app",
+        "texto": "First, install one of the compatible applications on your smartphone. You can view the QR by tapping on the icons.",
+        "video": "/videos/step-2-3.mp4",
+        "poster": "/demoglobal/procivis-promo.png",
+        "apps": [
+          {
+            "id": "procivis",
+            "nombre": "Procivis",
+            "logo": "/demoglobal/procivis.png"
+          }
+        ],
+        "modalItems": [
+          {
+            "title": "Download <strong>Procivis</strong> on your phone",
+            "sub": "Scan this QR code with your phone or use the store buttons. You can also search for \"Procivis\" in your app store."
+          },
+          {
+            "title": "Complete the process in the app to activate your wallet."
+          }
+        ]
+      }
+    ],
+    "qrByAppStore": {
+      "procivis": {
+        "appstore": "https://apps.apple.com/app/procivis-wallet/id6477862867",
+        "play": "https://play.google.com/store/apps/details?id=one.procivis.wallet"
+      }
+    },
+    "ui": {
+      "modalSubtitle": "Download the app and complete the process",
+      "close": "Close",
+      "done": "Done",
+      "extraStep": "Click on the app to get the download QR"
+    },
+    "buttons": {
+      "back": "Back",
+      "next": "Next",
+      "go": "I already have a wallet"
     }
   }
-  
+}

@@ -4,26 +4,34 @@
     "accessTitle": "Client access"
   },
   "buttons": {
-    "companyAccreditation": "COMPANY ACCREDITATION",
-    "login": "LOGIN",
+    "companyAccreditation": "Company accreditation",
+    "login": "Login",
     "recoverPassword": "Recover password",
-    "help": "NEED HELP?"
+    "help": "Need help?"
   },
   "modal": {
     "title": "Confirm your credential",
     "credentialTitle": "Bank credential",
-    "waiting": "Generating QR code...",
-    "verified": "Credential successfully verified",
-    "error": "Credential verification failed. Please try again."
+    "waiting": "Starting verification process...",
+    "verifyingTitle": "Verifying...",
+    "steps": {
+      "credential": "Checking credential",
+      "expiration": "Validating expiration",
+      "validity": "Confirming professional validity",
+      "auth": "Authenticating identity"
+    },
+    "verified": "Verification successfully completed",
+    "error": "Verification could not be completed.",
+    "hint": "Not sure how to use it?"
   },
   "footer": {
-    "copyright": "Adquira España, S.A. © 2025 - All rights reserved",
+    "copyright": "© 2025 Adquira. All rights reserved.",
     "links": {
-      "trustCenter": "TRUST CENTER",
-      "ethicCode": "CODE OF ETHICS",
-      "privacyPolicy": "PRIVACY POLICY",
-      "legalNotice": "LEGAL NOTICE"
+      "trustCenter": "Trust Center",
+      "ethicCode": "Code of Ethics",
+      "privacyPolicy": "Privacy Policy",
+      "legalNotice": "Legal Notice"
     },
-    "customerService": { "label": "CUSTOMER SERVICE", "emoji": "🎧" }
+    "customerService": { "label": "Customer Service", "emoji": "💬" }
   }
 }

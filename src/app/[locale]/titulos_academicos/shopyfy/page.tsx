@@ -3,7 +3,7 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { QRCodeCanvas } from 'qrcode.react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 /* =========================
    Config / Mock de producto
@@ -13,13 +13,141 @@ const apiBase = process.env.NEXT_PUBLIC_VCS_API_URL || 'http://localhost:8085';
 const ITEM = {
   id: '1',
   brand: 'New Look',
-  title: 'PANELLED - Chaqueta vaquera - blue',
+  title: {
+    es: 'PANELLED - Chaqueta vaquera - azul',
+    en: 'PANELLED - Denim jacket - blue'
+  },
   price: 59.99,
-  color: 'blue',
+  color: {
+    es: 'azul',
+    en: 'blue'
+  },
   size: '36',
   image: '/titulos_academicos/chaqueta.jpg',
   seller: 'Shopyline Europe',
   qty: 1,
+};
+
+/* =========================
+   Traducciones
+   ========================= */
+const TRANSLATIONS = {
+  es: {
+    cart: {
+      title: "Tu cesta",
+      items: "artículo",
+      shipping: "Envío por parte de",
+      deliveryDate: "Jue., 18.09 - Vie., 19.09",
+      color: "Color",
+      size: "Talla",
+      saleThrough: "Venta a través de",
+      moveToFavorites: "Mover a favoritos",
+      reminder: "Recuerda: no podemos reservar los artículos en tu cesta.",
+      quantity: "Cantidad"
+    },
+    summary: {
+      subtotal: "Subtotal",
+      studentDiscount: "Descuento estudiante",
+      shipping: "Envío",
+      total: "Total",
+      vatIncluded: "IVA incluido",
+      buy: "Comprar",
+      returnToDemo: "Volver a demo",
+      discounts: "Descuentos"
+    },
+    discount: {
+      applied: "Descuento aplicado",
+      percentage: "de descuento",
+      options: [
+        {
+          id: 'verifiable-credential',
+          label: 'Credencial verificable de estudiante',
+          description: 'Descuento del 10%'
+        },
+        {
+          id: 'student-card',
+          label: 'Carnet estudiante',
+          description: 'Descuento del 15%'
+        }
+      ]
+    },
+    verification: {
+      modalTitle: "Verificar credencial",
+      generating: "Generando QR…",
+      instructions: ["Abre tu wallet", "Escanea el QR y comparte tu credencial"],
+      autoVerifying: "Verificando automáticamente…",
+      verifying: "Verificando",
+      steps: [
+        'Verificando credencial',
+        'Validando expiración',
+        'Confirmando validez',
+        'Autenticando'
+      ],
+      studentVerified: "Estudiante verificado",
+      discountApplied: "Descuento aplicado",
+      applyDiscount: "Aplicar descuento",
+      error: "Error de verificación",
+      close: "Cerrar"
+    }
+  },
+  en: {
+    cart: {
+      title: "Your cart",
+      items: "item",
+      shipping: "Shipped by",
+      deliveryDate: "Thu., Sep 18 - Fri., Sep 19",
+      color: "Color",
+      size: "Size",
+      saleThrough: "Sold by",
+      moveToFavorites: "Move to favorites",
+      reminder: "Remember: we cannot reserve items in your cart.",
+      quantity: "Quantity"
+    },
+    summary: {
+      subtotal: "Subtotal",
+      studentDiscount: "Student discount",
+      shipping: "Shipping",
+      total: "Total",
+      vatIncluded: "VAT included",
+      buy: "Buy",
+      returnToDemo: "Return to demo",
+      discounts: "Discounts"
+    },
+    discount: {
+      applied: "Discount applied",
+      percentage: "discount",
+      options: [
+        {
+          id: 'verifiable-credential',
+          label: 'Student verifiable credential',
+          description: '10% discount'
+        },
+        {
+          id: 'student-card',
+          label: 'Student card',
+          description: '15% discount'
+        }
+      ]
+    },
+    verification: {
+      modalTitle: "Verify credential",
+      generating: "Generating QR…",
+      instructions: ["Open your wallet", "Scan the QR and share your credential"],
+      autoVerifying: "Verifying automatically…",
+      verifying: "Verifying",
+      steps: [
+        'Verifying credential',
+        'Validating expiration',
+        'Confirming validity',
+        'Authenticating'
+      ],
+      studentVerified: "Verified student",
+      discountApplied: "Discount applied",
+      applyDiscount: "Apply discount",
+      error: "Verification error",
+      close: "Close"
+    }
+  }
 };
 
 /* =========================
@@ -65,9 +193,11 @@ function IconCheck({ className = 'w-3 h-3' }: { className?: string }) {
 function QtySelect({
   value,
   onChange,
+  label
 }: {
   value: number;
   onChange: (v: number) => void;
+  label: string;
 }) {
   const [open, setOpen] = useState(false);
   return (
@@ -75,7 +205,7 @@ function QtySelect({
       <button
         className="w-12 h-7 border rounded flex items-center justify-between px-1.5 text-xs"
         onClick={() => setOpen((o) => !o)}
-        aria-label="Cantidad"
+        aria-label={label}
         type="button"
       >
         {value}
@@ -131,11 +261,13 @@ function Modal({
   onClose,
   title,
   children,
+  closeText
 }: {
   open: boolean;
   onClose: () => void;
   title?: string;
   children: React.ReactNode;
+  closeText: string;
 }) {
   if (!open) return null;
   return (
@@ -143,8 +275,8 @@ function Modal({
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
       <div className="relative bg-white rounded-xl shadow-lg w-full max-w-sm max-h-[85vh]">
         <div className="sticky top-0 bg-white border-b px-4 py-3 flex items-center justify-between">
-          <h3 className="text-sm font-semibold">{title ?? 'Verificar credencial'}</h3>
-          <button onClick={onClose} aria-label="Cerrar" className="text-lg">✕</button>
+          <h3 className="text-sm font-semibold">{title}</h3>
+          <button onClick={onClose} aria-label={closeText} className="text-lg">✕</button>
         </div>
         <div className="p-4">
           {children}
@@ -159,19 +291,14 @@ function Modal({
    ========================= */
 type Phase = 'loading' | 'qr' | 'verifying' | 'ready' | 'error';
 
-const VERIFY_STEPS = [
-  'Verificando credencial',
-  'Validando expiración',
-  'Confirmando validez',
-  'Autenticando',
-];
-
 function DiscountDropdown({
   current,
   onVerified,
+  t
 }: {
   current: StudentState;
   onVerified: (s: StudentState) => void;
+  t: any;
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -183,26 +310,16 @@ function DiscountDropdown({
   const [pendingResult, setPendingResult] = useState<StudentState | null>(null);
 
   const [activeStep, setActiveStep] = useState(0);
-  const stepsDone = Math.min(activeStep, VERIFY_STEPS.length);
-  const pct = Math.round((stepsDone / VERIFY_STEPS.length) * 100);
+  const stepsDone = Math.min(activeStep, t.verification.steps.length);
+  const pct = Math.round((stepsDone / t.verification.steps.length) * 100);
 
   const START_ENDPOINT = `${apiBase}/api/v1/verifier-back/procivis`;
   const STATUS_ENDPOINT = (sid: string) => `${apiBase}/api/v1/verifier-status/procivis/${sid}`;
 
-  const discountOptions = [
-    {
-      id: 'verifiable-credential',
-      label: 'Credencial verificable de estudiante',
-      description: 'Descuento del 10%',
-      available: true
-    },
-    {
-      id: 'student-card',
-      label: 'Carnet estudiante',
-      description: 'Descuento del 15%',
-      available: false
-    }
-  ];
+  const discountOptions = t.discount.options.map((opt: any) => ({
+    ...opt,
+    available: opt.id === 'verifiable-credential'
+  }));
 
   const handleOptionClick = (optionId: string) => {
     setDropdownOpen(false);
@@ -262,38 +379,38 @@ function DiscountDropdown({
           setPendingResult({
             verified: true,
             discountPercent: 10,
-            name: 'Estudiante verificado',
-            uiLabel: 'Descuento aplicado',
+            name: t.verification.studentVerified,
+            uiLabel: t.verification.discountApplied,
           });
 
           setPhase('verifying');
           setActiveStep(0);
 
           const timers: ReturnType<typeof setTimeout>[] = [];
-          VERIFY_STEPS.forEach((_, i) => {
+          t.verification.steps.forEach((_: any, i: number) => {
             timers.push(setTimeout(() => setActiveStep(i + 1), 900 * (i + 1)));
           });
-          timers.push(setTimeout(() => setPhase('ready'), 900 * (VERIFY_STEPS.length + 1)));
+          timers.push(setTimeout(() => setPhase('ready'), 900 * (t.verification.steps.length + 1)));
           clearInterval(id);
         }
 
         if (status === 'error' || status === 'rejected' || status === 'expired') {
           setPhase('error');
-          setErrorMsg('Verificación fallida');
+          setErrorMsg(t.verification.error);
           clearInterval(id);
         }
       } catch {}
     }, 1500);
 
     return () => clearInterval(id);
-  }, [modalOpen, sessionID]);
+  }, [modalOpen, sessionID, t]);
 
   const applyAndClose = () => {
     const base: StudentState = {
       verified: true,
       discountPercent: 10,
-      name: 'Estudiante verificado',
-      uiLabel: 'Descuento aplicado',
+      name: t.verification.studentVerified,
+      uiLabel: t.verification.discountApplied,
     };
     onVerified(base);
     setModalOpen(false);
@@ -303,8 +420,8 @@ function DiscountDropdown({
     <>
       {current.verified ? (
         <div className="mt-2 p-2 rounded border bg-green-50 text-xs border-green-200">
-          <div className="font-semibold text-green-700">Descuento aplicado ✓</div>
-          <div className="text-green-600">{current.discountPercent}% de descuento</div>
+          <div className="font-semibold text-green-700">{t.discount.applied} ✓</div>
+          <div className="text-green-600">{current.discountPercent}% {t.discount.percentage}</div>
         </div>
       ) : (
         <div className="mt-2 relative">
@@ -316,12 +433,12 @@ function DiscountDropdown({
                        flex items-center justify-center gap-1"
             type="button"
           >
-            Descuentos
+            {t.summary.discounts}
           </button>
 
           {dropdownOpen && (
             <div className="absolute top-full left-0 right-0 mt-1 bg-white border rounded shadow-lg z-20 max-h-32 overflow-y-auto">
-              {discountOptions.map((option) => (
+              {discountOptions.map((option: any) => (
                 <button
                   key={option.id}
                   onClick={() => handleOptionClick(option.id)}
@@ -339,21 +456,27 @@ function DiscountDropdown({
         </div>
       )}
 
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)} title="Verificar credencial">
+      <Modal 
+        open={modalOpen} 
+        onClose={() => setModalOpen(false)} 
+        title={t.verification.modalTitle}
+        closeText={t.verification.close}
+      >
         {phase === 'loading' && (
-          <div className="text-sm text-gray-600">Generando QR…</div>
+          <div className="text-sm text-gray-600">{t.verification.generating}</div>
         )}
 
         {phase === 'qr' && (
           <div className="space-y-3">
             <div className="text-xs text-gray-700">
-              1. Abre tu wallet<br/>
-              2. Escanea el QR y comparte tu credencial
+              {t.verification.instructions.map((inst: string, i: number) => (
+                <div key={i}>{i + 1}. {inst}</div>
+              ))}
             </div>
             <div className="flex justify-center p-2 bg-gray-50 rounded">
               <QRCodeCanvas value={qrLink} size={150} level="M" />
             </div>
-            <div className="text-xs text-gray-600 text-center">Verificando automáticamente…</div>
+            <div className="text-xs text-gray-600 text-center">{t.verification.autoVerifying}</div>
           </div>
         )}
 
@@ -361,7 +484,7 @@ function DiscountDropdown({
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <PersonIcon />
-              <h4 className="text-sm font-semibold">Verificando</h4>
+              <h4 className="text-sm font-semibold">{t.verification.verifying}</h4>
             </div>
 
             <div className="w-full h-1 bg-gray-200 rounded-full">
@@ -372,7 +495,7 @@ function DiscountDropdown({
             </div>
 
             <ul className="space-y-1.5">
-              {VERIFY_STEPS.map((label, i) => {
+              {t.verification.steps.map((label: string, i: number) => {
                 const done = i < activeStep;
                 return (
                   <li key={i} className="flex items-center gap-2">
@@ -396,14 +519,14 @@ function DiscountDropdown({
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded text-sm font-medium transition"
                 type="button"
               >
-                Aplicar descuento
+                {t.verification.applyDiscount}
               </button>
             )}
           </div>
         )}
 
         {phase === 'error' && (
-          <div className="text-sm text-red-600 text-center">{errorMsg || 'Error de verificación'}</div>
+          <div className="text-sm text-red-600 text-center">{errorMsg || t.verification.error}</div>
         )}
       </Modal>
     </>
@@ -415,6 +538,9 @@ function DiscountDropdown({
    ========================= */
 export default function CartPage() {
   const router = useRouter();
+  const pathname = usePathname();
+  const locale = (pathname.split('/')[1] || 'es') as 'es' | 'en';
+  const t = TRANSLATIONS[locale];
 
   const [qty, setQty] = useState<number>(ITEM.qty);
   const { st: student, setSt } = useStudentCred();
@@ -426,79 +552,79 @@ export default function CartPage() {
   );
   const total = useMemo(() => +(subtotal - discountAmount).toFixed(2), [subtotal, discountAmount]);
 
-  const goDemo = () => router.push(`/`);
+  const goDemo = () => router.push(`/${locale}/`);
 
-  const ctaLabel = student.verified ? 'Volver a demo' : 'Comprar';
+  const ctaLabel = student.verified ? t.summary.returnToDemo : t.summary.buy;
   const ctaClasses = `w-full h-9 rounded text-sm font-semibold flex items-center justify-center gap-1.5 transition
     ${student.verified ? 'bg-green-600 hover:bg-green-700 text-white' : 'bg-black hover:opacity-90 text-white'}`;
 
-    return (
-      <div className="bg-white text-gray-900 flex flex-col">
-        <main className="flex-1 max-w-[1100px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 py-6">
-          
-          <section>
-            <h1 className="text-2xl font-semibold mb-5">Tu cesta (1 artículo)</h1>
-    
-            <div className="flex items-center gap-2 text-sm text-gray-700 mb-4">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded border">📦</span>
-              <span>
-                Envío por parte de <span className="font-semibold">Shopyline</span>
-                <span className="block text-gray-500">Jue., 18.09 - Vie., 19.09</span>
-              </span>
+  return (
+    <div className="bg-white text-gray-900 flex flex-col">
+      <main className="flex-1 max-w-[1100px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 py-6">
+        
+        <section>
+          <h1 className="text-2xl font-semibold mb-5">{t.cart.title} (1 {t.cart.items})</h1>
+  
+          <div className="flex items-center gap-2 text-sm text-gray-700 mb-4">
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded border">📦</span>
+            <span>
+              {t.cart.shipping} <span className="font-semibold">Shopyline</span>
+              <span className="block text-gray-500">{t.cart.deliveryDate}</span>
+            </span>
+          </div>
+  
+          <div className="flex gap-3">
+            <div className="w-20 h-24 relative overflow-hidden rounded">
+              <Image width={40} height={40} src={ITEM.image} alt={ITEM.title[locale]} className="w-full h-full object-cover" />
             </div>
-    
-            <div className="flex gap-3">
-              <div className="w-20 h-24 relative overflow-hidden rounded">
-                <Image width={40} height={40} src={ITEM.image} alt={ITEM.title} className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <div className="text-xs text-gray-600">{ITEM.brand}</div>
-                    <div className="font-semibold text-sm">{ITEM.title}</div>
-                    <div className="mt-1 text-xs text-gray-700">{ITEM.price.toFixed(2)} €</div>
-                    <div className="mt-1 text-xs text-gray-600">Color: {ITEM.color}</div>
-                    <div className="text-xs text-gray-600">Talla: {ITEM.size}</div>
-                    <div className="mt-1 text-xs">
-                      Venta a través de <a className="underline font-semibold" href="#">{ITEM.seller}</a>
-                    </div>
-                  </div>
-    
-                  <div className="flex items-start gap-3">
-                    <QtySelect value={qty} onChange={setQty} />
-                    <button aria-label="Eliminar artículo" className="h-9 w-9 grid place-items-center">✕</button>
+            <div className="flex-1">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <div className="text-xs text-gray-600">{ITEM.brand}</div>
+                  <div className="font-semibold text-sm">{ITEM.title[locale]}</div>
+                  <div className="mt-1 text-xs text-gray-700">{ITEM.price.toFixed(2)} €</div>
+                  <div className="mt-1 text-xs text-gray-600">{t.cart.color}: {ITEM.color[locale]}</div>
+                  <div className="text-xs text-gray-600">{t.cart.size}: {ITEM.size}</div>
+                  <div className="mt-1 text-xs">
+                    {t.cart.saleThrough} <a className="underline font-semibold" href="#">{ITEM.seller}</a>
                   </div>
                 </div>
-                <button className="mt-2 text-violet-600 text-xs hover:underline">Mover a favoritos</button>
+  
+                <div className="flex items-start gap-3">
+                  <QtySelect value={qty} onChange={setQty} label={t.cart.quantity} />
+                  <button aria-label="Delete item" className="h-9 w-9 grid place-items-center">✕</button>
+                </div>
               </div>
+              <button className="mt-2 text-violet-600 text-xs hover:underline">{t.cart.moveToFavorites}</button>
             </div>
-    
-            <p className="mt-6 text-xs text-gray-600">❗ Recuerda: no podemos reservar los artículos en tu cesta.</p>
-          </section>
-        <aside className="bg-gray-100 p-4 rounded self-start" style={{maxHeight: '70vh'}}>
-          <div className="flex items-center justify-between text-sm py-1.5">
-            <span>Subtotal</span>
-            <span>{subtotal.toFixed(2)} €</span>
           </div>
+  
+          <p className="mt-6 text-xs text-gray-600">❗ {t.cart.reminder}</p>
+        </section>
+      <aside className="bg-gray-100 p-4 rounded self-start" style={{maxHeight: '70vh'}}>
+        <div className="flex items-center justify-between text-sm py-1.5">
+          <span>{t.summary.subtotal}</span>
+          <span>{subtotal.toFixed(2)} €</span>
+        </div>
 
-          {student.verified && (
-            <div className="flex items-center justify-between text-sm py-1.5 text-green-700">
-              <span>Descuento estudiante ({student.discountPercent}%)</span>
-              <span>-{discountAmount.toFixed(2)} €</span>
-            </div>
-          )}
-
-          <div className="flex items-center justify-between text-sm py-1.5 border-b">
-            <span>Envío</span>
-            <span>0,00 €</span>
+        {student.verified && (
+          <div className="flex items-center justify-between text-sm py-1.5 text-green-700">
+            <span>{t.summary.studentDiscount} ({student.discountPercent}%)</span>
+            <span>-{discountAmount.toFixed(2)} €</span>
           </div>
+        )}
 
-          <div className="flex items-center justify-between font-semibold text-base py-3">
-            <span> Total <span className="text-gray-500 text-xs">IVA incluido</span></span>
-            <span className="text-[18px]">{total.toFixed(2)} €</span>
-          </div>
+        <div className="flex items-center justify-between text-sm py-1.5 border-b">
+          <span>{t.summary.shipping}</span>
+          <span>0,00 €</span>
+        </div>
 
-          <button
+        <div className="flex items-center justify-between font-semibold text-base py-3">
+          <span>{t.summary.total} <span className="text-gray-500 text-xs">{t.summary.vatIncluded}</span></span>
+          <span className="text-[18px]">{total.toFixed(2)} €</span>
+        </div>
+
+        <button
           onClick={goDemo}
           className={`${ctaClasses} ${!student.verified ? 'opacity-50 cursor-not-allowed' : ''}`}
           disabled={!student.verified}
@@ -506,9 +632,9 @@ export default function CartPage() {
           {student.verified && <IconCheck className="w-4 h-4" />} {ctaLabel}
         </button>
 
-          <DiscountDropdown current={student} onVerified={setSt} />
-        </aside>
-      </main>
-    </div>
+        <DiscountDropdown current={student} onVerified={setSt} t={t} />
+      </aside>
+    </main>
+  </div>
   );
 }

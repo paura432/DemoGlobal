@@ -261,7 +261,7 @@ export default function Step3() {
                     {/* Nueva cabecera "CIUDADANO" */}
                     <div className="mb-3">
                       <div className="text-center font-semibold text-sm text-gray-600 uppercase tracking-wide bg-gray-100 px-4 py-1 rounded-full shadow-sm">
-                        CIUDADANO
+                        {locale === 'es' ? 'CIUDADANO' : 'CITIZEN'}
                       </div>
                     </div>
 

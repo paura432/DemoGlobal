@@ -28,6 +28,12 @@ interface AdquiraTranslations {
     hint: string;
     verifyingTitle: string;
     error: string;
+    steps: {
+      credential: string;
+      expiration: string;
+      validity: string;
+      auth: string;
+    };
   };
 }
 
@@ -44,10 +50,10 @@ export default function AdquiraLoginPage() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const steps = [
-    'Verificando credencial',
-    'Validando expiración',
-    'Confirmando validez profesional',
-    'Autenticando identidad',
+    t?.modal.steps.credential,
+    t?.modal.steps.expiration,
+    t?.modal.steps.validity,
+    t?.modal.steps.auth,
   ];
 
   // 🔤 Cargar traducciones
@@ -158,13 +164,7 @@ export default function AdquiraLoginPage() {
           {t.header.accessTitle}
         </h1>
 
-        <button
-          onClick={startVerification}
-          className="w-3/4 bg-[#808a3d] hover:bg-[#6f7833] text-white py-2.5 rounded-full font-semibold transition mb-3"
-        >
-          {t.buttons.companyAccreditation}
-        </button>
-        <button className="w-3/4 bg-[#a4162d] hover:bg-[#8d1326] text-white py-2.5 rounded-full font-semibold transition mb-3">
+        <button onClick={startVerification} className="w-3/4 bg-[#a4162d] hover:bg-[#8d1326] text-white py-2.5 rounded-full font-semibold transition mb-3">
           {t.buttons.login}
         </button>
         <a href="#" className="text-sm text-gray-600 hover:underline mb-3">

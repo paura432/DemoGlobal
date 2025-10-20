@@ -235,16 +235,16 @@ export default function CiudadanoPage() {
               }}
               className="bg-[#004A99] hover:bg-[#003C7A] text-white px-5 py-2 rounded-full text-sm font-medium"
             >
-              🚓 Ir al portal del Policía
+             {locale === 'es' ? '🚓 Ir al portal del Policía' : '🚓 Go to the Police Portal'} 
             </button>
             <button
               onClick={() => {
                 sessionStorage.clear(); // 🧹 LIMPIA TODO ANTES DE SALIR
-                router.push(`/`);
+                router.push(`/${locale}`);
               }}
               className="border border-[#004A99] text-[#004A99] hover:bg-[#004A99] hover:text-white px-5 py-2 rounded-full text-sm font-medium"
             >
-              🏠 Volver al inicio
+              {locale === 'es' ? '🏠 Volver al inicio' : '🏠 Return to Home'}
             </button>
           </div>
         )}

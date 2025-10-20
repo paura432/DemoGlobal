@@ -1,54 +1,37 @@
 {
-    "tituloFijo": "First you will need a Wallet",
-    "bloques": [
-      {
-        "subtitulo": "What are Verifiable Credential Wallets?",
-        "texto": "Imagine a digital wallet on your phone that, instead of holding money or credit cards, stores verifiable credentials. Think of them as important documents, but in a secure digital format (ID, passport, degrees, etc.).",
-        "video": "/videos/step-2-1.mp4"
-      },
-      {
-        "subtitulo": "How do they work?",
-        "texto": "Verifiable credential wallets give users full control over their data. You decide what information to share and with whom. For example, if you only need to prove your age to access a service, you just share your date of birth without revealing your full ID.",
-        "video": "/videos/step-2-2.mp4"
-      },
-      {
-        "subtitulo": "Install your Wallet app",
-        "texto": "First, install one of the compatible applications on your smartphone. You can view the QR code by tapping on the icons.",
-        "video": "/videos/step-2-3.mp4",
-        "apps": [
-          { 
-            "id": "procivis", 
-            "nombre": "Procivis", 
-            "logo": "/demoglobal/procivis.png"
-          }
-        ],
-        "modalItems": [
-          { 
-            "title": "Download <strong>Procivis</strong> on your phone",
-            "sub": "Scan this QR code with your phone or use the store buttons. You can also search for \"Procivis\" in your app store."
-          },
-          { 
-            "title": "Complete the process in the app."
-          }
-        ]
-      }
-    ],
-    "qrByAppStore": {
-      "procivis": {
-        "appstore": "https://apps.apple.com/app/procivis-wallet/id6477862867",
-        "play": "https://play.google.com/store/apps/details?id=one.procivis.wallet"
-      }
+  "cart": {
+    "banner": "Autumn deals available! Enjoy up to -40% on fashion and accessories.",
+    "title": "Your shopping cart",
+    "shipping": {
+      "by": "Shipping managed by Shopyline Logistics",
+      "date": "Estimated delivery: October 18 - 19"
     },
-    "ui": {
-      "modalSubtitle": "Download the app and complete the process",
-      "close": "Close",
-      "done": "Done",
-      "extraStep": "Click on the app to get the download QR"
+    "productNew": "New product",
+    "qty": "Quantity",
+    "moveToFav": "Move to favorites",
+    "reminder": "Remember: your purchase will be more secure if you verify your banking data through a credential.",
+    "summary": {
+      "title": "Order summary",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "total": "Total",
+      "vatIncluded": "VAT included",
+      "cta": "Proceed with secure payment"
     },
-    "buttons": {
-      "back": "Back",
-      "next": "Next",
-      "go": "Import credential"
+    "payment": {
+      "acceptedTitle": "Accepted payment methods",
+      "couponsTitle": "Have a coupon?",
+      "couponsPlaceholder": "Enter your code here",
+      "couponsApply": "Apply"
+    },
+    "header": {
+      "search": "Search products...",
+      "woman": "Women",
+      "man": "Men",
+      "news": "New arrivals",
+      "clothes": "Clothing",
+      "shoes": "Shoes",
+      "accessories": "Accessories"
     }
   }
-  
+}

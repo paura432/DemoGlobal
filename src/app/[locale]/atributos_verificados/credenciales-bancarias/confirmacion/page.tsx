@@ -15,8 +15,8 @@ const ITEM = {
 };
 
 const BANK_CREDENTIAL = {
-  address: 'C/ Juan Segundo 25...',
-  card: 'Tarjeta 5148...',
+  address: 'Carolina Martínez García',
+  card: 'Tarjeta **** **** **** 3456',
 };
 
 type ConfirmationContent = {

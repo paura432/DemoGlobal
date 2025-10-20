@@ -68,7 +68,7 @@ export default function AdquiraProveedorPage() {
 
   // Cargar JSON de idioma
   useEffect(() => {
-    fetch(`/locales/atributos_verificados/adquira/adquira_proveedor/${locale}.json`)
+    fetch(`/locales/atributos_verificados/adquira/adquira_proveedor2/${locale}.json`)
       .then((r) => r.json())
       .then(setT)
       .catch(() => console.error('Error cargando traducción'));
@@ -97,54 +97,32 @@ export default function AdquiraProveedorPage() {
   // Polling Procivis / simulación
   useEffect(() => {
     if (!sessionID || phase !== 'qr') return;
-    
     const interval = setInterval(async () => {
       try {
         const res = await fetch(`${apiBase}/api/v1/verifier-status/procivis/${sessionID}`);
         const json = await res.json();
         const status = json?.data?.status || json?.status;
-        
         if (['verified', 'success'].includes(status)) {
           clearInterval(interval);
           setPhase('verifying');
           setActiveStep(0);
-          
-          const totalSteps = t?.verification.steps.length || 4;
-          
-          // Animación de los pasos
           t?.verification.steps.forEach((_, i) =>
             setTimeout(() => setActiveStep(i + 1), 800 * (i + 1))
           );
-          
-          // Cuando termine el último paso, establecer 'done' y redirigir
-          setTimeout(() => {
-            // Redirigir después de completar la última verificación
-            router.push(`/${locale}/atributos_verificados/adquira/adquira_proveedor2`);
-          }, 800 * (totalSteps + 1));
+          setTimeout(() => setPhase('done'), 800 * ((t?.verification.steps.length || 4) + 1));
         }
-      } catch (error) {
+      } catch {
         clearInterval(interval);
         setPhase('verifying');
         setActiveStep(0);
-        
-        const totalSteps = t?.verification.steps.length || 4;
-        
-        // Animación de los pasos incluso si hay error
         t?.verification.steps.forEach((_, i) =>
           setTimeout(() => setActiveStep(i + 1), 800 * (i + 1))
         );
-        
-        // Completar la animación y marcar como done (sin redirección en caso de error)
-        setTimeout(() => {
-          setPhase('done');
-          // Opcionalmente, podrías mostrar un mensaje de error aquí
-          // o redirigir a una página de error
-        }, 800 * (totalSteps + 1));
+        setTimeout(() => setPhase('done'), 800 * ((t?.verification.steps.length || 4) + 1));
       }
     }, 1500);
-    
     return () => clearInterval(interval);
-  }, [sessionID, phase, t, locale, router, apiBase]);
+  }, [sessionID, phase, t]);
 
   if (!t) return null;
   const pct = Math.round((activeStep / (t.verification.steps.length || 1)) * 100);
@@ -218,10 +196,10 @@ export default function AdquiraProveedorPage() {
             <p className="text-sm text-gray-500 mb-4">{t.userSection.cif}</p>
 
             <button
-              onClick={startVerification}
-              className="bg-[#808a3d] text-white px-5 py-1.5 rounded-md text-sm font-medium hover:bg-[#6e7834] transition"
+              onClick={() => router.push(`/${locale}`)}
+              className="bg-[#0057B8] text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-[#004c9d] transition"
             >
-              {t.userSection.button}
+              {t.done.button}
             </button>
 
             <div className="mt-10">

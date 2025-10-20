@@ -10,8 +10,8 @@
     },
     "empresario": {
       "nombre": "Álvaro",
-      "label": "Businessman",
-      "descripcion": "Álvaro is a businessman who works with different clients and suppliers.",
+      "label": "Company",
+      "descripcion": "Álvaro is a company who works with different clients and suppliers.",
       "icono": "/atributos_verificados/empresario.png",
       "video": "/videos/empresario.mp4"
     }

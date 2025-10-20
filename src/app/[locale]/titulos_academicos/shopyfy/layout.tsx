@@ -2,6 +2,31 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+// --- Traducciones ---
+const TRANSLATIONS = {
+  es: {
+    header: {
+      tabs: ["Mujer", "Hombre"],
+      account: "Cuenta",
+      favorites: "Favoritos",
+      cart: "Cesta",
+      search: "Busca aquí",
+      freeShipping: "Envío gratuito para pedidos superiores a 30€"
+    }
+  },
+  en: {
+    header: {
+      tabs: ["Women", "Men"],
+      account: "Account",
+      favorites: "Favorites",
+      cart: "Cart",
+      search: "Search here",
+      freeShipping: "Free shipping on orders over €30"
+    }
+  }
+};
 
 // --- Iconos inline ---
 const IconUser = () => (
@@ -29,14 +54,14 @@ const IconSearch = () => (
   </svg>
 );
 
-function Header({ cartCount }: { cartCount: number }) {
+function Header({ cartCount, t }: { cartCount: number; t: any }) {
   return (
     <header className="w-full border-b flex-shrink-0">
       <div className="max-w-[1200px] mx-auto px-4 flex items-center gap-6 h-16">
         {/* Tabs */}
         <nav className="flex gap-2 text-[14px] font-semibold">
-          <Link href="#" className="px-3 py-1 rounded bg-black text-white">Mujer</Link>
-          <Link href="#" className="px-3 py-1 rounded hover:bg-gray-100">Hombre</Link>
+          <Link href="#" className="px-3 py-1 rounded bg-black text-white">{t.tabs[0]}</Link>
+          <Link href="#" className="px-3 py-1 rounded hover:bg-gray-100">{t.tabs[1]}</Link>
         </nav>
 
         {/* Logo */}
@@ -46,9 +71,9 @@ function Header({ cartCount }: { cartCount: number }) {
 
         {/* Iconos */}
         <div className="flex items-center gap-4">
-          <Link href="#" aria-label="Cuenta"><IconUser /></Link>
-          <Link href="#" aria-label="Favoritos"><IconHeart /></Link>
-          <Link href="#" aria-label="Cesta" className="relative">
+          <Link href="#" aria-label={t.account}><IconUser /></Link>
+          <Link href="#" aria-label={t.favorites}><IconHeart /></Link>
+          <Link href="#" aria-label={t.cart} className="relative">
             <IconBag />
             {cartCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] rounded-full w-5 h-5 grid place-items-center">
@@ -65,7 +90,7 @@ function Header({ cartCount }: { cartCount: number }) {
           <div className="flex justify-end">
             <form className="w-[360px] flex items-center gap-2 border rounded-full px-3 py-2 text-sm" action="/buscar">
               <IconSearch />
-              <input name="q" className="flex-1 outline-none" placeholder="Busca aquí" />
+              <input name="q" className="flex-1 outline-none" placeholder={t.search} />
             </form>
           </div>
         </div>
@@ -83,6 +108,10 @@ export default function ShopLayout({
   cartCount?: number;
   noScroll?: boolean;
 }) {
+  const pathname = usePathname();
+  const locale = (pathname.split('/')[1] || 'es') as 'es' | 'en';
+  const t = TRANSLATIONS[locale].header;
+
   useEffect(() => {
     if (noScroll) {
       document.body.style.overflow = 'hidden';
@@ -99,9 +128,9 @@ export default function ShopLayout({
     return (
       <div className="overflow-hidden bg-white text-gray-900 flex flex-col">
         <div className="w-full bg-indigo-100 text-center text-[13px] py-2 flex-shrink-0">
-          Envío gratuito para pedidos superiores a 30€
+          {t.freeShipping}
         </div>
-        <Header cartCount={cartCount} />
+        <Header cartCount={cartCount} t={t} />
         <main className="flex-1 overflow-hidden max-w-[1200px] mx-auto w-full px-4">
           {children}
         </main>
@@ -112,9 +141,9 @@ export default function ShopLayout({
   return (
     <div className="min-h-screen bg-white text-gray-900 flex flex-col">
       <div className="w-full bg-indigo-100 text-center text-[13px] py-2">
-        Envío gratuito para pedidos superiores a 30€
+        {t.freeShipping}
       </div>
-      <Header cartCount={cartCount} />
+      <Header cartCount={cartCount} t={t} />
       <main className="flex-1 mx-auto w-full px-4">{children}</main>
     </div>
   );
