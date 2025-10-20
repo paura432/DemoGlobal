@@ -36,7 +36,7 @@ export default function HealthLayout({ children }: { children: ReactNode }) {
       if (checkContent()) {
         clearInterval(checkInterval);
       }
-    }, 100);
+    }, 200);
 
     const fallbackTimer = setTimeout(() => {
       clearInterval(checkInterval);

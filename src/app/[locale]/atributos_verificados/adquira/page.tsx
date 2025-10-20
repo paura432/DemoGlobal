@@ -145,7 +145,7 @@ export default function AdquiraLoginPage() {
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-[#e7eae3] overflow-hidden">
       {/* Fondo */}
       <Image
-        src="/atributos_verificados/adquira_bg.png"
+        src="/atributos_verificados/adquira-bg.png"
         alt="Fondo Adquira"
         fill
         className="object-cover opacity-30"
