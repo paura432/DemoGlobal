@@ -14,11 +14,6 @@ const ITEM = {
   qty: 1,
 };
 
-const BANK_CREDENTIAL = {
-  address: 'Carolina Martínez García',
-  card: 'Tarjeta **** **** **** 3456',
-};
-
 type ConfirmationContent = {
   confirmation: {
     header: { securePayment: string };
@@ -95,6 +90,7 @@ export default function ConfirmationPage() {
 
   const [content, setContent] = useState<ConfirmationContent | null>(null);
 
+  
   useEffect(() => {
     (async () => {
       const res = await fetch(`/locales/atributos_verificados/credenciales-bancarias/confirmacion/${locale}.json`);
@@ -103,9 +99,19 @@ export default function ConfirmationPage() {
     })();
   }, [locale]);
 
+  
   if (!content) return null;
   const c = content.confirmation;
   const stepLabels = [c.steps.login, c.steps.address, c.steps.payment, c.steps.confirmation, c.steps.done];
+
+      const cardLabel = locale === 'es'
+      ? 'Tarjeta **** **** **** 3456'
+      : 'Card **** **** **** 3456';
+
+    const BANK_CREDENTIAL = {
+      address: 'Carolina Martínez García',
+      card: cardLabel,
+    };
 
   return (
     <div className="min-h-screen bg-white flex flex-col">

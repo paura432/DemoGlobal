@@ -197,7 +197,7 @@ export default function LoginPage() {
               {phase === 'loading' && (
                 <div className="py-10">
                   <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-[#00A859] mx-auto"></div>
-                  <p className="mt-6 text-[#414B61] font-medium">Cargando credencial...</p>
+                  <p className="mt-6 text-[#414B61] font-medium">{locale == 'es' ? 'Cargando credencial...' : 'Loading credential...'}</p>
                 </div>
               )}
 
@@ -207,7 +207,7 @@ export default function LoginPage() {
                     <QRCodeCanvas value={qrLink} size={200} level="M" />
                   </div>
                   <p className="text-sm text-[#414B61]">
-                    Escanea el código con tu app wallet para continuar.
+                    {locale === 'es' ? 'Escanea el código con tu app wallet para continuar.' : 'Scan the code with your wallet app to continue.'}
                   </p>
                 </>
               )}
@@ -215,7 +215,7 @@ export default function LoginPage() {
               {/* 🟢 Bloque de verificación estilo Adquira */}
               {phase === 'verifying' && (
                 <div className="py-6 text-center">
-                  <h3 className="text-[#00A859] font-semibold mb-4">Validación de credenciales</h3>
+                  <h3 className="text-[#00A859] font-semibold mb-4">{locale === 'es' ? 'Credential validation' : ''}</h3>
 
                   {/* Barra de progreso */}
                   <div className="w-full h-1 bg-gray-200 rounded-full mb-4">
@@ -248,7 +248,7 @@ export default function LoginPage() {
 
               {phase === 'error' && (
                 <div className="py-10">
-                  <p className="text-red-600 font-semibold mb-2">Error en la verificación</p>
+                  <p className="text-red-600 font-semibold mb-2">{locale ==='es' ? 'Error en la verificación' : 'Verification failed'}</p>
                   <p className="text-sm text-[#414B61]">{errorMsg}</p>
                 </div>
               )}

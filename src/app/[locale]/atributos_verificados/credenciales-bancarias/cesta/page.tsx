@@ -119,7 +119,7 @@ export default function BankShoppingCartPage() {
             </svg>
             <span className="text-lg font-semibold italic">Shopyline</span>
           </div>
-          <span className="text-xs text-[#414B61]">Pago seguro con credenciales verificables</span>
+          <span className="text-xs text-[#414B61]">{locale === 'es' ? 'Pago seguro con credenciales verificables' : 'Secure payment with verifiable credentials'}</span>
         </div>
       </header>
 
@@ -199,7 +199,7 @@ export default function BankShoppingCartPage() {
             onClick={handleCheckout}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 mt-5 rounded-lg font-semibold text-sm transition"
           >
-            Continuar con la verificación bancaria
+            {locale === 'es' ? 'Continuar con la verificación bancaria' : 'Proceed to Bank Verification'}
           </button>
         </div>
       </main>

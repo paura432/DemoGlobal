@@ -186,9 +186,6 @@ export default function AdquiraProveedorPage() {
 
       {/* BARRA BEIGE */}
       <div className="bg-[#d5d1b8] text-xs text-[#414B61] py-1 px-6 shadow-inner">
-        <div className="max-w-7xl mx-auto">
-          Está viendo: <span className="font-semibold">Todos los compradores</span>
-        </div>
       </div>
 
       {/* CONTENIDO PRINCIPAL */}
@@ -246,7 +243,6 @@ export default function AdquiraProveedorPage() {
           <div className="text-center py-12">
             <h2 className="text-[#808a3d] font-bold text-xl mb-2">{t.qr.title}</h2>
             <p className="text-[#414B61] text-sm mb-1"><b>{t.qr.transaction}</b></p>
-            <p className="text-[#414B61] text-sm mb-6">{t.qr.description}</p>
             <div className="flex justify-center mb-4">
               <QRCodeCanvas value={qrLink} size={200} />
             </div>
