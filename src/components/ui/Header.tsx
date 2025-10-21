@@ -49,8 +49,8 @@ function LanguageDropdown({ locale, onSelect }: Props) {
                 onSelect(key as 'es' | 'en');
                 setIsOpen(false);
               }}
-              className={`block w-full text-left px-4 py-2 text-sm hover:bg-[#414B61] ${
-                locale === key ? 'font-semibold text-[#0066FF]' : 'text-[#414B61]'
+              className={`block w-full text-left px-4 py-2 text-sm border-white hover:text-black ${
+                locale === key ? 'text-[#0066FF]' : 'text-[#0066FF]'
               }`}
             >
               {value.name}
