@@ -99,10 +99,10 @@ export default function MinisterioPage() {
 
   return (
     <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="text-[13px] text-gray-600 mb-5">
-        <span className="text-gray-500">{doc.breadcrumb?.prefix ?? 'Está usted en:'}</span>{' '}
+      <div className="text-[13px] text-[#414B61] mb-5">
+        <span className="text-[#414B61]">{doc.breadcrumb?.prefix ?? 'Está usted en:'}</span>{' '}
         <span className="hover:underline cursor-default">{doc.breadcrumb?.area ?? 'Áreas'}</span>{' '}
-        <span className="text-gray-400">{doc.breadcrumb?.separator ?? '›'}</span>{' '}
+        <span className="text-[#414B61]">{doc.breadcrumb?.separator ?? '›'}</span>{' '}
         <span className="font-medium">{doc.breadcrumb?.section ?? 'Salud Digital'}</span>
       </div>
 
@@ -129,7 +129,7 @@ export default function MinisterioPage() {
 
             <div className="px-3 pt-2 pb-3">
               <div className="flex items-center gap-2">
-                <h3 className="text-[15px] font-semibold text-gray-900">{c.title}</h3>
+                <h3 className="text-[15px] font-semibold text-[#414B61]">{c.title}</h3>
                 {c.badge && (
                   <span className="text-[9px] leading-none px-1.5 py-[4px] rounded-full bg-orange-500 text-white font-bold uppercase">
                     {c.badge}
@@ -137,7 +137,7 @@ export default function MinisterioPage() {
                 )}
               </div>
 
-              <p className="mt-1 text-xs text-gray-600 min-h-[36px]">{c.desc}</p>
+              <p className="mt-1 text-xs text-[#414B61] min-h-[36px]">{c.desc}</p>
 
               <button
                 type="button"
@@ -152,7 +152,7 @@ export default function MinisterioPage() {
         ))}
 
         {cards.length === 0 && (
-          <div className="col-span-full text-small-auto-responsive text-gray-500 py-10">
+          <div className="col-span-full text-small-auto-responsive text-[#414B61] py-10">
             {err ? `No hay tarjetas. (${err})` : 'No hay tarjetas para mostrar.'}
           </div>
         )}

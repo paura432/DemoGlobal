@@ -89,10 +89,10 @@ export default function DemoGlobalPage() {
   return (
     <>
       <header className="w-full">
-        <div className="border-b border-gray-200">
+        <div className="border-b border-[#414B61]">
           <div className="mx-auto px-20 grid grid-cols-3 items-center px-47">
-            <div className="justify-self-start text-base font-semibold text-gray-600 select-none ">
-              Trust<span className="text-blue-600">OS</span>
+            <div className="justify-self-start text-base font-semibold text-[#414B61] select-none ">
+              Trust<span className="text-[#0066FF]">OS</span>
             </div>
             <div className="justify-self-center" />
           </div>
@@ -103,27 +103,27 @@ export default function DemoGlobalPage() {
         {/* ✅ Skeleton loader mientras carga */}
         {!translations ? (
           <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
-            <div className="h-6 bg-gray-200 rounded w-2/3 mx-auto mb-4"></div>
-            <div className="h-4 bg-gray-200 rounded w-5/6 mx-auto mb-8"></div>
+            <div className="h-8 bg-[#414B61] rounded w-3/4 mx-auto mb-4"></div>
+            <div className="h-6 bg-[#414B61] rounded w-2/3 mx-auto mb-4"></div>
+            <div className="h-4 bg-[#414B61] rounded w-5/6 mx-auto mb-8"></div>
             <div className="flex justify-center gap-6">
-              <div className="h-48 w-64 bg-gray-200 rounded"></div>
-              <div className="h-48 w-64 bg-gray-200 rounded"></div>
-              <div className="h-48 w-64 bg-gray-200 rounded"></div>
+              <div className="h-48 w-64 bg-[#414B61] rounded"></div>
+              <div className="h-48 w-64 bg-[#414B61] rounded"></div>
+              <div className="h-48 w-64 bg-[#414B61] rounded"></div>
             </div>
           </div>
         ) : (
           <>
-            <h2 className="text-[18px] sm:text-[22px] text-blue-700 font-bold mb-1">
+            <h2 className="text-[18px] sm:text-[22px] text-[#0066FF] font-bold mb-1">
               {translations.demoglobal.title}
             </h2>
 
-            <h1 className="text-[20px] sm:text-[22px] font-light text-gray-800 mb-2">
+            <h1 className="text-[20px] sm:text-[22px] font-light text-[#414B61] mb-2">
               {translations.demoglobal.subtitle}
             </h1>
 
             <p
-              className="text-gray-700 max-w-[860px] mx-auto mb-6 leading-relaxed text-[13px] sm:text-[14px]"
+              className="text-[#414B61] max-w-[860px] mx-auto mb-6 leading-relaxed text-[13px] sm:text-[14px]"
               dangerouslySetInnerHTML={{ __html: translations.demoglobal.intro }}
             />
 

@@ -58,7 +58,7 @@ export default function AdquiraProveedorPage() {
   if (!t) return null;
 
   return (
-    <div className="min-h-screen bg-[#f6f7f5] text-gray-800">
+    <div className="min-h-screen bg-[#f6f7f5] text-[#414B61]">
       {/* HEADER */}
       <header className="bg-[#e9ebe7] border-b border-gray-300">
         <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
@@ -68,7 +68,7 @@ export default function AdquiraProveedorPage() {
               {t.header.nav.map((item, i) => (
                 <button
                   key={i}
-                  className="bg-white rounded-full shadow p-2 text-sm font-medium text-gray-700"
+                  className="bg-white rounded-full shadow p-2 text-sm font-medium text-[#414B61]"
                 >
                   {item}
                 </button>
@@ -93,7 +93,7 @@ export default function AdquiraProveedorPage() {
       </nav>
 
       {/* BARRA BEIGE */}
-      <div className="bg-[#d5d1b8] text-xs text-gray-700 py-1 px-6 shadow-inner">
+      <div className="bg-[#d5d1b8] text-xs text-[#414B61] py-1 px-6 shadow-inner">
         <div className="max-w-7xl mx-auto">
           Está viendo: <span className="font-semibold">Todos los compradores</span>
         </div>
@@ -108,7 +108,7 @@ export default function AdquiraProveedorPage() {
             <span
               key={i}
               className={`pb-1 ${
-                i === 0 ? 'text-[#c00000] border-b-2 border-[#c00000]' : 'text-gray-600'
+                i === 0 ? 'text-[#c00000] border-b-2 border-[#c00000]' : 'text-[#414B61]'
               }`}
             >
               {tab}
@@ -117,9 +117,9 @@ export default function AdquiraProveedorPage() {
         </div>
 
         <h2 className="text-[#c00000] font-bold text-lg mb-1">{t.userSection.title}</h2>
-        <p className="text-gray-700 font-medium">{t.userSection.user}</p>
-        <p className="text-gray-600 font-semibold mt-1">{t.userSection.companyName}</p>
-        <p className="text-sm text-gray-500 mb-4">{t.userSection.cif}</p>
+        <p className="text-[#414B61] font-medium">{t.userSection.user}</p>
+        <p className="text-[#414B61] font-semibold mt-1">{t.userSection.companyName}</p>
+        <p className="text-sm text-[#414B61] mb-4">{t.userSection.cif}</p>
 
         <button
           onClick={() => router.push(`/${locale}`)}
@@ -129,10 +129,10 @@ export default function AdquiraProveedorPage() {
         </button>
 
         <div className="mt-10">
-          <h3 className="font-bold text-gray-800 mb-3">{t.notifications.title}</h3>
+          <h3 className="font-bold text-[#414B61] mb-3">{t.notifications.title}</h3>
           <p className="text-[#c00000] font-bold text-sm mb-2">{t.notifications.emailSettings}</p>
-          <p className="text-gray-600 text-sm italic mb-4">{t.notifications.emailFormat}</p>
-          <ul className="space-y-2 text-sm text-gray-700">
+          <p className="text-[#414B61] text-sm italic mb-4">{t.notifications.emailFormat}</p>
+          <ul className="space-y-2 text-sm text-[#414B61]">
             {t.notifications.orders.map((o, i) => (
               <li key={i} className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-[#808a3d] rounded-sm" /> {o}
@@ -143,7 +143,7 @@ export default function AdquiraProveedorPage() {
       </main>
 
       {/* FOOTER */}
-      <footer className="mt-10 text-center text-xs text-gray-600 pb-6">
+      <footer className="mt-10 text-center text-xs text-[#414B61] pb-6">
         <p className="mb-2">{t.footer.copyright}</p>
         <div className="flex justify-center gap-6 flex-wrap">
           <a href="#">{t.footer.links.trustCenter}</a>

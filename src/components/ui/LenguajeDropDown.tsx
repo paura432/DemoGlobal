@@ -31,7 +31,7 @@ export default function LanguageDropdown({ locale, onSelect }: Props) {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-1 text-sm text-gray-600 hover:text-gray-800 transition-colors"
+        className="flex items-center gap-2 px-3 py-1 text-sm text-[#414B61] hover:text-[#414B61] transition-colors"
         aria-label="Seleccionar idioma"
       >
         <span className="font-medium">{languages[locale].code}</span>
@@ -46,7 +46,7 @@ export default function LanguageDropdown({ locale, onSelect }: Props) {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-1 w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+        <div className="absolute right-0 top-full mt-1 w-32 bg-white border border-[#414B61] rounded-lg shadow-lg z-50">
           {Object.entries(languages).map(([code, lang]) => (
             <button
               key={code}
@@ -54,8 +54,8 @@ export default function LanguageDropdown({ locale, onSelect }: Props) {
                 onSelect(code as 'es' | 'en');
                 setIsOpen(false);
               }}
-              className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors ${
-                locale === code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+              className={`w-full text-left px-3 py-2 text-sm hover:bg-[#414B61] first:rounded-t-lg last:rounded-b-lg transition-colors ${
+                locale === code ? 'bg-[#0066FF] text-[#0066FF]' : 'text-[#414B61]'
               }`}
             >
               <span className="font-medium">{lang.code}</span>

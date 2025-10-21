@@ -25,7 +25,7 @@ type Step3T = { bloques: Block[] };
 
 function TickSmall() {
   return (
-    <svg className="mt-[4px] w-3 h-3 text-blue-600 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg className="mt-[4px] w-3 h-3 text-[#0066FF] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z" stroke="currentColor" strokeWidth="2"/>
       <path d="m8 12 3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
@@ -39,7 +39,7 @@ function DesktopMock({ src, alt, caption }: { src: string; alt: string; caption?
         className="relative rounded-[18px] bg-[#0f1115] border-[10px] border-[#0f172a] shadow-[0_16px_40px_rgba(0,0,0,0.18)] overflow-hidden"
         style={{ width: 'clamp(210px, 34vw, 400px)', maxWidth: '92vw' }}
       >
-        <div className="absolute left-1/2 -translate-x-1/2 top-1.5 h-1.5 w-14 rounded-full bg-gray-700/60" />
+        <div className="absolute left-1/2 -translate-x-1/2 top-1.5 h-1.5 w-14 rounded-full bg-[#414B61]" />
 
         <div className="relative bg-[#0f1115]" style={{ aspectRatio: '16 / 9' }}>
           <Image
@@ -57,7 +57,7 @@ function DesktopMock({ src, alt, caption }: { src: string; alt: string; caption?
       <div className="mx-auto h-3 w-[32%] bg-[#e5e7eb] rounded-b-3xl shadow-inner" />
 
       {caption && (
-        <figcaption className="text-center text-xs text-gray-500 mt-1.5 lg:hidden">
+        <figcaption className="text-center text-xs text-[#414B61] mt-1.5 lg:hidden">
           {caption}
         </figcaption>
       )}
@@ -121,7 +121,7 @@ export default function Step4() {
 
   return (
     <div className="flex flex-col bg-white">
-      <div className="flex-1 overflow-y-auto flex flex-col items-center">
+      <div className="flex-1 overflow-y-auto flex flex-col items-center py-6">
         {/* Progreso con HomeButton */}
         <div className="w-full flex justify-center pt-1 pb-6 relative">
           <div className="absolute left-3 sm:left-8 lg:left-14 top-1">
@@ -134,13 +134,13 @@ export default function Step4() {
                 <div
                   className={`w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center border ${
                     i === currentStep
-                      ? 'bg-blue-600 text-white border-blue-600'
-                      : 'bg-white text-gray-400 border-gray-300'
+                      ? 'bg-[#0066FF] text-white border-[#0066FF]'
+                      : 'bg-white text-[#414B61] border-[#414B61]'
                   }`}
                 >
                   {i + 1}
                 </div>
-                {i < PASOS.length - 1 && <div className="w-8 h-[2px] bg-gray-300 mx-1 sm:mx-2" />}
+                {i < PASOS.length - 1 && <div className="w-8 h-[2px] bg-[#414B61] mx-1 sm:mx-2" />}
               </div>
             ))}
           </div>
@@ -150,17 +150,17 @@ export default function Step4() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start min-h-[300px]">
             <div className="min-h-[280px]">
               <h2
-                className="text-2xl font-semibold text-gray-800 mb-1"
+                className="text-2xl font-semibold text-[#414B61] mb-1"
                 dangerouslySetInnerHTML={{ __html: mergedTitle }}
               />
 
               {mergedSubtext && (
-                <p className="text-sm text-gray-500 mb-4" dangerouslySetInnerHTML={{ __html: mergedSubtext }} />
+                <p className="text-sm text-[#414B61] mb-4" dangerouslySetInnerHTML={{ __html: mergedSubtext }} />
               )}
 
               <ul className="mb-1 space-y-3">
                 {bullets.map((line, i) => (
-                  <li key={i} className="flex gap-2 items-start text-sm text-gray-700 leading-relaxed">
+                  <li key={i} className="flex gap-2 items-start text-sm text-[#414B61] leading-relaxed">
                     <TickSmall />
                     <span className="leading-relaxed" dangerouslySetInnerHTML={{ __html: line }} />
                   </li>
@@ -175,18 +175,18 @@ export default function Step4() {
         </div>
 
         <div className="w-full max-w-[1020px] px-4 sm:px-10 pt-5">
-          <hr className="mb-10 border-gray-200" />
+          <hr className="mb-10 border-[#414B61]" />
           <div className="flex justify-between items-center mb-16">
             <button
               onClick={goBack}
-              className="border border-blue-600 text-blue-600 px-8 py-2 rounded-full text-sm font-medium transition hover:bg-blue-50"
+              className="border border-[#0066FF] text-[#0066FF] px-8 py-2 rounded-full text-sm font-medium transition hover:bg-[#0066FF]  hover:text-white"
             >
               {locale === 'en' ? 'Back' : 'Atrás'}
             </button>
             <div className="flex-1 flex justify-center">
               <button
                 onClick={goNext}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full text-sm font-medium transition"
+                className="border border-[#0066FF] bg-[#0066FF] hover:bg-[#0066FF] text-white px-8 py-2 rounded-full text-sm font-medium transition hover:bg-white  hover:text-[#0066FF]"
               >
                 {c.cta}
               </button>

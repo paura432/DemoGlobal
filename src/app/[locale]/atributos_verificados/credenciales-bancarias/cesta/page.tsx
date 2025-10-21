@@ -119,7 +119,7 @@ export default function BankShoppingCartPage() {
             </svg>
             <span className="text-lg font-semibold italic">Shopyline</span>
           </div>
-          <span className="text-xs text-gray-200">Pago seguro con credenciales verificables</span>
+          <span className="text-xs text-[#414B61]">Pago seguro con credenciales verificables</span>
         </div>
       </header>
 
@@ -127,11 +127,11 @@ export default function BankShoppingCartPage() {
       <main className="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6 lg:gap-8">
         {/* Columna izquierda */}
         <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md border border-gray-200">
-          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900">{c.title}</h1>
+          <h1 className="text-xl sm:text-2xl font-bold mb-4 text-[#414B61]">{c.title}</h1>
 
           {/* Info de envío */}
           <div className="flex flex-wrap items-center gap-2 mb-4 p-3 bg-gray-50 rounded">
-            <svg className="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <svg className="w-5 h-5 text-[#414B61]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path
                 d="M20 7h-3V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h1v1a3 3 0 0 0 3 3h11.5a1 1 0 0 0 .8-.4l2-2.5a1 1 0 0 0 .2-.6V8a1 1 0 0 0-1-1z"
                 strokeWidth="2"
@@ -139,7 +139,7 @@ export default function BankShoppingCartPage() {
             </svg>
             <div>
               <p className="font-semibold text-sm">{c.shipping.by}</p>
-              <p className="text-sm text-gray-600">{c.shipping.date}</p>
+              <p className="text-sm text-[#414B61]">{c.shipping.date}</p>
             </div>
           </div>
 
@@ -150,10 +150,10 @@ export default function BankShoppingCartPage() {
             </div>
 
             <div className="flex-1 text-sm">
-              <p className="text-gray-600 mb-1">{ITEM.brand}</p>
+              <p className="text-[#414B61] mb-1">{ITEM.brand}</p>
               <p className="font-medium mb-1">{ITEM.title}</p>
               <p className="text-base font-bold mb-2">{ITEM.price.toFixed(2)} €</p>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-[#414B61]">
                 Venta a través de{' '}
                 <a href="#" className="underline font-semibold">
                   {ITEM.seller}
@@ -163,7 +163,7 @@ export default function BankShoppingCartPage() {
 
             <div className="flex flex-col items-end gap-2 sm:gap-3">
               <QtySelect value={qty} onChange={setQty} />
-              <button className="text-gray-400 hover:text-gray-600">
+              <button className="text-[#414B61] hover:text-[#414B61]">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <line x1="18" y1="6" x2="6" y2="18" strokeWidth="2" strokeLinecap="round" />
                   <line x1="6" y1="6" x2="18" y2="18" strokeWidth="2" strokeLinecap="round" />
@@ -172,7 +172,7 @@ export default function BankShoppingCartPage() {
             </div>
           </div>
 
-          <p className="mt-3 text-sm text-gray-600 flex items-center gap-2">
+          <p className="mt-3 text-sm text-[#414B61] flex items-center gap-2">
             ⚠️ <span>{c.reminder}</span>
           </p>
         </div>
@@ -189,7 +189,7 @@ export default function BankShoppingCartPage() {
             <div className="flex justify-between border-t pt-2 font-bold text-lg">
               <span>
                 {c.summary.total}{' '}
-                <span className="text-xs text-gray-500 font-normal">{c.summary.vatIncluded}</span>
+                <span className="text-xs text-[#414B61] font-normal">{c.summary.vatIncluded}</span>
               </span>
               <span className="text-xl">{total.toFixed(2)} €</span>
             </div>

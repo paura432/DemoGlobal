@@ -135,19 +135,19 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="flex justify-center mb-6">
           <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center">
-            <svg className="w-10 h-10 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="w-10 h-10 text-[#414B61]" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
             </svg>
           </div>
         </div>
 
-        <h1 className="text-2xl font-bold text-center text-gray-900 mb-2">{c.title}</h1>
-        <p className="text-center text-gray-500 mb-8 text-sm">{c.subtitle}</p>
+        <h1 className="text-2xl font-bold text-center text-[#414B61] mb-2">{c.title}</h1>
+        <p className="text-center text-[#414B61] mb-8 text-sm">{c.subtitle}</p>
 
         {/* Botón principal */}
         <button
           onClick={handleBankCredentialClick}
-          className="w-full border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 py-3 rounded-md font-medium text-gray-700 mb-4 transition flex items-center justify-center gap-2"
+          className="w-full border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 py-3 rounded-md font-medium text-[#414B61] mb-4 transition flex items-center justify-center gap-2"
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <rect x="2" y="5" width="20" height="14" rx="2" strokeWidth="2" />
@@ -162,16 +162,16 @@ export default function LoginPage() {
           .map(([key, method]) => (
             <div
               key={key}
-              className="w-full border-2 border-gray-200 py-3 rounded-md font-medium text-gray-400 flex items-center justify-center gap-2 cursor-not-allowed bg-gray-50 mb-3"
+              className="w-full border-2 border-gray-200 py-3 rounded-md font-medium text-[#414B61] flex items-center justify-center gap-2 cursor-not-allowed bg-gray-50 mb-3"
             >
               {method.label}
             </div>
           ))}
 
-        <p className="text-xs text-center text-gray-500 mt-2">{c.note}</p>
+        <p className="text-xs text-center text-[#414B61] mt-2">{c.note}</p>
 
         {/* Footer */}
-        <div className="text-center text-xs text-gray-500 mt-8">
+        <div className="text-center text-xs text-[#414B61] mt-8">
           <a href="#" className="text-blue-600 hover:underline">
             {c.footer.links.terms}
           </a>
@@ -187,7 +187,7 @@ export default function LoginPage() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-2 overflow-hidden">
             <div className="text-center pt-8 pb-4 px-6">
-              <h2 className="text-xl font-semibold text-gray-700 mb-4">
+              <h2 className="text-xl font-semibold text-[#414B61] mb-4">
                 {c.modal?.title || 'Verificación'}
               </h2>
               <div className="w-24 border-t-2 border-gray-300 mx-auto mb-4" />
@@ -197,7 +197,7 @@ export default function LoginPage() {
               {phase === 'loading' && (
                 <div className="py-10">
                   <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-[#00A859] mx-auto"></div>
-                  <p className="mt-6 text-gray-600 font-medium">Cargando credencial...</p>
+                  <p className="mt-6 text-[#414B61] font-medium">Cargando credencial...</p>
                 </div>
               )}
 
@@ -206,7 +206,7 @@ export default function LoginPage() {
                   <div className="bg-gray-50 p-6 rounded-2xl flex justify-center mb-4">
                     <QRCodeCanvas value={qrLink} size={200} level="M" />
                   </div>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-[#414B61]">
                     Escanea el código con tu app wallet para continuar.
                   </p>
                 </>
@@ -235,7 +235,7 @@ export default function LoginPage() {
                       <li
                         key={i}
                         className={`flex items-center gap-2 ${
-                          i < activeStep ? 'text-[#00A859]' : 'text-gray-500'
+                          i < activeStep ? 'text-[#00A859]' : 'text-[#414B61]'
                         }`}
                       >
                         <span>{i < activeStep ? '✓' : '○'}</span>
@@ -249,7 +249,7 @@ export default function LoginPage() {
               {phase === 'error' && (
                 <div className="py-10">
                   <p className="text-red-600 font-semibold mb-2">Error en la verificación</p>
-                  <p className="text-sm text-gray-500">{errorMsg}</p>
+                  <p className="text-sm text-[#414B61]">{errorMsg}</p>
                 </div>
               )}
             </div>

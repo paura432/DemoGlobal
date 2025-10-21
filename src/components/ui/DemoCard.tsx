@@ -33,8 +33,8 @@ export default function DemoCard({
         objectPosition={objectPosition}
       />
 
-      <div className="flex items-start gap-2 mt-2 text-gray-800 w-full justify-center">
-        <span className="text-gray-500 group-hover:text-blue-700 transition-colors text-sm sm:text-base leading-none mt-[2px] flex-shrink-0">
+      <div className="flex items-start gap-2 mt-2 text-[#414B61] w-full justify-center">
+        <span className="text-[#414B61] group-hover:text-[#0066FF] transition-colors text-sm sm:text-base leading-none mt-[2px] flex-shrink-0">
           {icon}
         </span>
         <TwoLineTitle text={label} />

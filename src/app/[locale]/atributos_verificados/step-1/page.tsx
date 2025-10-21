@@ -71,26 +71,28 @@ export default function Step1() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className=" flex flex-col bg-white">
       <div className="flex-1 flex flex-col items-center py-6">
         {/* Progreso */}
-        <div className="w-full flex justify-center pt-1 pb-6 relative">
-          <div className="absolute left-3 sm:left-8 lg:left-14 top-1">
-            <HomeButton />
-          </div>
+      {/* Progreso con HomeButton */}
+      <div className="w-full flex justify-center pt-1 pb-6 relative">
+        {/* Botón Home alineado con el progreso */}
+        <div className="absolute left-3 sm:left-9 lg:left-14 top-1">
+          <HomeButton />
+        </div>
           <div className="flex gap-2 items-center">
             {pasos.map((_, i) => (
               <div key={i} className="flex items-center">
                 <div
                   className={`w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center border ${
                     i === currentStep
-                      ? 'bg-blue-600 text-white border-blue-600'
-                      : 'bg-white text-gray-400 border-gray-300'
+                      ? 'bg-[#0066FF] text-white border-[#0066FF]'
+                      : 'bg-white text-[#414B61] border-[#414B61]'
                   }`}
                 >
                   {i + 1}
                 </div>
-                {i < pasos.length - 1 && <div className="w-8 h-[2px] bg-gray-300 mx-1 sm:mx-2" />}
+                {i < pasos.length - 1 && <div className="w-8 h-[2px] bg-[#414B61] mx-1 sm:mx-2" />}
               </div>
             ))}
           </div>
@@ -106,7 +108,7 @@ export default function Step1() {
                   <button key={rol} onClick={() => setSelected(rol)} className="flex flex-col items-center">
                     <div
                       className={`w-14 h-14 rounded-full overflow-hidden border-2 ${
-                        selected === rol ? 'border-blue-600' : 'border-gray-300'
+                        selected === rol ? 'border-[#0066FF]' : 'border-[#414B61]'
                       }`}
                     >
                       <Image
@@ -119,7 +121,7 @@ export default function Step1() {
                     </div>
                     <span
                       className={`text-xs mt-1 ${
-                        selected === rol ? 'text-blue-600 font-semibold' : 'text-gray-600'
+                        selected === rol ? 'text-[#0066FF] font-semibold' : 'text-[#414B61]'
                       }`}
                     >
                       {t.perfiles[rol].label}
@@ -128,11 +130,11 @@ export default function Step1() {
                 ))}
               </div>
 
-              <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+              <h2 className="text-2xl font-semibold text-[#414B61] mb-2">
                 {t.conoceLabel}{' '}
-                <span className="text-[#0057B8]">{currentProfile.nombre}</span>
+                <span className="text-[#0066FF]">{currentProfile.nombre}</span>
               </h2>
-              <p className="text-sm text-gray-600 leading-relaxed max-w-[95%]">
+              <p className="text-sm text-[#414B61] leading-relaxed max-w-[95%]">
                 {currentProfile.descripcion}
               </p>
             </div>
@@ -159,18 +161,18 @@ export default function Step1() {
 
         {/* Botones */}
         <div className="w-full max-w-[1020px] px-4 sm:px-10 pt-5">
-          <hr className="mb-10 border-gray-200" />
+          <hr className="mb-10 border-[#414B61]" />
           <div className="flex justify-between items-center mb-16">
             <button
               onClick={() => router.push(`/${locale}`)}
-              className="border border-blue-600 text-blue-600 px-8 py-2 rounded-full text-sm font-medium transition hover:bg-blue-50"
+              className="border border-[#0066FF] text-[#0066FF] px-8 py-2 rounded-full text-sm font-medium transition hover:bg-[#0066FF]  hover:text-white"
             >
               {t.buttons.back}
             </button>
             <div className="flex-1 flex justify-center">
               <button
                 onClick={goNext}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full text-sm font-medium transition"
+                className="border border-[#0066FF] bg-[#0066FF] hover:bg-[#0066FF] text-white px-8 py-2 rounded-full text-sm font-medium transition hover:bg-white  hover:text-[#0066FF]"
               >
                 {t.buttons.next}
               </button>

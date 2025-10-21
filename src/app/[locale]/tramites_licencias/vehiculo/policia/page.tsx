@@ -179,7 +179,7 @@ export default function VerificacionPolicia() {
   const handleFinish = () => router.push(`/${locale}`);
 
   if (!t)
-    return <div className="p-10 text-center text-gray-500">Cargando interfaz...</div>;
+    return <div className="p-10 text-center text-[#414B61]">Cargando interfaz...</div>;
 
   const pct = Math.round((activeStep / (t.steps?.length ?? 4)) * 100);
 
@@ -205,7 +205,7 @@ export default function VerificacionPolicia() {
         {/* IZQUIERDA */}
         <div className="space-y-4">
           <h1 className="text-2xl font-bold">{t.left.title}</h1>
-          <p className="text-gray-700 text-sm leading-relaxed">{t.left.desc}</p>
+          <p className="text-[#414B61] text-sm leading-relaxed">{t.left.desc}</p>
 
           <div className="space-y-3 text-sm">
             <div>
@@ -219,13 +219,13 @@ export default function VerificacionPolicia() {
             <div>
               <p className="font-semibold">{t.left.verifyTitle}</p>
               <div className="bg-gray-100 px-3 py-2 rounded-md mt-1 space-y-1">
-                <p className={`${phase === 'ready' ? 'text-green-700' : 'text-gray-500'}`}>
+                <p className={`${phase === 'ready' ? 'text-green-700' : 'text-[#414B61]'}`}>
                   {phase === 'ready' ? '✓' : '○'} {t.left.doc1}
                 </p>
-                <p className={`${phase === 'ready' ? 'text-green-700' : 'text-gray-500'}`}>
+                <p className={`${phase === 'ready' ? 'text-green-700' : 'text-[#414B61]'}`}>
                   {phase === 'ready' ? '✓' : '○'} {t.left.doc2}
                 </p>
-                <p className={`${phase === 'ready' ? 'text-green-700' : 'text-gray-500'}`}>
+                <p className={`${phase === 'ready' ? 'text-green-700' : 'text-[#414B61]'}`}>
                   {phase === 'ready' ? '✓' : '○'} {t.left.doc3}
                 </p>
               </div>
@@ -243,7 +243,7 @@ export default function VerificacionPolicia() {
             <div className="bg-white rounded-lg shadow p-6 text-center">
               <Image src="/tramites_licencias/policia_uso.png" alt="Policías" width={70} height={70} className="mx-auto mb-3" />
               <h2 className="text-lg font-semibold mb-1">{t.right.initTitle}</h2>
-              <p className="text-sm text-gray-700">{t.right.initDesc}</p>
+              <p className="text-sm text-[#414B61]">{t.right.initDesc}</p>
               <button
                 onClick={handleStartVerification}
                 className="w-full bg-green-600 text-white py-2 mt-3 rounded hover:bg-green-700 text-sm font-medium"
@@ -254,31 +254,31 @@ export default function VerificacionPolicia() {
           )}
 
           {phase === 'loading' && (
-            <div className="bg-white rounded-lg shadow p-6 text-center text-gray-700 text-sm">
+            <div className="bg-white rounded-lg shadow p-6 text-center text-[#414B61] text-sm">
               {t.right.loading}
             </div>
           )}
 
           {phase === 'qr' && (
             <div className="bg-white rounded-lg shadow p-5 text-center space-y-2">
-              <p className="text-xs text-gray-700">{t.right.qrText}</p>
+              <p className="text-xs text-[#414B61]">{t.right.qrText}</p>
               <div className="flex justify-center">
                 <QRCodeCanvas value={qrLink} size={130} />
               </div>
-              <p className="text-[11px] text-gray-500">{t.right.waiting}</p>
+              <p className="text-[11px] text-[#414B61]">{t.right.waiting}</p>
             </div>
           )}
 
           {(phase === 'verifying' || phase === 'ready') && (
             <div className="bg-white rounded-lg shadow p-5 space-y-3">
-              <p className="text-sm font-semibold text-gray-700">{t.right.verifyingTitle}</p>
+              <p className="text-sm font-semibold text-[#414B61]">{t.right.verifyingTitle}</p>
               <div className="w-full h-1 bg-gray-200 rounded-full">
                 <div
                   className="h-full bg-blue-600 rounded-full transition-all duration-300"
                   style={{ width: `${pct}%` }}
                 />
               </div>
-              <ul className="text-xs text-gray-600 space-y-1">
+              <ul className="text-xs text-[#414B61] space-y-1">
                 {t.steps.map((step, i) => (
                   <li key={i} className={i < activeStep ? 'text-blue-700 font-medium' : ''}>
                     {i < activeStep ? '✓ ' : '○ '} {step}
@@ -305,7 +305,7 @@ export default function VerificacionPolicia() {
           {phase === 'ready' && credenciales && (
             <div className="bg-white rounded-lg shadow p-5 mt-4 space-y-2 text-sm">
               <h3 className="font-semibold text-green-700">{t.right.validTitle}</h3>
-              <p className="text-gray-700">{t.right.validDesc}</p>
+              <p className="text-[#414B61]">{t.right.validDesc}</p>
               <div className="bg-gray-50 p-2 rounded text-xs space-y-1">
                 <p>
                   <b>Nombre:</b> {credenciales.carnet.nombre} {credenciales.carnet.apellidos}

@@ -186,7 +186,7 @@ const TRANSLATIONS = {
 /* =========================
    Iconos
    ========================= */
-function PersonIcon({ className = 'w-3 h-3 text-gray-800' }: { className?: string }) {
+function PersonIcon({ className = 'w-3 h-3 text-[#414B61]' }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="none">
       <circle cx="12" cy="8" r="3.25" stroke="currentColor" strokeWidth="1.5" />
@@ -481,7 +481,7 @@ function DiscountDropdown({
                     border-b last:border-b-0`}
                 >
                   <div className="font-semibold">{option.label}</div>
-                  <div className="text-gray-600">{option.description}</div>
+                  <div className="text-[#414B61]">{option.description}</div>
                 </button>
               ))}
             </div>
@@ -496,12 +496,12 @@ function DiscountDropdown({
         closeText={t.verification.close}
       >
         {phase === 'loading' && (
-          <div className="text-sm text-gray-600">{t.verification.generating}</div>
+          <div className="text-sm text-[#414B61]">{t.verification.generating}</div>
         )}
 
         {phase === 'qr' && (
           <div className="space-y-3">
-            <div className="text-xs text-gray-700">
+            <div className="text-xs text-[#414B61]">
               {t.verification.instructions.map((inst: string, i: number) => (
                 <div key={i}>{i + 1}. {inst}</div>
               ))}
@@ -509,7 +509,7 @@ function DiscountDropdown({
             <div className="flex justify-center p-2 bg-gray-50 rounded">
               <QRCodeCanvas value={qrLink} size={150} level="M" />
             </div>
-            <div className="text-xs text-gray-600 text-center">{t.verification.autoVerifying}</div>
+            <div className="text-xs text-[#414B61] text-center">{t.verification.autoVerifying}</div>
           </div>
         )}
 
@@ -533,14 +533,14 @@ function DiscountDropdown({
                 return (
                   <li key={i} className="flex items-center gap-2">
                     {done ? <CheckCircle /> : <PendingCircle />}
-                    <span className={`text-xs ${done ? 'text-gray-800' : 'text-gray-500'}`}>{label}</span>
+                    <span className={`text-xs ${done ? 'text-[#414B61]' : 'text-[#414B61]'}`}>{label}</span>
                   </li>
                 );
               })}
             </ul>
 
             {pendingResult && (
-              <div className="text-xs text-gray-700 text-center mt-2">
+              <div className="text-xs text-[#414B61] text-center mt-2">
                 <div className="font-semibold">{pendingResult.name}</div>
                 <div>{pendingResult.uiLabel} ({pendingResult.discountPercent}%)</div>
               </div>
@@ -592,17 +592,17 @@ export default function CartPage() {
     ${student.verified ? 'bg-green-600 hover:bg-green-700 text-white' : 'bg-black hover:opacity-90 text-white'}`;
 
   return (
-    <div className="bg-white text-gray-900 flex flex-col">
+    <div className="bg-white text-[#414B61] flex flex-col">
       <main className="flex-1 max-w-[1100px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6 py-6">
         
         <section>
           <h1 className="text-2xl font-semibold mb-5">{t.cart.title} (1 {t.cart.items})</h1>
   
-          <div className="flex items-center gap-2 text-sm text-gray-700 mb-4">
+          <div className="flex items-center gap-2 text-sm text-[#414B61] mb-4">
             <span className="inline-flex items-center justify-center w-5 h-5 rounded border">📦</span>
             <span>
               {t.cart.shipping} <span className="font-semibold">Shopyline</span>
-              <span className="block text-gray-500">{t.cart.deliveryDate}</span>
+              <span className="block text-[#414B61]">{t.cart.deliveryDate}</span>
             </span>
           </div>
   
@@ -613,11 +613,11 @@ export default function CartPage() {
             <div className="flex-1">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-xs text-gray-600">{ITEM.brand}</div>
+                  <div className="text-xs text-[#414B61]">{ITEM.brand}</div>
                   <div className="font-semibold text-sm">{ITEM.title[locale]}</div>
-                  <div className="mt-1 text-xs text-gray-700">{ITEM.price.toFixed(2)} €</div>
-                  <div className="mt-1 text-xs text-gray-600">{t.cart.color}: {ITEM.color[locale]}</div>
-                  <div className="text-xs text-gray-600">{t.cart.size}: {ITEM.size}</div>
+                  <div className="mt-1 text-xs text-[#414B61]">{ITEM.price.toFixed(2)} €</div>
+                  <div className="mt-1 text-xs text-[#414B61]">{t.cart.color}: {ITEM.color[locale]}</div>
+                  <div className="text-xs text-[#414B61]">{t.cart.size}: {ITEM.size}</div>
                   <div className="mt-1 text-xs">
                     {t.cart.saleThrough} <a className="underline font-semibold" href="#">{ITEM.seller}</a>
                   </div>
@@ -632,7 +632,7 @@ export default function CartPage() {
             </div>
           </div>
   
-          <p className="mt-6 text-xs text-gray-600">❗ {t.cart.reminder}</p>
+          <p className="mt-6 text-xs text-[#414B61]">❗ {t.cart.reminder}</p>
         </section>
       <aside className="bg-gray-100 p-4 rounded self-start" style={{maxHeight: '70vh'}}>
         <div className="flex items-center justify-between text-sm py-1.5">
@@ -653,7 +653,7 @@ export default function CartPage() {
         </div>
 
         <div className="flex items-center justify-between font-semibold text-base py-3">
-          <span>{t.summary.total} <span className="text-gray-500 text-xs">{t.summary.vatIncluded}</span></span>
+          <span>{t.summary.total} <span className="text-[#414B61] text-xs">{t.summary.vatIncluded}</span></span>
           <span className="text-[18px]">{total.toFixed(2)} €</span>
         </div>
 

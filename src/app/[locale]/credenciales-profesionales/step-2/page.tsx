@@ -47,7 +47,7 @@ type Step2Translations = {
 function TickSmall() {
   return (
     <svg
-      className="mt-[4px] w-3 h-3 text-blue-600 shrink-0"
+      className="mt-[4px] w-3 h-3 text-[#0066FF] shrink-0"
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
@@ -85,7 +85,7 @@ function MediaCard({ mediaSrc, poster }: { mediaSrc?: string; poster?: string })
             controls={false}
           />
         ) : (
-          <div className="w-full h-full grid place-items-center text-sm text-gray-500">
+          <div className="w-full h-full grid place-items-center text-sm text-[#414B61]">
             Sin vídeo
           </div>
         )}
@@ -147,15 +147,15 @@ function AppDownloadModal({
                 alt={app.nombre}
                 width={40}
                 height={40}
-                className="w-10 h-10 rounded-lg border border-gray-200 shadow-sm object-contain"
+                className="w-10 h-10 rounded-lg border border-[#414B61] shadow-sm object-contain"
               />
             ) : (
-              <div className="w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 grid place-items-center shadow-sm">
-                <span className="text-gray-500 font-bold text-xs">App</span>
+              <div className="w-10 h-10 rounded-lg bg-[#414B61] border border-[#414B61] grid place-items-center shadow-sm">
+                <span className="text-[#414B61] font-bold text-xs">App</span>
               </div>
             )}
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-gray-900">{app.nombre}</h3>
+              <h3 className="text-lg font-semibold text-[#414B61]">{app.nombre}</h3>
             </div>
           </div>
 
@@ -166,7 +166,7 @@ function AppDownloadModal({
               {items.map((it, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="mt-0.5">
-                    <svg className="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="none">
+                    <svg className="w-5 h-5 text-[#0066FF]" viewBox="0 0 24 24" fill="none">
                       <circle cx="12" cy="12" r="10" fill="currentColor" />
                       <path
                         d="m8 12 3 3 5-6"
@@ -179,12 +179,12 @@ function AppDownloadModal({
                   </div>
                   <div className="flex-1">
                     <p
-                      className="text-sm text-gray-700 font-medium"
+                      className="text-sm text-[#414B61] font-medium"
                       dangerouslySetInnerHTML={{ __html: it.title }}
                     />
                     {it.sub && (
                       <p
-                        className="text-xs text-gray-500 mt-1"
+                        className="text-xs text-[#414B61] mt-1"
                         dangerouslySetInnerHTML={{ __html: it.sub }}
                       />
                     )}
@@ -202,7 +202,7 @@ function AppDownloadModal({
               </div>
 
               {/* QR Code */}
-              <div className="inline-block bg-white p-4 rounded-xl border border-gray-200 mb-6">
+              <div className="inline-block bg-white p-4 rounded-xl border border-[#414B61] mb-6">
                 {qrDataUrl ? (
                   <Image
                     src={qrDataUrl}
@@ -212,7 +212,7 @@ function AppDownloadModal({
                     className="object-contain"
                   />
                 ) : (
-                  <div className="w-35 h-35 grid place-items-center text-gray-400 text-sm">
+                  <div className="w-35 h-35 grid place-items-center text-[#414B61] text-sm">
                     Generando QR...
                   </div>
                 )}
@@ -221,7 +221,7 @@ function AppDownloadModal({
               {/* Botón Hecho */}
               <button
                 onClick={onClose}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-sm font-medium transition-colors"
+                className="w-full bg-[#0066FF] hover:bg-[#0066FF] text-white py-3 rounded-xl text-sm font-medium transition-colors"
               >
                 {labels.done}
               </button>
@@ -338,7 +338,7 @@ export default function Step2() {
   return (
     <div className="flex flex-col bg-white">
     
-      <div className="flex-1 overflow-y-auto flex flex-col items-center">
+      <div className="flex-1 overflow-y-auto flex flex-col items-center py-6">
         {/* Pasos */}
         <div className="w-full flex justify-center pt-1 pb-6 relative">
           {/* Botón Home alineado con el progreso */}
@@ -352,14 +352,14 @@ export default function Step2() {
                 <div
                   className={`w-6 h-6 rounded-full grid place-items-center border font-bold leading-none text-[11px] ${
                     i === currentStep
-                      ? 'bg-blue-600 text-white border-blue-600'
-                      : 'bg-white text-gray-400 border-gray-300'
+                      ? 'bg-[#0066FF] text-white border-[#0066FF]'
+                      : 'bg-white text-[#414B61] border-[#414B61]'
                   }`}
                 >
                   {i + 1}
                 </div>
                 {i < PASOS.length - 1 && (
-                  <span className="block w-8 h-[2px] bg-gray-300 mx-1 sm:mx-2" />
+                  <span className="block w-8 h-[2px] bg-[#414B61] mx-1 sm:mx-2" />
                 )}
               </li>
             ))}
@@ -371,16 +371,16 @@ export default function Step2() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start min-h-[300px]">
             {/* Texto + apps */}
             <div className="min-h-[280px] mt-2">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-1">
+              <h2 className="text-2xl font-semibold text-[#414B61] mb-1">
                 <span>{firstChar}</span>
                 {titleParts.map((p, i) => (
                   <span key={i}>
                     {p}
                     {idx !== 2 && i < titleParts.length - 1 && (
-                      <span className="text-blue-600 font-bold">Wallet</span>
+                      <span className="text-[#0066FF] font-bold">Wallet</span>
                     )}
                     {idx === 2 && i === 2 && (
-                      <span className="text-blue-600 font-bold">Wallet</span>
+                      <span className="text-[#0066FF] font-bold">Wallet</span>
                     )}
                   </span>
                 ))}
@@ -391,13 +391,13 @@ export default function Step2() {
                   {/* Bullet 1 */}
                   <div className="flex gap-2 items-start">
                     <TickSmall />
-                    <span className="text-sm text-gray-600 font-semibold">{bloque.texto}</span>
+                    <span className="text-sm text-[#414B61] font-semibold">{bloque.texto}</span>
                   </div>
 
                   {/* Bullet 2 */}
                   <div className="flex gap-2 items-start">
                     <TickSmall />
-                    <span className="text-sm text-gray-600 font-semibold">{t.ui?.extraStep}</span>
+                    <span className="text-sm text-[#414B61] font-semibold">{t.ui?.extraStep}</span>
                   </div>
 
                   {/* Apps */}
@@ -412,7 +412,7 @@ export default function Step2() {
                           title={app.nombre}
                           aria-label={app.nombre}
                         >
-                          <div className="w-16 h-16 rounded-xl shadow border border-gray-200 bg-white grid place-items-center group-hover:shadow-md transition">
+                          <div className="w-16 h-16 rounded-xl shadow border border-[#414B61] bg-white grid place-items-center group-hover:shadow-md transition">
                             <Image
                               width={40}
                               height={40}
@@ -421,7 +421,7 @@ export default function Step2() {
                               className="w-10 h-10 object-contain"
                             />
                           </div>
-                          <span className="text-sm text-gray-600 mt-2">{app.nombre}</span>
+                          <span className="text-sm text-[#414B61] mt-2">{app.nombre}</span>
                         </button>
                       ))}
                     </div>
@@ -432,10 +432,10 @@ export default function Step2() {
 
                   <div className="mt-3 flex gap-2 items-start">
                     <TickSmall />
-                    <span className="text-sm text-gray-600 font-semibold">{bloque.subtitulo}</span>
+                    <span className="text-sm text-[#414B61] font-semibold">{bloque.subtitulo}</span>
                   </div>
                   <p
-                    className="mt-2 text-sm text-gray-600 leading-relaxed pl-6"
+                    className="mt-2 text-sm text-[#414B61] leading-relaxed pl-6"
                     dangerouslySetInnerHTML={{ __html: bloque.texto }}
                   />
                 </>
@@ -451,7 +451,7 @@ export default function Step2() {
 
         {/* Navegación */}
         <div className="w-full max-w-[1020px] px-4 sm:px-10 pt-5">
-          <hr className="mb-10 border-gray-200" />
+          <hr className="mb-10 border-[#414B61]" />
           <div className="relative flex items-center mb-16">
             <div className="w-[110px]">
               <button
@@ -459,7 +459,7 @@ export default function Step2() {
                   if (idx > 0) setIdx((p) => p - 1);
                   else goTo(currentStep - 1);
                 }}
-                className="border border-blue-600 text-blue-600 px-8 py-2 rounded-full text-sm font-medium transition hover:bg-blue-50"
+                className="border border-[#0066FF] text-[#0066FF] px-8 py-2 rounded-full text-sm font-medium transition hover:bg-[#0066FF]  hover:text-white"
               >
                 {buttons.back}
               </button>
@@ -468,7 +468,7 @@ export default function Step2() {
             <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
               <button
                 onClick={handleNext}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-full text-sm font-medium transition"
+                className="border border-[#0066FF] bg-[#0066FF] hover:bg-[#0066FF] text-white px-8 py-2 rounded-full text-sm font-medium transition hover:bg-white  hover:text-[#0066FF]"
               >
                 {buttons.next}
               </button>
@@ -476,7 +476,7 @@ export default function Step2() {
               {idx === 0 && (
                 <button
                   onClick={() => router.push(`/${locale}/credenciales-profesionales/step-3`)}
-                  className="text-blue-600 text-sm underline hover:text-blue-700 transition cursor-pointer"
+                  className="text-[#0066FF] text-sm underline hover:text-[#0066FF] transition cursor-pointer"
                 >
                   {buttons.go}
                 </button>

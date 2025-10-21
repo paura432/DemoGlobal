@@ -95,22 +95,22 @@ export default function BienvenidaCursos() {
   return (
     <div className="pb-10">
       <div className="w-full bg-white border rounded-2xl shadow p-6 mb-6">
-        <h1 className="text-2xl font-semibold text-gray-900 mb-1">{t.titulo ?? ''}</h1>
-        {t.subtitulo && <p className="text-sm text-gray-600">{t.subtitulo}</p>}
+        <h1 className="text-2xl font-semibold text-[#414B61] mb-1">{t.titulo ?? ''}</h1>
+        {t.subtitulo && <p className="text-sm text-[#414B61]">{t.subtitulo}</p>}
 
         <div className="mt-4 max-w-[840px]">
           <div className="rounded-xl border border-gray-200 bg-gray-100/80 px-5 py-4">
-            <div className="grid gap-2 text-sm text-gray-800">
+            <div className="grid gap-2 text-sm text-[#414B61]">
               <div className="flex items-center gap-3">
-                <span className="w-28 text-gray-500">Nombre:</span>
+                <span className="w-28 text-[#414B61]">Nombre:</span>
                 <span className="font-medium">{resumen.nombre || '—'}</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="w-28 text-gray-500">Especialidad:</span>
+                <span className="w-28 text-[#414B61]">Especialidad:</span>
                 <span className="font-medium">{resumen.especialidad || '—'}</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="w-28 text-gray-500">Centro:</span>
+                <span className="w-28 text-[#414B61]">Centro:</span>
                 <span className="font-medium">{resumen.centro || '—'}</span>
               </div>
             </div>
@@ -124,7 +124,7 @@ export default function BienvenidaCursos() {
         <div className="px-6 pt-5 pb-3">
           <h2 className="text-[18px] font-semibold text-sky-800">{t.tablaTitulo}</h2>
           <div className="h-[2px] w-64 bg-orange-400 rounded mt-2" />
-          <p className="text-xs text-gray-600 mt-3 max-w-[1100px]">
+          <p className="text-xs text-[#414B61] mt-3 max-w-[1100px]">
             {locale === 'es'
               ? 'Los productos generados en el marco de la Red de Agencias se elaboran con una sistemática específica, basándose en un análisis exhaustivo de la literatura científica y con una metodología que garantiza unos resultados rigurosos y fiables.'
               : 'The products generated within the framework of the Agency Network are developed with a specific methodology, based on an exhaustive analysis of the scientific literature and with a methodology that guarantees rigorous and reliable results.'}

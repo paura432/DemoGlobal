@@ -117,7 +117,7 @@ export default function CiudadanoPage() {
 
   const allDone = doneCarnet && donePermiso;
 
-  if (!t) return <div className="p-10 text-center text-gray-500">Cargando interfaz...</div>;
+  if (!t) return <div className="p-10 text-center text-[#414B61]">Cargando interfaz...</div>;
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 overflow-hidden">
@@ -148,8 +148,8 @@ export default function CiudadanoPage() {
           <div className="flex items-start gap-2 justify-center">
             <AlertIcon />
             <div>
-              <h2 className="font-bold text-gray-800">{t.alert.title}</h2>
-              <p className="text-gray-700 text-xs">{t.alert.intro}</p>
+              <h2 className="font-bold text-[#414B61]">{t.alert.title}</h2>
+              <p className="text-[#414B61] text-xs">{t.alert.intro}</p>
             </div>
           </div>
         </div>
@@ -170,7 +170,7 @@ export default function CiudadanoPage() {
           >
             <CarnetIcon />
             <h3 className="text-base font-bold mb-1">{t.carnet.title}</h3>
-            <p className="text-xs text-gray-600 mb-2">{t.carnet.desc}</p>
+            <p className="text-xs text-[#414B61] mb-2">{t.carnet.desc}</p>
             <div
               className={`w-full rounded-md py-1 mb-2 text-xs font-semibold ${
                 doneCarnet
@@ -185,7 +185,7 @@ export default function CiudadanoPage() {
               disabled={doneCarnet}
               className={`w-full font-semibold py-1.5 rounded-full text-sm ${
                 doneCarnet
-                  ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                  ? 'bg-gray-200 text-[#414B61] cursor-not-allowed'
                   : 'bg-[#0066CC] hover:bg-[#004A99] text-white'
               }`}
             >
@@ -201,7 +201,7 @@ export default function CiudadanoPage() {
           >
             <PermisoIcon />
             <h3 className="text-base font-bold mb-1">{t.permiso.title}</h3>
-            <p className="text-xs text-gray-600 mb-2">{t.permiso.desc}</p>
+            <p className="text-xs text-[#414B61] mb-2">{t.permiso.desc}</p>
             <div
               className={`w-full rounded-md py-1 mb-2 text-xs font-semibold ${
                 donePermiso
@@ -216,7 +216,7 @@ export default function CiudadanoPage() {
               disabled={donePermiso}
               className={`w-full font-semibold py-1.5 rounded-full text-sm ${
                 donePermiso
-                  ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                  ? 'bg-gray-200 text-[#414B61] cursor-not-allowed'
                   : 'bg-[#0066CC] hover:bg-[#004A99] text-white'
               }`}
             >

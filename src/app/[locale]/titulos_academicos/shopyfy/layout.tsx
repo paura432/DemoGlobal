@@ -135,7 +135,7 @@ export default function ShopLayout({
 
   if (noScroll) {
     return (
-      <div className="overflow-hidden bg-white text-gray-900 flex flex-col">
+      <div className="overflow-hidden bg-white text-[#414B61] flex flex-col">
         <div className="w-full bg-indigo-100 text-center text-[13px] py-2 flex-shrink-0">
           {t.freeShipping}
         </div>
@@ -148,7 +148,7 @@ export default function ShopLayout({
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 flex flex-col">
+    <div className="min-h-screen bg-white text-[#414B61] flex flex-col">
       <div className="w-full bg-indigo-100 text-center text-[13px] py-2">
         {t.freeShipping}
       </div>

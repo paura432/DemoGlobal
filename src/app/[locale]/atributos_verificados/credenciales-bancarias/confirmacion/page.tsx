@@ -62,7 +62,7 @@ function StepIndicator({ current, labels }: { current: number; labels: string[] 
             <div className="flex flex-col items-center">
               <div
                 className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold
-                  ${done ? 'bg-blue-600 text-white' : active ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-400'}`}
+                  ${done ? 'bg-blue-600 text-white' : active ? 'bg-blue-600 text-white' : 'bg-gray-200 text-[#414B61]'}`}
               >
                 {done ? (
                   <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
@@ -76,7 +76,7 @@ function StepIndicator({ current, labels }: { current: number; labels: string[] 
                   stepNum
                 )}
               </div>
-              <span className="text-[10px] sm:text-xs mt-1 text-gray-600 text-center">{label}</span>
+              <span className="text-[10px] sm:text-xs mt-1 text-[#414B61] text-center">{label}</span>
             </div>
             {i < labels.length - 1 && (
               <div className={`h-0.5 w-8 sm:w-10 ${done ? 'bg-blue-600' : 'bg-gray-200'}`} />
@@ -118,7 +118,7 @@ export default function ConfirmationPage() {
             </svg>
             <span className="text-lg font-semibold italic">Shopyline</span>
           </div>
-          <span className="text-xs text-gray-200">{c.header.securePayment}</span>
+          <span className="text-xs text-[#414B61]">{c.header.securePayment}</span>
         </div>
       </header>
 
@@ -129,37 +129,37 @@ export default function ConfirmationPage() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6 lg:gap-8">
           {/* Columna izquierda */}
           <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md border border-gray-200">
-            <h1 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">{c.leftColumn.title}</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-[#414B61] mb-4">{c.leftColumn.title}</h1>
 
             {/* Entrega */}
             <div className="mb-4">
               <div className="flex items-center gap-2 mb-2">
-                <svg className="w-4 h-4 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <svg className="w-4 h-4 text-[#414B61]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <rect x="4" y="5" width="16" height="16" rx="2" strokeWidth="2" />
                   <path d="M16 3v4M8 3v4M4 11h16" strokeWidth="2" />
                 </svg>
-                <h2 className="font-semibold text-gray-900 text-sm">{c.leftColumn.deliveryTitle}</h2>
+                <h2 className="font-semibold text-[#414B61] text-sm">{c.leftColumn.deliveryTitle}</h2>
               </div>
 
               <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 ml-2">
                 <p className="text-sm font-medium">{c.leftColumn.deliveryDate}</p>
-                <p className="text-xs text-gray-600">{c.leftColumn.standardShipping}</p>
+                <p className="text-xs text-[#414B61]">{c.leftColumn.standardShipping}</p>
                 <p className="text-xs text-green-600 font-semibold">{c.leftColumn.free}</p>
               </div>
             </div>
 
             {/* Pedido */}
             <div>
-              <h2 className="font-semibold text-gray-900 text-sm mb-2">{c.leftColumn.orderTitle}</h2>
+              <h2 className="font-semibold text-[#414B61] text-sm mb-2">{c.leftColumn.orderTitle}</h2>
               <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 ml-2 flex gap-3">
                 <div className="w-16 h-24 relative rounded overflow-hidden flex-shrink-0">
                   <Image src={ITEM.image} alt={ITEM.title} fill className="object-cover" />
                 </div>
                 <div className="flex-1 text-sm">
-                  <p className="text-xs text-gray-600">{ITEM.brand}</p>
+                  <p className="text-xs text-[#414B61]">{ITEM.brand}</p>
                   <p className="font-semibold">{ITEM.title}</p>
-                  <p className="text-gray-700">{ITEM.price.toFixed(2)} €</p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-[#414B61]">{ITEM.price.toFixed(2)} €</p>
+                  <p className="text-xs text-[#414B61] mt-1">
                     {c.leftColumn.qty}: {ITEM.qty}
                   </p>
                 </div>
@@ -173,8 +173,8 @@ export default function ConfirmationPage() {
 
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
               <p className="font-semibold text-xs mb-2">{c.rightColumn.bankAccreditation}</p>
-              <p className="text-xs text-gray-700">{BANK_CREDENTIAL.address}</p>
-              <p className="text-xs text-gray-700">{BANK_CREDENTIAL.card}</p>
+              <p className="text-xs text-[#414B61]">{BANK_CREDENTIAL.address}</p>
+              <p className="text-xs text-[#414B61]">{BANK_CREDENTIAL.card}</p>
               <p className="text-xs text-green-600 font-semibold mt-1">
                 {c.rightColumn.completeCapture} ✓
               </p>
@@ -188,7 +188,7 @@ export default function ConfirmationPage() {
               <div className="flex justify-between font-bold text-base">
                 <span>
                   {c.rightColumn.total}{' '}
-                  <span className="text-xs text-gray-500 font-normal">
+                  <span className="text-xs text-[#414B61] font-normal">
                     {c.rightColumn.vatIncluded}
                   </span>
                 </span>

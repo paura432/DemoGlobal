@@ -49,8 +49,8 @@ function LanguageDropdown({ locale, onSelect }: Props) {
                 onSelect(key as 'es' | 'en');
                 setIsOpen(false);
               }}
-              className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 ${
-                locale === key ? 'font-semibold text-[#0057B8]' : 'text-gray-700'
+              className={`block w-full text-left px-4 py-2 text-sm hover:bg-[#414B61] ${
+                locale === key ? 'font-semibold text-[#0066FF]' : 'text-[#414B61]'
               }`}
             >
               {value.name}
@@ -81,7 +81,7 @@ export default function Header() {
 
   return (
     <header className="w-full relative">
-      <div className="bg-[#3b435a] h-8 sm:h-10 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#414B61] h-8 sm:h-10 flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <Image
           src="/demoglobal/telefonica-tech-logo.png"
           alt="Telefónica Tech"

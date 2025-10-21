@@ -1,75 +1,143 @@
-/* Carga todo Tailwind v4 de una vez */
+/* =======================================================
+   🌐 GLOBAL STYLES – DEMOGLOBAL
+   Fuente corporativa: Telefónica Sans
+   ======================================================= */
+
+/* ======= Tailwind Base Import ======= */
 @import "tailwindcss";
 
-/* ===== CONFIGURACIÓN DE TELEFÓNICA SANS ===== */
+/* ======= CARGA LOCAL DE TELEFÓNICA SANS ======= */
+@font-face {
+  font-family: 'Telefónica Sans';
+  src: url('/fonts/telefonica-sans/Telefónica Sans Thin.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Telefónica Sans';
+  src: url('/fonts/telefonica-sans/Telefónica Sans Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Telefónica Sans';
+  src: url('/fonts/telefonica-sans/Telefónica Sans Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Telefónica Sans';
+  src: url('/fonts/telefonica-sans/Telefónica Sans Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Telefónica Sans';
+  src: url('/fonts/telefonica-sans/Telefónica Sans DemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Telefónica Sans';
+  src: url('/fonts/telefonica-sans/Telefónica Sans Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Telefónica Sans';
+  src: url('/fonts/telefonica-sans/Telefónica Sans ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Telefónica Sans';
+  src: url('/fonts/telefonica-sans/Telefónica Sans Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Variable global de fuente */
+:root {
+  --font-telefonica-sans: 'Telefónica Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+/* =======================================================
+   BASE GLOBAL (Aplicación de la fuente y ajustes generales)
+   ======================================================= */
 @layer base {
-  /* Aplicar Telefónica Sans globalmente */
   * {
-    font-family: var(--font-telefonica-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    font-family: var(--font-telefonica-sans);
   }
 
   body {
-    @apply antialiased;
+    @apply antialiased bg-white text-gray-800;
   }
 
-  /* Estilos base para títulos con Telefónica Sans */
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold;
   }
 
-  /* Scroll suave */
   html {
     scroll-behavior: smooth;
   }
 }
 
-/* ===== UTILIDADES PERSONALIZADAS PARA PESOS DE FUENTE ===== */
+/* =======================================================
+   UTILIDADES PERSONALIZADAS DE PESO DE FUENTE
+   ======================================================= */
 @layer utilities {
   .font-telefonica-hairline {
     font-weight: 100;
   }
-
   .font-telefonica-thin {
     font-weight: 200;
   }
-
   .font-telefonica-light {
     font-weight: 300;
   }
-
   .font-telefonica-regular {
     font-weight: 400;
   }
-
   .font-telefonica-medium {
     font-weight: 500;
   }
-
   .font-telefonica-demibold {
     font-weight: 600;
   }
-
   .font-telefonica-bold {
     font-weight: 700;
   }
-
   .font-telefonica-extrabold {
     font-weight: 800;
   }
-
   .font-telefonica-black {
     font-weight: 900;
   }
 }
 
-/* ===== RESET Y CONTROL DE OVERFLOW ===== */
+/* =======================================================
+   RESET Y ESTILOS DE INPUTS
+   ======================================================= */
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #fff;
 }
 
-/* ===== ESTILOS PERSONALIZADOS PARA INPUTS ===== */
 input[type='number'] {
   -moz-appearance: textfield;
   appearance: textfield;
@@ -79,4 +147,21 @@ input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+/* =======================================================
+   SCROLLBAR SUAVE Y MODERNA (opcional)
+   ======================================================= */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #b3b3b3;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
 }

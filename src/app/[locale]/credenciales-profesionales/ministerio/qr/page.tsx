@@ -121,7 +121,7 @@ export default function MinisterioQR() {
   return (
     <div className="w-full grid place-items-center py-8">
       <div className="w-full max-w-[720px] bg-white">
-        <h2 className="text-[20px] font-semibold text-gray-800 mb-6 text-center">
+        <h2 className="text-[20px] font-semibold text-[#414B61] mb-6 text-center">
           {txt?.heading ?? ''}
         </h2>
 
@@ -131,14 +131,14 @@ export default function MinisterioQR() {
               <QRCodeCanvas value={qrLink} size={QR_SIZE} className="rounded border shadow" />
             ) : (
               <div
-                className="rounded-xl grid place-items-center text-gray-400 text-sm bg-gray-50 animate-pulse"
+                className="rounded-xl grid place-items-center text-[#414B61] text-sm bg-gray-50 animate-pulse"
                 style={{ width: QR_SIZE, height: QR_SIZE }}
               >
                 {errorMsg ? (txt?.error ?? '') : (txt?.loading ?? '')}
               </div>
             )}
           </div>
-          <p className="mt-3 text-xs text-gray-500">{txt?.helper ?? ''}</p>
+          <p className="mt-3 text-xs text-[#414B61]">{txt?.helper ?? ''}</p>
           {isVerified && <p className="mt-2 text-xs text-green-600">{txt?.verified ?? ''}</p>}
         </div>
       </div>

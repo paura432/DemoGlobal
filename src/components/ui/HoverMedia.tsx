@@ -76,7 +76,7 @@ export default function HoverMedia({
           {/* Overlay azul encima del vídeo */}
           <div
             className="absolute inset-0 rounded-lg sm:rounded-xl pointer-events-none"
-            style={{ backgroundColor: '#0057B8', opacity: blueOpacity }}
+            style={{ backgroundColor: '#0066FF', opacity: blueOpacity }}
           />
         </div>
       )}

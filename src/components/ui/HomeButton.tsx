@@ -15,7 +15,7 @@ export default function HomeButton() {
   return (
     <button
       onClick={handleClick}
-      className="absolute top-0 left-0 text-gray-500 hover:text-blue-700 hover:scale-110 transition-all duration-200"
+      className="absolute top-0 left-0 text-[#414B61] hover:text-[#0066FF] hover:scale-110 transition-all duration-200"
       aria-label="Volver al inicio"
       title="Volver al inicio"
     >

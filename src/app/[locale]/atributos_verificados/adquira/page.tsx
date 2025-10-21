@@ -160,14 +160,14 @@ export default function AdquiraLoginPage() {
           height={50}
           className="mb-4"
         />
-        <h1 className="text-lg font-semibold text-gray-800 mb-6">
+        <h1 className="text-lg font-semibold text-[#414B61] mb-6">
           {t.header.accessTitle}
         </h1>
 
         <button onClick={startVerification} className="w-3/4 bg-[#a4162d] hover:bg-[#8d1326] text-white py-2.5 rounded-full font-semibold transition mb-3">
           {t.buttons.login}
         </button>
-        <a href="#" className="text-sm text-gray-600 hover:underline mb-3">
+        <a href="#" className="text-sm text-[#414B61] hover:underline mb-3">
           {t.buttons.recoverPassword}
         </a>
         <button className="text-xs bg-[#e7eae3] text-[#00A859] px-4 py-1 rounded-full hover:bg-[#d9ded5] transition">
@@ -188,7 +188,7 @@ export default function AdquiraLoginPage() {
             />
 
             {phase === 'loading' && (
-              <p className="text-gray-600">{t.modal.waiting}</p>
+              <p className="text-[#414B61]">{t.modal.waiting}</p>
             )}
 
             {phase === 'qr' && (
@@ -196,13 +196,13 @@ export default function AdquiraLoginPage() {
                 <h3 className="text-lg font-semibold text-[#808a3d] mb-2">
                   {t.modal.title}
                 </h3>
-                <p className="text-sm text-gray-600 mb-3">
+                <p className="text-sm text-[#414B61] mb-3">
                   {t.modal.credentialTitle}
                 </p>
                 <div className="flex justify-center bg-gray-50 p-4 rounded-lg mb-3">
                   <QRCodeCanvas value={qrLink} size={200} />
                 </div>
-                <p className="text-xs text-gray-500">{t.modal.hint}</p>
+                <p className="text-xs text-[#414B61]">{t.modal.hint}</p>
               </>
             )}
 
@@ -224,7 +224,7 @@ export default function AdquiraLoginPage() {
                     <li
                       key={i}
                       className={`flex items-center gap-2 ${
-                        i < activeStep ? 'text-[#00A859]' : 'text-gray-500'
+                        i < activeStep ? 'text-[#00A859]' : 'text-[#414B61]'
                       }`}
                     >
                       <span>{i < activeStep ? '✓' : '○'}</span> {step}
@@ -244,7 +244,7 @@ export default function AdquiraLoginPage() {
       )}
 
       {/* Selector idioma */}
-      <div className="absolute top-4 right-8 flex gap-3 text-xs font-semibold text-gray-700">
+      <div className="absolute top-4 right-8 flex gap-3 text-xs font-semibold text-[#414B61]">
         <span className="cursor-pointer hover:underline">{t.header.language.es}</span>
         <span>|</span>
         <span className="cursor-pointer hover:underline">{t.header.language.en}</span>

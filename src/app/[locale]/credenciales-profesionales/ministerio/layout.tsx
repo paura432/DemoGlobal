@@ -110,7 +110,7 @@ export default function MinisterioLayout({ children }: { children: React.ReactNo
             )}
             <div className="leading-tight">
               {cfg.brand.sup && (
-                <div className="text-xs text-gray-700">{cfg.brand.sup}</div>
+                <div className="text-xs text-[#414B61]">{cfg.brand.sup}</div>
               )}
               <div className="text-xl font-bold -mt-[2px]">{cfg.brand.title}</div>
             </div>

@@ -16,7 +16,7 @@ type TCfg = {
   layout?: LayoutCfg;
 };
 
-function PersonIcon({ className = 'w-4 h-4 text-gray-800' }: { className?: string }) {
+function PersonIcon({ className = 'w-4 h-4 text-[#414B61]' }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="none">
       <circle cx="12" cy="8" r="3.25" stroke="currentColor" strokeWidth="1.5" />
@@ -118,7 +118,7 @@ export default function MinisterioVerificando() {
         {/* Título estático */}
         <div className="flex items-center gap-2 mb-4">
           <PersonIcon />
-          <h2 className="text-[20px] leading-[24px] font-semibold text-gray-900">
+          <h2 className="text-[20px] leading-[24px] font-semibold text-[#414B61]">
             {cfg.titulo}
           </h2>
         </div>
@@ -150,7 +150,7 @@ export default function MinisterioVerificando() {
                 {done ? <CheckCircle /> : <PendingCircle />}
                 <span
                   className={`text-[14px] leading-[20px] ${
-                    done ? 'text-gray-800' : 'text-gray-500'
+                    done ? 'text-[#414B61]' : 'text-[#414B61]'
                   }`}
                 >
                   {label}

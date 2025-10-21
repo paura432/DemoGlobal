@@ -90,7 +90,7 @@ export default function PermisoPage() {
     router.push(`/${locale}/tramites_licencias/vehiculo/ciudadano`);
   };
 
-  if (!t) return <div className="p-10 text-center text-gray-500">Cargando interfaz...</div>;
+  if (!t) return <div className="p-10 text-center text-[#414B61]">Cargando interfaz...</div>;
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 overflow-hidden">
@@ -116,7 +116,7 @@ export default function PermisoPage() {
           {phase === 'loading' && (
             <div className="bg-white rounded-xl shadow-md p-6 text-center">
               <div className="animate-spin w-6 h-6 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-3"></div>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-[#414B61]">
                 {issuing ? t.loading.issuing : t.loading.generating}
               </p>
             </div>
@@ -125,8 +125,8 @@ export default function PermisoPage() {
           {/* QR */}
           {phase === 'qr' && issuedWrapQr && (
             <div className="bg-white rounded-xl shadow-md p-5">
-              <h2 className="text-lg font-bold text-gray-800 mb-2 text-center">{t.qr.title}</h2>
-              <p className="text-xs text-gray-700 text-center mb-2">{t.qr.instruction}</p>
+              <h2 className="text-lg font-bold text-[#414B61] mb-2 text-center">{t.qr.title}</h2>
+              <p className="text-xs text-[#414B61] text-center mb-2">{t.qr.instruction}</p>
 
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-3 rounded-xl border-2 border-[#0066CC] flex justify-center mb-2">
                 <QRCodeCanvas value={issuedWrapQr} size={QR_SIZE} />
@@ -139,7 +139,7 @@ export default function PermisoPage() {
                 >
                   {t.qr.button}
                 </button>
-                <p className="text-[10px] text-gray-500 mt-1">{t.qr.hint}</p>
+                <p className="text-[10px] text-[#414B61] mt-1">{t.qr.hint}</p>
               </div>
             </div>
           )}
