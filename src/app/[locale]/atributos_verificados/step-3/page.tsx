@@ -325,14 +325,14 @@ export default function Step3() {
               onClick={goBack}
               className="border border-[#0066FF] text-[#0066FF] px-8 py-2 rounded-full text-sm font-medium transition hover:bg-[#0066FF]  hover:text-white"
             >
-              Atrás
+              {locale === 'es' ? 'Atrás' : 'Back'}
             </button>
             <div className="flex-1 flex justify-center">
               <button
                 onClick={goNext}
                 className="border border-[#0066FF] bg-[#0066FF] hover:bg-[#0066FF] text-white px-8 py-2 rounded-full text-sm font-medium transition hover:bg-white  hover:text-[#0066FF]"
               >
-                {block.boton ?? (subIdx < blocks.length - 1 ? 'Siguiente' : 'Ir a Ministerio')}
+                {block.boton ?? (subIdx < blocks.length - 1 && locale === 'es' ? 'Siguiente' : 'Next')}
               </button>
             </div>
             <div className="w-[110px]" />

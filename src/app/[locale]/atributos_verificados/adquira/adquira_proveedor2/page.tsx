@@ -94,9 +94,6 @@ export default function AdquiraProveedorPage() {
 
       {/* BARRA BEIGE */}
       <div className="bg-[#d5d1b8] text-xs text-[#414B61] py-1 px-6 shadow-inner">
-        <div className="max-w-7xl mx-auto">
-          Está viendo: <span className="font-semibold">Todos los compradores</span>
-        </div>
       </div>
 
       {/* CONTENIDO PRINCIPAL */}
