@@ -67,7 +67,7 @@ export default function HoverMedia({
             className="absolute inset-0 w-full h-full object-cover rounded-lg sm:rounded-xl"
             muted
             playsInline
-            preload="metadata"
+            preload="none"
             loop
             style={{ objectPosition }}
           >
