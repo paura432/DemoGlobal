@@ -1,29 +1,34 @@
-FROM node:18-alpine
+# Multi-stage build
+FROM node:20-alpine AS base
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
+# Dependencies
+FROM base AS deps
 WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile --prod=false
 
-# Habilitar Corepack
-RUN corepack enable && corepack prepare pnpm@10.17.1 --activate
-
-# Copiar package files
-COPY package.json pnpm-lock.yaml* ./
-
-# Instalar dependencias
-RUN pnpm install --frozen-lockfile
-
-# Copiar código fuente
+# Builder
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
+# Build con variables de entorno
 ENV NEXT_PUBLIC_VCS_API_URL=https://norteverse.trustos.telefonicatech.com:9443
 ENV NEXT_PUBLIC_ENV_MODE=prod
-
-# Build
 RUN pnpm build
 
-EXPOSE 3000
-
+# Runner (imagen final minimalista)
+FROM base AS runner
+WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-CMD ["pnpm", "start"]
+# Copiar solo lo necesario
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
+
+EXPOSE 3000
+CMD ["node", "server.js"]
