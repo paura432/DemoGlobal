@@ -2,16 +2,16 @@
   "conoceLabel": "Conoce a",
   "perfiles": {
     "ciudadano": {
-      "nombre": "Luis",
+      "nombre": "Carlos",
       "label": "Ciudadano",
-      "descripcion": "Luis es ciudadano y necesita obtener documentación digital verificable de sus vehículos para poder circular legalmente.",
+      "descripcion": "Carlos es ciudadano y necesita obtener documentación digital verificable de sus vehículos para poder circular legalmente.",
       "icono": "/tramites_licencias/ciudadano.png",
       "video": "/videos/ciudadano.mp4"
     },
     "policia": {
-      "nombre": "Carlos",
+      "nombre": "Luis",
       "label": "Policía",
-      "descripcion": "Carlos es agente de policía y necesita verificar de forma segura las credenciales de conductores durante controles de tráfico.",
+      "descripcion": "Luis es agente de policía y necesita verificar de forma segura las credenciales de conductores durante controles de tráfico.",
       "icono": "/tramites_licencias/policia.png",
       "video": "/videos/policia.mp4"
     }

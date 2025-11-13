@@ -2,16 +2,16 @@
   "conoceLabel": "Meet",
   "perfiles": {
     "ciudadano": {
-      "nombre": "Luis",
+      "nombre": "Carlos",
       "label": "Citizen",
-      "descripcion": "Luis is a citizen who needs to obtain verifiable digital documentation for her vehicles to drive legally.",
+      "descripcion": "Carlos is a citizen who needs to obtain verifiable digital documentation for her vehicles to drive legally.",
       "icono": "/tramites_licencias/ciudadano.png",
       "video": "/videos/ciudadano.mp4"
     },
     "policia": {
-      "nombre": "Carlos",
+      "nombre": "Luis",
       "label": "Police",
-      "descripcion": "Carlos is a police officer who needs to securely verify driver credentials during traffic stops.",
+      "descripcion": "Luis is a police officer who needs to securely verify driver credentials during traffic stops.",
       "icono": "/tramites_licencias/policia.png",
       "video": "/videos/policia.mp4"
     }
